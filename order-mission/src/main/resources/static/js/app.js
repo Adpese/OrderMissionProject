@@ -8,11 +8,11 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 	//add a new colab
 	$scope.addCollab = function addCollab() {
-		
-		
-		
+
+
+
 		if ($scope.collabName == null || $scope.collab_id == null || $scope.collabFirstName == null
-			|| $scope.project == null || $scope.agency == null || $scope.division == null  || $scope.date == null) {
+			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
 			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 		} else {
 			$http.post(urlBase + '/collaboraters', {
@@ -22,7 +22,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				date : $scope.date,
 				project : $scope.project,
 				agency : $scope.agency.model,
-				division : $scope.division
+				division : $scope.division.model
 			}
 
 			).success(function(data, status, headers) {
@@ -32,16 +32,50 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			});
 		}
 	};
-	
-	 $scope.agency = {
-	  model: null,
-    availableOptions: [
-      {id: '1', name: 'Valencia'},
-      {id: '2', name: 'Alicante'},
-      {id: '3', name: 'MADRID'}
-    ]
-   };
 
+	$scope.agency = {
+		model : null,
+		availableOptions : [
+			{
+				id : '1',
+				name : 'Valencia'
+			},
+			{
+				id : '2',
+				name : 'Alicante'
+			},
+			{
+				id : '3',
+				name : 'Madrid'
+			},
+			{
+				id : '3',
+				name : 'Tenerife'
+			},
+			{
+				id : '3',
+				name : 'Barcelona'
+			}
+		]
+	};
+
+	$scope.division = {
+		model : null,
+		availableOptions : [
+			{
+				id : '1',
+				name : 'División A'
+			},
+			{
+				id : '2',
+				name : 'División B'
+			},
+			{
+				id : '3',
+				name : 'División C'
+			}
+		]
+	};
 
 
 

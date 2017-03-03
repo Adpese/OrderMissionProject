@@ -123,7 +123,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input name="first_name"
+								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
 								ng-model="collabFirstName" placeholder="Nombre"
 								class="form-control" type="text" />
 						</div>
@@ -137,7 +137,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input name="last_name"
+								class="glyphicon glyphicon-user"></i></span> <input name="collabName"
 								ng-model="collabName" placeholder="Apellidos"
 								class="form-control" type="text" />
 						</div>
@@ -152,7 +152,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-home"></i></span> <input name="city"
+								class="glyphicon glyphicon-home"></i></span> <input name="project"
 								ng-model="project" placeholder="Proyecto" class="form-control"
 								type="text" />
 						</div>
@@ -179,7 +179,7 @@
 
 							</select>
 							 -->
-							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model">
+							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
 						      	<option ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
 						    </select>
 						</div>
@@ -193,7 +193,9 @@
 					<div class="col-md-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-list"></i></span> <select name="division"
+								class="glyphicon glyphicon-list"></i></span>
+								<!--  
+								 <select name="division"
 								ng-model="division" class="form-control selectpicker">
 								<option value=" ">Seleccione su división por favor</option>
 								<option>División A</option>
@@ -201,7 +203,10 @@
 								<option>División C</option>
 								<option>División D</option>
 								<option>División E</option>
-
+								-->
+								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
+						      	<option ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
+								
 							</select>
 						</div>
 					</div>
