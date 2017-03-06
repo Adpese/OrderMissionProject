@@ -77,7 +77,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 		]
 	};
 
-
+	 $scope.url = "http://localhost:8080/home";
 
 
 });

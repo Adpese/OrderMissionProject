@@ -10,5 +10,10 @@ public class HomeController {
 	public String home() {
 		return "indexgg";
 	}
+	
+	@RequestMapping("/menuprin")
+	public String menuprin() {
+		return "menu";
+	}
 
 }
