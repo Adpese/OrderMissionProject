@@ -10,6 +10,18 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
+	
+	@RequestMapping("/addcolb")
+	public String addcolb() {
+		return "indexgg";
+	}
+	
+	@RequestMapping("/listmission")
+	public String listmission() {
+		return "listmission";
+	}
 
+	
+	
 
 }

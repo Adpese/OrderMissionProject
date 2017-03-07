@@ -82,22 +82,18 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 
 
-taskManagerModule.config(function($stateProvider, $urlRouterProvider) {
+taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 
 
     $stateProvider
-        .state('home', {
-            url: "/home",
-            templateUrl: "indexgg.html"
-        })
-        .state('form', {
-            url: "/form",
-            templateUrl: "indexgg.html",
+        .state('addcolb', {
+            url: "/addcolb",
+            templateUrl: "addcolb",
         }) 
-        .state('ex', {
-            url: "/ex",
-            templateUrl: "menu.html",
+        .state('listmission', {
+            url: "/listmission",
+            templateUrl: "listmission",
         }) 
 
-});
+}]);
