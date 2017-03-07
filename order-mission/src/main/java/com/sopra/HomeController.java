@@ -8,12 +8,13 @@ public class HomeController {
 
 	@RequestMapping("/home")
 	public String home() {
-		return "indexgg";
+		return "index";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar() {
 		return "list";
 	}
+
 
 }

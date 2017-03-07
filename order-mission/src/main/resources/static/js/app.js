@@ -1,5 +1,128 @@
 var taskManagerModule = angular.module('orderMisionManagerApp', []);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 taskManagerModule.controller('orderMisionManagerController', function($scope, $http) {
 
 	var urlBase = "";
@@ -166,7 +289,25 @@ var countryApp = angular.module('collayApp', []);
 
       });
       
-      
+      taskManagerModule.config(function($stateProvider, $urlRouterProvider) {
+
+
+
+    $stateProvider
+        .state('home', {
+            url: "/home",
+            templateUrl: "indexgg.html"
+        })
+        .state('form', {
+            url: "/form",
+            templateUrl: "indexgg.html",
+        }) 
+        .state('ex', {
+            url: "/ex",
+            templateUrl: "menu.html",
+        }) 
+
+});
       
       
       
