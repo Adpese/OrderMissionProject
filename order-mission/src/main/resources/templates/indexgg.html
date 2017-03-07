@@ -75,7 +75,7 @@
 
 	<div class="container" ng-controller="orderMisionManagerController">
 
-		<form class="well form-horizontal" action=" " method="post"
+		<form class="well form-horizontal" action="/listar" method="post"
 			id="contact_form">
 			<fieldset>
 
@@ -87,7 +87,7 @@
 					<p ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p>
 				</div>
 
-				<!-- Text input-->
+				<!-- Text input
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Código de empleado</label>
@@ -99,9 +99,9 @@
 								class="form-control" type="text" />
 						</div>
 					</div>
-				</div>
+				</div>  -->
 				
-				<!-- Text input-->
+				<!-- Text input
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Fecha</label>
@@ -113,24 +113,24 @@
 								class="form-control" type="date" />
 						</div>
 					</div>
-				</div>
+				</div>  -->
 
 
 				<!-- Text input-->
 
 				<div class="form-group">
-					<label class="col-md-4 control-label">Nombre</label>
+					<label class="col-md-4 control-label">Nombre y apellidos</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
-								ng-model="collabFirstName" placeholder="Nombre"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos"
 								class="form-control" type="text" />
 						</div>
 					</div>
 				</div>
 
-				<!-- Text input-->
+				<!-- Text input 
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Apellidos</label>
@@ -142,7 +142,7 @@
 								class="form-control" type="text" />
 						</div>
 					</div>
-				</div>
+				</div>  -->
 
 
 				<!-- Text input-->
@@ -180,7 +180,7 @@
 							</select>
 							 -->
 							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
-						      	<option ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
 						    </select>
 						</div>
 					</div>
@@ -205,7 +205,7 @@
 								<option>División E</option>
 								-->
 								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
-						      	<option ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
 								
 							</select>
 						</div>
@@ -234,30 +234,6 @@
 	</div>
 
 	<!-- /.container -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script>
-		var app = angular.module('myApp', []);
-		app.controller('datCtrl', function($scope) {
-			$scope.today = new Date();
-		});
-	</script>
-
-
-
-
-
 
 
 </body>

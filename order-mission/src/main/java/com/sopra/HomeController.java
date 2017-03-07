@@ -10,5 +10,10 @@ public class HomeController {
 	public String home() {
 		return "indexgg";
 	}
+	
+	@RequestMapping("/listar")
+	public String listar() {
+		return "list";
+	}
 
 }
