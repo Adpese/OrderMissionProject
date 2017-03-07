@@ -16,11 +16,6 @@ public class HomeController {
 		return "indexgg";
 	}
 	
-	@RequestMapping("/listmission")
-	public String listmission() {
-		return "listmission";
-	}
-	
 	@RequestMapping("/listar")
 	public String listar() {
 		return "list";

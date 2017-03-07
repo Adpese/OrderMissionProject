@@ -4,6 +4,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 	var urlBase = "";
 	$http.defaults.headers.post["Content-Type"] = "application/json";
+	$scope.status = "Abierta";
 	$scope.date = new Date();
 
 	//add a new colab
@@ -11,7 +12,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 
 
-		if ($scope.collabName == null || $scope.collab_id == null || $scope.collabFirstName == null
+		if ($scope.collabFirstName == null
 			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
 			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 		} else {
@@ -22,6 +23,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				agency : $scope.agency.model,
 				division : $scope.division.model,
 				status : $scope.status
+				
 			}
 
 			).success(function(data, status, headers) {
@@ -29,8 +31,10 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				var newColabUri = headers()["location"];
 				console.log("Might be good to GET " + newColabUri + " and append the task.");
 			});
+			
 		}
 	};
+
 
 	$scope.agency = {
 		model : null,
@@ -118,51 +122,67 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			
 		];
 	
+	
+	
+	
 
 });
 
 
-var countryApp = angular.module('collayApp', []);
+taskManagerModule.controller('collaCtrl', function ($scope, $http){
 
-      countryApp.controller('collaCtrl', function ($scope, $http){
+	  
+	 
+	  
+    $http.get('/collaboraters').success(function(data) {
 
-        $http.get('/collaboraters').success(function(data) {
+      $scope.colla = data._embedded.collaboraters;
 
-          $scope.colla = data._embedded.collaboraters;
+      
+      
+      
+    });
 
-          
-          
-        });
-
-        
-        $scope.SendData = function (x) {
-            // use $.param jQuery function to serialize data from JSON 
-             var data = ({
-            	collabFirstName : x.collabFirstName,
- 				date : x.date,
- 				project : x.project,
- 				agency : x.agency,
- 				division : x.division,
- 				status : "Cerrada"
-             });
-
-             $http.put('/collaboraters/' + x.id, data)
-             .success(function (data, status, headers, config) {
-                 //$scope.PostDataResponse = data;
-             })
-             .error(function (data, status, header, config) {
-                 $scope.ResponseDetails = "Data: " + data +
-                     "<hr />status: " + status +
-                     "<hr />headers: " + header +
-                     "<hr />config: " + config;
-             });
-         };
-        
+    
+    $scope.SendData = function (x) {
+        // use $.param jQuery function to serialize data from JSON 
+         var data = ({
+        	collabFirstName : x.collabFirstName,
+				date : x.date,
+				project : x.project,
+				agency : x.agency,
+				division : x.division,
+				status : "Cerrada"
+         });
          
-         $scope.reload = function()
-         {
-            location.reload(); 
-         }
+         
+
+         $http.put('/collaboraters/' + x.id, data)
+         .success(function (data, status, headers, config) {
+             //$scope.PostDataResponse = data;
+         })
+         .error(function (data, status, header, config) {
+             $scope.ResponseDetails = "Data: " + data +
+                 "<hr />status: " + status +
+                 "<hr />headers: " + header +
+                 "<hr />config: " + config;
+         });
+     };
+    
+     
+     $scope.reload = function()
+     {
+        location.reload(); 
+     }
+     
+});
+
+
+
+
+
+
+
 
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
@@ -173,9 +193,10 @@ taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stat
             url: "/addcolb",
             templateUrl: "addcolb",
         }) 
-        .state('listmission', {
-            url: "/listmission",
-            templateUrl: "listmission",
+        .state('listar', {
+            url: "/listar",
+            templateUrl: "listar",
         }) 
 
 }]);
+
