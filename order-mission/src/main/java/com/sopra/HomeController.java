@@ -8,12 +8,8 @@ public class HomeController {
 
 	@RequestMapping("/home")
 	public String home() {
-		return "indexgg";
+		return "index";
 	}
-	
-	@RequestMapping("/menuprin")
-	public String menuprin() {
-		return "menu";
-	}
+
 
 }

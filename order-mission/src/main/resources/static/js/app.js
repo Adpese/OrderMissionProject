@@ -1,4 +1,4 @@
-var taskManagerModule = angular.module('orderMisionManagerApp', []);
+var taskManagerModule = angular.module('orderMisionManagerApp', ['ui.router']);
 
 taskManagerModule.controller('orderMisionManagerController', function($scope, $http) {
 
@@ -77,7 +77,27 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 		]
 	};
 
-	 $scope.url = "http://localhost:8080/home";
+});
 
+
+
+
+taskManagerModule.config(function($stateProvider, $urlRouterProvider) {
+
+
+
+    $stateProvider
+        .state('home', {
+            url: "/home",
+            templateUrl: "indexgg.html"
+        })
+        .state('form', {
+            url: "/form",
+            templateUrl: "indexgg.html",
+        }) 
+        .state('ex', {
+            url: "/ex",
+            templateUrl: "menu.html",
+        }) 
 
 });
