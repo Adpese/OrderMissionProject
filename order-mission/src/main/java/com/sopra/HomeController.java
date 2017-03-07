@@ -20,8 +20,11 @@ public class HomeController {
 	public String listmission() {
 		return "listmission";
 	}
+	
+	@RequestMapping("/listar")
+	public String listar() {
+		return "list";
+	}
 
-	
-	
 
 }
