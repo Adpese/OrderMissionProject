@@ -6,16 +6,19 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$http.defaults.headers.post["Content-Type"] = "application/json";
 	$scope.status = "Abierta";
 	$scope.date = new Date();
+	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
 
-	//add a new colab
 	$scope.addCollab = function addCollab() {
 
-
-
-		if ($scope.collabFirstName == null
-			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
-			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-		} else {
+		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+			
+			swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
+			//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
+			
+		} else if(!$scope.collabFirstName){
+			swal("Error", "Los datos de usuario son incorrectos.", "error");
+		}
+		else {
 			$http.post(urlBase + '/collaboraters', {
 				collabFirstName : $scope.collabFirstName,
 				date : $scope.date,
@@ -27,7 +30,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			}
 
 			).success(function(data, status, headers) {
-				alert("Colab added");
+				swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
+				//alert("Nueva orden añadida");
 				var newColabUri = headers()["location"];
 				console.log("Might be good to GET " + newColabUri + " and append the task.");
 			});
