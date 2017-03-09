@@ -45,19 +45,31 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	};
 	
 	
-	$scope.trajects = [];
-	$scope.tripfields = ["Date", "Origin", "Destiny", "Departure", "Arrival", "Transport", "Company"];
-	var tripObject = $scope.trip = {
-			tripfields: {
-				"Date" : '',
-				"Origin" : '',
-				"Destiny" : '',
-				"Departure" : '',
-				"Arrival" : '',
-				"Transport" : '',
-				"Company" : ''
-			}
-	}
+	var tripObject = $scope.trajects = [
+		
+		{
+			"Date" : '',
+			"Origin" : '',
+			"Destiny" : '',
+			"Departure" : '',
+			"Arrival" : '',
+			"Transport" : '',
+			"Company" : ''
+		}
+		
+	];
+//	$scope.tripfields = ["Date", "Origin", "Destiny", "Departure", "Arrival", "Transport", "Company"];
+//	var tripObject = $scope.trip = {
+//			tripfields: {
+//				"Date" : '',
+//				"Origin" : '',
+//				"Destiny" : '',
+//				"Departure" : '',
+//				"Arrival" : '',
+//				"Transport" : '',
+//				"Company" : ''
+//			}
+//	}
 
 	
 	$scope.actualTraject;
