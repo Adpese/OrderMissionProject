@@ -294,12 +294,6 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
 });
 
 
-
-
-
-
-
-
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 
