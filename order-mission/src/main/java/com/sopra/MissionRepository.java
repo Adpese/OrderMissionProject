@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RepositoryRestResource
 @RequestMapping(produces = "application/json")
-public interface CollaboraterRepository  extends CrudRepository<Mission, Integer> {
+public interface MissionRepository  extends CrudRepository<Mission, Integer> {
 	//List<TaKK> findByTaskArchived(@Param("archivedfalse") int taskArchivedFalse);
 	//List<TaKK> findByProject(@Param("status") String project);
 	

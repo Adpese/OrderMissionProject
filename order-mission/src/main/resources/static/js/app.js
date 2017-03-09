@@ -7,42 +7,10 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.status = "Abierta";
 	$scope.date = new Date();
 	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
+	
 
 
-	//add a new colab
-	$scope.addCollab = function addCollab() {
-
-		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
-			
-			swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
-			//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-			
-		} else if(!$scope.collabFirstName){
-			swal("Error", "Los datos de usuario son incorrectos.", "error");
-		}
-		else {
-			$http.post(urlBase + '/missions', {
-				collabFirstName : $scope.collabFirstName,
-				date : $scope.date,
-				project : $scope.project,
-				agency : $scope.agency.model,
-				division : $scope.division.model,
-				status : $scope.status
-				
-			}
-
-			).success(function(data, status, headers) {
-				swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
-				//alert("Nueva orden añadida");
-				var newColabUri = headers()["location"];
-				console.log("Might be good to GET " + newColabUri + " and append the task.");
-			});
-			
-		}
-				
-		
-		
-	};
+	
 	
 	
 	var tripObject = $scope.trajects = [
@@ -72,60 +40,23 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 //	}
 
 	
-	$scope.actualTraject;
+
 	
-	console.log($scope)
+
 	  
 	  $scope.addNewTraject = function() {
 		  //console.log($scope.dateTraject);
 		 
 	    var newItem = $scope.trajects.length+1;
-	    $scope.trajects.push({/*'traject':'traject'+newItem, 'Trip': tripObject*/});
-	    //$scope.trajects.push({'traject': $scope.traject});
-	    
+	    $scope.trajects.push({/*'traject':'traject'+newItem, 'Trip': tripObject*/});   
 	    
 	    console.log($scope.trajects);
-	    console.log($scope.trip);
-//	    if($scope.dateTraject =! null)
-//	    	console.log($scope.dateTraject.toString());
-//	    else
-//	    	console.log("null");
-	   
-	   console.log($scope.traject);
-	    
-	    
 	  };
 	    
 	  $scope.removeTraject = function() {
 	    var lastItem = $scope.trajects.length-1;
 	    $scope.trajects.splice(lastItem);
 	  };
-	
-	
-	//add trip
-	$scope.addTrip = function addTrip() {
-		
-		
-		
-
-
-
-//		if ($scope.collabFirstName == null
-//			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
-//			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-//		} else {
-//			$http.post(urlBase + '/collaboraters', {
-//				
-//			}
-//
-//			).success(function(data, status, headers) {
-//				alert("Colab added");
-//				var newColabUri = headers()["location"];
-//				console.log("Might be good to GET " + newColabUri + " and append the task.");
-//			});
-//			
-//		}
-	};
 
 
 	$scope.agency = {
@@ -213,6 +144,90 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				}
 			
 		];
+	
+	//add a new colab
+		$scope.addCollab = function addCollab() {
+
+			if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+				
+				swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
+				//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
+			
+			} else if(!$scope.collabFirstName){
+				swal("Error", "Los datos de usuario son incorrectos.", "error");
+			}
+			else {
+				$http.post(urlBase + '/missions', {
+					collabFirstName : $scope.collabFirstName,
+					date : $scope.date,
+					project : $scope.project,
+					agency : $scope.agency.model,
+					division : $scope.division.model,
+					status : $scope.status,
+					itineraries : $scope.trajects			
+				}
+
+				).success(function(data, status, headers) {
+					swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
+					//alert("Nueva orden añadida");
+					var newColabUri = headers()["location"];
+					console.log("Might be good to GET " + newColabUri + " and append the task.");
+				});
+				
+			}
+
+			
+		};
+	
+	
+	
+//	$scope.addCollab = function addCollab() {
+
+//		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+//			
+//			swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
+//			//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
+//			
+//		} else if(!$scope.collabFirstName){
+//			swal("Error", "Los datos de usuario son incorrectos.", "error");
+//		}
+//		else {
+//			$http.post(urlBase + '/missions', {
+//				collabFirstName : $scope.collabFirstName,
+//				date : $scope.date,
+//				project : $scope.project,
+//				agency : $scope.agency.model,
+//				division : $scope.division.model,
+//				status : $scope.status
+//				
+//			}
+//
+//			).success(function(data, status, headers) {
+//				swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
+//				//alert("Nueva orden añadida");
+//				var newColabUri = headers()["location"];
+//				console.log("Might be good to GET " + newColabUri + " and append the task.");
+//			});
+//			
+//		}
+//				
+//		var array = $scope.testArray = [{
+//			collabFirstName : $scope.collabFirstName,
+//			date : $scope.date,
+//			project : $scope.project,
+//			agency : $scope.agency.model,
+//			division : $scope.division.model,
+//			status : $scope.status,
+//			itineraries : $scope.trajects
+//			
+//		}];
+//		
+//		
+//		console.log(array);
+//		
+//		
+//		
+//	};
 	
 	
 	
