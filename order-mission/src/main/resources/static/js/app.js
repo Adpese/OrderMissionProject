@@ -12,9 +12,9 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	//add a new colab
 	$scope.addCollab = function addCollab() {
 
-		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null || $scope.project == "" ) {
 			
-			swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
+			swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
 			//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 			
 		} else if(!$scope.collabFirstName){
@@ -32,7 +32,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			}
 
 			).success(function(data, status, headers) {
-				swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
+				swal("Nueva orden de misión creada", "Se ha generado una nueva misión con los datos introducidos", "success");
 				//alert("Nueva orden añadida");
 				var newColabUri = headers()["location"];
 				console.log("Might be good to GET " + newColabUri + " and append the task.");

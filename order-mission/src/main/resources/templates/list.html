@@ -33,7 +33,7 @@ Latest compiled and minified JavaScript
 <script type="text/javascript" src="./js/collayApp.js"></script>
 </head>
 <body>  -->
-
+	<div id="navegador"></div>
 
 	<div ng-controller="collaCtrl">
 
@@ -48,8 +48,8 @@ Latest compiled and minified JavaScript
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla | orderBy:'status'">
-				<td>{{ x.date }}</td>
+			<tr ng-repeat="x in colla | orderBy:['status','date']">
+				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>
 				<td>{{ x.project }}</td>
