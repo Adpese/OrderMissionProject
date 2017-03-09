@@ -2,7 +2,7 @@
 
 	<div class="container"  ng-controller="orderMisionManagerController">
 
-		<form class="well form-horizontal" method="post"
+		<form class="well form-horizontal" method="post "
 			id="contact_form">
 			<fieldset>
 
@@ -22,7 +22,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
-								ng-model="collabFirstName" placeholder="Nombre y apellidos"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos" ng-pattern="patternNombre"
 								class="form-control" type="text" />
 						</div>
 					</div>
