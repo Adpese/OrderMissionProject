@@ -114,22 +114,21 @@
 					<tr ng-repeat="traject in trajects">
 						<!-- Text input-->
 
-						<td ng-repeat="field in tripfields">
-
+						<td>
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="dateTraject" ng-model="trip.tripfields[field]"
+									<input name="dateTraject" ng-model="traject.Date"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 							</div>
 						</td>
 
-						<!-- <td>
+						 <td>
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="origin" ng-model="traject[traject.origin]"
+									<input name="origin" ng-model="traject.Origin"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 
@@ -139,7 +138,7 @@
 						<td>
 							<div class="form-group">
 								<div class="input-group">
-									<input name="destiny" ng-model="traject[traject.destiny]"
+									<input name="destiny" ng-model="traject.Destiny"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 							</div>
@@ -149,18 +148,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="initialdate" ng-model="initialdate"
-										placeholder="Fecha" class="form-control trip" type="text" />
-								</div>
-
-							</div>
-						</td>
-
-						<td>
-							<div class="form-group">
-
-								<div class="input-group">
-									<input name="finaldate" ng-model="finaldate"
+									<input name="initialdate" ng-model="traject.Departure"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 
@@ -171,7 +159,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="transport" ng-model="transport"
+									<input name="finaldate" ng-model="traject.Arrival"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 
@@ -182,12 +170,23 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="company" ng-model="company"
+									<input name="transport" ng-model="traject.Transport"
 										placeholder="Fecha" class="form-control trip" type="text" />
 								</div>
 
 							</div>
-						</td> -->
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.Company"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td> 
 
 						<td>
 							<div class="form-group">
