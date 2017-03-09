@@ -1,17 +1,18 @@
-package com.sopra;
+package com.sopra.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -43,31 +44,15 @@ public class Mission {
 	@Column(name="status")
 	private String status;
 	
-	@OneToMany(mappedBy="Id_mission")
-	private Set<Itinerario> list;
-	
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getDivision() {
-		return division;
-	}
-
-	public void setDivision(String division) {
-		this.division = division;
-	}
+	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Itinerary> itineraries;
 
 	public int getId() {
 		return Id;
 	}
 
 	public void setId(int id) {
-		this.Id = id;
+		Id = id;
 	}
 
 	public String getCollabFirstName() {
@@ -93,8 +78,6 @@ public class Mission {
 	public void setProject(String project) {
 		this.project = project;
 	}
-	
-	
 
 	public String getAgency() {
 		return agency;
@@ -104,12 +87,39 @@ public class Mission {
 		this.agency = agency;
 	}
 
+	public String getDivision() {
+		return division;
+	}
+
+	public void setDivision(String division) {
+		this.division = division;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Set<Itinerary> getItineraries() {
+		return itineraries;
+	}
+
+	public void setItineraries(Set<Itinerary> itineraries) {
+		this.itineraries = itineraries;
+	}
+
 	@Override
 	public String toString() {
-		return "TaKK [id=" + Id + 
-				", collabFirstName=" + collabFirstName + ", date="
-				+ date + ", project=" + project + ", agency=" + agency + "]";
+		return "Mission [Id=" + Id + ", collabFirstName=" + collabFirstName + ", date=" + date + ", project=" + project
+				+ ", agency=" + agency + ", division=" + division + ", status=" + status + ", itineraries="
+				+ itineraries + "]";
 	}
+	
+	
+	
 	
 
 }

@@ -40,7 +40,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 //	}
 
 	
-
+	$scope.actualTraject;
 	
 
 	  
