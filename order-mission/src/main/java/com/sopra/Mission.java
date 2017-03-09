@@ -7,18 +7,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-@Table(name="collaborater")
-public class Collaborater {
+@Table(name="Mission")
+public class Mission {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name="id_mission")
 	private int Id; 
 	
 	@Column(name="Collab_firstName")
@@ -38,6 +42,9 @@ public class Collaborater {
 
 	@Column(name="status")
 	private String status;
+	
+	@OneToMany(mappedBy="Id_mission")
+	private Set<Itinerario> list;
 	
 	public String getStatus() {
 		return status;

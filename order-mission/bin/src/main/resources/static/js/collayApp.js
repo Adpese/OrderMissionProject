@@ -6,7 +6,7 @@ countryApp.controller('collaCtrl', function ($scope, $http){
     	  
     	 
     	  
-        $http.get('/missions').success(function(data) {
+        $http.get('/collaboraters').success(function(data) {
 
           $scope.colla = data._embedded.collaboraters;
 
@@ -29,7 +29,7 @@ countryApp.controller('collaCtrl', function ($scope, $http){
              
              
 
-             $http.put('/missions/' + x.id, data)
+             $http.put('/collaboraters/' + x.id, data)
              .success(function (data, status, headers, config) {
                  //$scope.PostDataResponse = data;
              })

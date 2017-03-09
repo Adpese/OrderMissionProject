@@ -1,0 +1,202 @@
+<!-- <html ng-app="orderMisionManagerApp">
+<head>
+
+<title>AngularJS orden de mission Manager</title>
+
+<meta charset="UTF-8" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+
+Optional theme
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous" />
+
+Latest compiled and minified JavaScript
+
+
+
+<link href='./css/css/js2.js' rel="stylesheet" type="text/css" />
+
+
+
+<link href='./css/style.css' rel="stylesheet" type="text/css" />
+<link href='./css/css/font-awesome.css' rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script data-require="angular.js@*" data-semver="1.3.0-beta.14"
+	src="http://code.angularjs.org/1.3.0-beta.14/angular.js"></script>
+<script type="text/javascript" src="./js/app.js"></script>
+</head>
+<body>
+ -->
+
+	<div class="container"  ng-controller="orderMisionManagerController">
+
+		<form class="well form-horizontal" method="post"
+			id="contact_form">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Formulario orden de misión</legend>
+
+
+				<div>
+					<p ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p>
+				</div>
+
+				<!-- Text input
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Código de empleado</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-check"></i></span> <input name="collab-id"
+								ng-model="collab_id" placeholder="Código de empleado"
+								class="form-control" type="text" />
+						</div>
+					</div>
+				</div>  -->
+				
+				<!-- Text input
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Fecha</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-check"></i></span> <input
+								ng-model="date1" placeholder="dd-mm-yyyy"
+								class="form-control" type="date" />
+						</div>
+					</div>
+				</div>  -->
+
+
+				<!-- Text input-->
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Nombre y apellidos</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos"
+								class="form-control" type="text" />
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input 
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Apellidos</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input name="collabName"
+								ng-model="collabName" placeholder="Apellidos"
+								class="form-control" type="text" />
+						</div>
+					</div>
+				</div>  -->
+
+
+				<!-- Text input-->
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Proyecto</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-home"></i></span> <input name="project"
+								ng-model="project" placeholder="Proyecto" class="form-control"
+								type="text" />
+						</div>
+					</div>
+				</div>
+
+				<!-- Select Basic -->
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Agencia</label>
+					<div class="col-md-4 selectContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-list"></i></span>
+								<!--
+								 <select name="agency"
+								ng-model="agency" class="form-control selectpicker">
+								<option value=" ">Seleccione su agencia por favor</option>
+								<option>Valencia</option>
+								<option>Levante</option>
+								<option>Barcelona</option>
+								<option>Madrid</option>
+								<option>Tenerife</option>
+
+							</select>
+							 -->
+							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
+						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						    </select>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input-->
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">División</label>
+					<div class="col-md-4 selectContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-list"></i></span>
+								<!--  
+								 <select name="division"
+								ng-model="division" class="form-control selectpicker">
+								<option value=" ">Seleccione su división por favor</option>
+								<option>División A</option>
+								<option>División B</option>
+								<option>División C</option>
+								<option>División D</option>
+								<option>División E</option>
+								-->
+								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
+						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
+								
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<!-- Success message 
+				<div class="alert alert-success" role="alert" id="success_message">
+					Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for
+					contacting us, we will get back to you shortly.
+				</div>  -->
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-4">
+						<button type="submit" ng-click="addCollab()"
+							class="btn btn-warning">
+							Enviar <span class="glyphicon glyphicon-send"></span>
+						</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+
+	<!-- /.container -->
+
+<!-- 
+</body>
+</html> -->

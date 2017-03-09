@@ -16,7 +16,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
 			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 		} else {
-			$http.post(urlBase + '/missions', {
+			$http.post(urlBase + '/collaboraters', {
 				collabFirstName : $scope.collabFirstName,
 				date : $scope.date,
 				project : $scope.project,
@@ -131,9 +131,15 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 taskManagerModule.controller('collaCtrl', function ($scope, $http){
 
-    $http.get('/missions').success(function(data) {
+	  
+	 
+	  
+    $http.get('/collaboraters').success(function(data) {
 
-      $scope.colla = data._embedded.missions;
+      $scope.colla = data._embedded.collaboraters;
+
+      
+      
       
     });
 
@@ -151,7 +157,7 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
          
          
 
-         $http.put('/missions/' + x.id, data)
+         $http.put('/collaboraters/' + x.id, data)
          .success(function (data, status, headers, config) {
              //$scope.PostDataResponse = data;
          })
@@ -170,6 +176,13 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
      }
      
 });
+
+
+
+
+
+
+
 
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 

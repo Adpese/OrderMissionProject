@@ -1,0 +1,237 @@
+{
+  "_embedded" : {
+    "collaboraters" : [ {
+      "collabFirstName" : "Arcas",
+      "date" : "2017-03-06T07:18:38.000+0000",
+      "project" : "Uno",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/1"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/1"
+        }
+      }
+    }, {
+      "collabFirstName" : "asfgn",
+      "date" : "2017-03-06T08:08:38.000+0000",
+      "project" : "sh",
+      "agency" : "1",
+      "division" : "2",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/2"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/2"
+        }
+      }
+    }, {
+      "collabFirstName" : "sdfhgj",
+      "date" : "2017-03-06T08:09:25.000+0000",
+      "project" : "dhjf",
+      "agency" : "2",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/3"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/3"
+        }
+      }
+    }, {
+      "collabFirstName" : "jfdg",
+      "date" : "2017-03-06T08:13:21.000+0000",
+      "project" : "hgdmfjh",
+      "agency" : "2",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/4"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/4"
+        }
+      }
+    }, {
+      "collabFirstName" : "ds",
+      "date" : "2017-03-06T08:20:06.000+0000",
+      "project" : "sd",
+      "agency" : "2",
+      "division" : "2",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/5"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/5"
+        }
+      }
+    }, {
+      "collabFirstName" : "agf",
+      "date" : "2017-03-06T08:40:35.000+0000",
+      "project" : "agf",
+      "agency" : "1",
+      "division" : "2",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/6"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/6"
+        }
+      }
+    }, {
+      "collabFirstName" : "sgh",
+      "date" : "2017-03-06T08:41:06.000+0000",
+      "project" : "gfjn",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/7"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/7"
+        }
+      }
+    }, {
+      "collabFirstName" : "hgsjdh",
+      "date" : "2017-03-06T08:52:12.000+0000",
+      "project" : "hgfkj",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/8"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/8"
+        }
+      }
+    }, {
+      "collabFirstName" : "afgdsh",
+      "date" : "2017-03-06T08:53:08.000+0000",
+      "project" : "sfg",
+      "agency" : "2",
+      "division" : "3",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/9"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/9"
+        }
+      }
+    }, {
+      "collabFirstName" : "dfg",
+      "date" : "2017-03-06T09:15:45.000+0000",
+      "project" : "dfg",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/10"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/10"
+        }
+      }
+    }, {
+      "collabFirstName" : "gsa",
+      "date" : "2017-03-06T09:32:42.000+0000",
+      "project" : "asfd",
+      "agency" : "1",
+      "division" : "3",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/11"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/11"
+        }
+      }
+    }, {
+      "collabFirstName" : "af",
+      "date" : "2017-03-06T10:24:15.000+0000",
+      "project" : "agdf",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/12"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/12"
+        }
+      }
+    }, {
+      "collabFirstName" : "gafd",
+      "date" : "2017-03-06T10:24:29.000+0000",
+      "project" : "fd",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/13"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/13"
+        }
+      }
+    }, {
+      "collabFirstName" : "afsd",
+      "date" : "2017-03-06T10:24:54.000+0000",
+      "project" : "fds",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/14"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/14"
+        }
+      }
+    }, {
+      "collabFirstName" : "dfasd",
+      "date" : "2017-03-06T10:25:12.000+0000",
+      "project" : "afgd",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/15"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/15"
+        }
+      }
+    }, {
+      "collabFirstName" : "fgd",
+      "date" : "2017-03-06T10:25:42.000+0000",
+      "project" : "fdgf",
+      "agency" : "1",
+      "division" : "1",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/collaboraters/16"
+        },
+        "collaborater" : {
+          "href" : "http://localhost:8080/collaboraters/16"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/collaboraters"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/collaboraters"
+    }
+  }
+}
