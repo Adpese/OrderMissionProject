@@ -6,6 +6,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$http.defaults.headers.post["Content-Type"] = "application/json";
 	$scope.status = "Abierta";
 	$scope.date = new Date();
+	
+
 
 	//add a new colab
 	$scope.addCollab = function addCollab() {
@@ -33,6 +35,80 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			});
 			
 		}
+				
+		
+		
+	};
+	
+	
+	$scope.trajects = [];
+	$scope.tripfields = ["Date", "Origin", "Destiny", "Departure", "Arrival", "Transport", "Company"];
+	var tripObject = $scope.trip = {
+			tripfields: {
+				"Date" : '',
+				"Origin" : '',
+				"Destiny" : '',
+				"Departure" : '',
+				"Arrival" : '',
+				"Transport" : '',
+				"Company" : ''
+			}
+	}
+
+	
+	$scope.actualTraject;
+	
+	console.log($scope)
+	  
+	  $scope.addNewTraject = function() {
+		  //console.log($scope.dateTraject);
+		 
+	    var newItem = $scope.trajects.length+1;
+	    $scope.trajects.push({/*'traject':'traject'+newItem,*/ 'Trip': tripObject});
+	    //$scope.trajects.push({'traject': $scope.traject});
+	    
+	    
+	    console.log($scope.trajects);
+	    console.log($scope.trip);
+//	    if($scope.dateTraject =! null)
+//	    	console.log($scope.dateTraject.toString());
+//	    else
+//	    	console.log("null");
+	   
+	   console.log($scope.traject);
+	    
+	    
+	  };
+	    
+	  $scope.removeTraject = function() {
+	    var lastItem = $scope.trajects.length-1;
+	    $scope.trajects.splice(lastItem);
+	  };
+	
+	
+	//add trip
+	$scope.addTrip = function addTrip() {
+		
+		
+		
+
+
+
+//		if ($scope.collabFirstName == null
+//			|| $scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+//			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
+//		} else {
+//			$http.post(urlBase + '/collaboraters', {
+//				
+//			}
+//
+//			).success(function(data, status, headers) {
+//				alert("Colab added");
+//				var newColabUri = headers()["location"];
+//				console.log("Might be good to GET " + newColabUri + " and append the task.");
+//			});
+//			
+//		}
 	};
 
 

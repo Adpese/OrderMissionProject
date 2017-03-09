@@ -1,0 +1,19 @@
+.trip{
+	width: 100% !important;
+}
+
+.container{
+	width: 100%;
+}
+
+.tripsContainer#child{
+	margin: 0 auto;
+}
+
+.tripsTable{
+	margin: 0 auto;
+}
+
+.remove{
+	margin-left: 120%;
+}
