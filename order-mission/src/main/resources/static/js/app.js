@@ -47,15 +47,15 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	
 	var tripObject = $scope.trajects = [
 		
-		{
-			"Date" : '',
-			"Origin" : '',
-			"Destiny" : '',
-			"Departure" : '',
-			"Arrival" : '',
-			"Transport" : '',
-			"Company" : ''
-		}
+//		{
+//			"Date" : '',
+//			"Origin" : '',
+//			"Destiny" : '',
+//			"Departure" : '',
+//			"Arrival" : '',
+//			"Transport" : '',
+//			"Company" : ''
+//		}
 		
 	];
 //	$scope.tripfields = ["Date", "Origin", "Destiny", "Departure", "Arrival", "Transport", "Company"];
@@ -80,7 +80,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 		  //console.log($scope.dateTraject);
 		 
 	    var newItem = $scope.trajects.length+1;
-	    $scope.trajects.push({/*'traject':'traject'+newItem,*/ 'Trip': tripObject});
+	    $scope.trajects.push({/*'traject':'traject'+newItem, 'Trip': tripObject*/});
 	    //$scope.trajects.push({'traject': $scope.traject});
 	    
 	    
