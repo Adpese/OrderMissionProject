@@ -1,0 +1,35 @@
+.trip {
+	width: 100% !important;
+}
+
+.container {
+	width: 100%;
+}
+
+.tripsContainer#child {
+	margin: 0 auto;
+}
+
+.tripsTable {
+	margin: 0 auto;
+}
+
+.remove {
+	margin-left: 120%;
+}
+body{
+	background: rgba(255,255,255,1);
+background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(129,129,126,1)));
+background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
+background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
+background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#81817e', GradientType=1 );
+}
+
+
+#navegador{
+	padding-top: 35px;
+}
+

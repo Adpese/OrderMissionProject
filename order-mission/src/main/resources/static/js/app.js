@@ -157,14 +157,14 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				swal("Error", "Los datos de usuario son incorrectos.", "error");
 			}
 			else {
-				$http.post(urlBase + '/missions', {
+				$http.post(urlBase + '/missionSave', {
 					collabFirstName : $scope.collabFirstName,
 					date : $scope.date,
 					project : $scope.project,
 					agency : $scope.agency.model,
 					division : $scope.division.model,
 					status : $scope.status,
-					itineraries : $scope.trajects			
+					itineraries : $scope.trajects		
 				}
 
 				).success(function(data, status, headers) {

@@ -1,43 +1,10 @@
-<!-- <html ng-app="orderMisionManagerApp">
-<head>
-
-<title>AngularJS orden de mission Manager</title>
-
 <meta charset="UTF-8" />
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous" />
-
-Optional theme
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous" />
-
-Latest compiled and minified JavaScript
-
-
-
-<link href='./css/css/js2.js' rel="stylesheet" type="text/css" />
-
-
-
-<link href='./css/style.css' rel="stylesheet" type="text/css" />
-<link href='./css/css/font-awesome.css' rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans'
-	rel='stylesheet' type='text/css' />
-<script data-require="angular.js@*" data-semver="1.3.0-beta.14"
-	src="http://code.angularjs.org/1.3.0-beta.14/angular.js"></script>
-<script type="text/javascript" src="./js/app.js"></script>
-</head>
-<body>
- -->
+<div id="navegador"></div>
 
 	<div class="container"  ng-controller="orderMisionManagerController">
 
-		<form class="well form-horizontal" method="post"
+		<form class="well form-horizontal" method="post "
 			id="contact_form">
 			<fieldset>
 
@@ -49,35 +16,6 @@ Latest compiled and minified JavaScript
 					<p ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p>
 				</div>
 
-				<!-- Text input
-
-				<div class="form-group">
-					<label class="col-md-4 control-label">Código de empleado</label>
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-check"></i></span> <input name="collab-id"
-								ng-model="collab_id" placeholder="Código de empleado"
-								class="form-control" type="text" />
-						</div>
-					</div>
-				</div>  -->
-				
-				<!-- Text input
-
-				<div class="form-group">
-					<label class="col-md-4 control-label">Fecha</label>
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-check"></i></span> <input
-								ng-model="date1" placeholder="dd-mm-yyyy"
-								class="form-control" type="date" />
-						</div>
-					</div>
-				</div>  -->
-
-
 				<!-- Text input-->
 
 				<div class="form-group">
@@ -86,26 +24,11 @@ Latest compiled and minified JavaScript
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
-								ng-model="collabFirstName" placeholder="Nombre y apellidos"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos" ng-pattern="patternNombre"
 								class="form-control" type="text" />
 						</div>
 					</div>
 				</div>
-
-				<!-- Text input 
-
-				<div class="form-group">
-					<label class="col-md-4 control-label">Apellidos</label>
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input name="collabName"
-								ng-model="collabName" placeholder="Apellidos"
-								class="form-control" type="text" />
-						</div>
-					</div>
-				</div>  -->
-
 
 				<!-- Text input-->
 
@@ -179,8 +102,114 @@ Latest compiled and minified JavaScript
 					Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for
 					contacting us, we will get back to you shortly.
 				</div>  -->
+				
+				
+				<label >Información de trenes</label>
+				<br></br>
 
-				<!-- Button -->
+			<div class="tripsContainer">
+
+
+
+				<table class="tripsTable">
+
+					<tr ng-repeat="traject in trajects">
+						<!-- Text input-->
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="dateTraject" ng-model="traject.Date"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+							</div>
+						</td>
+
+						 <td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="origin" ng-model="traject.Origin"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="destiny" ng-model="traject.Destiny"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="initialdate" ng-model="traject.Departure"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="finaldate" ng-model="traject.Arrival"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="transport" ng-model="traject.Transport"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.Company"
+										placeholder="Fecha" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td> 
+
+						<td>
+							<div class="form-group">
+								<button class="remove btn btn-danger" ng-show="$last"
+									ng-click="removeTraject()">-</button>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+
+
+				<button type="button" ng-click="addNewTraject()"
+					class="btn btn-primary">Añadir trayecto</button>
+
+			</div>
+
+
+
+			<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">

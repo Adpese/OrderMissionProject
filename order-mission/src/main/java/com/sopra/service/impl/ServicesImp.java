@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
-import com.sopra.repository.MissionRepository;
+import com.sopra.repository.*;
+
 import com.sopra.service.MissionServices;
 
 
@@ -18,12 +19,14 @@ public class ServicesImp implements MissionServices {
 	
 	@Resource
 	private MissionRepository  missionRepository;
+	@Resource
+	private ItineraryRepository itineraryReposity;
 
 	@Override
-	public void saveMissionItinerary(List<Mission> missions) {
-		for(Itinerary it : missions.get(0).getItineraries()) {
+	public void saveMissionItinerary(Mission missions) {
+		for(Itinerary it : missions.getItineraries()) {
 			if(it != null){
-			   it.setMission(missions.get(0));
+			   it.setMission(missions);
 			}
 	   	}
 		   missionRepository.save(missions);

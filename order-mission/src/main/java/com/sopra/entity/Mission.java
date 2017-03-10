@@ -45,7 +45,7 @@ public class Mission {
 	private String status;
 	
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<Itinerary> itineraries;
+	private List<Itinerary> itineraries;
 
 	public int getId() {
 		return Id;
@@ -103,11 +103,11 @@ public class Mission {
 		this.status = status;
 	}
 
-	public Set<Itinerary> getItineraries() {
+	public List<Itinerary> getItineraries() {
 		return itineraries;
 	}
 
-	public void setItineraries(Set<Itinerary> itineraries) {
+	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
 

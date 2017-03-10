@@ -12,7 +12,8 @@ public interface MissionServices {
 	 /**
 	 * @param missions
 	 */
-	void saveMissionItinerary(List<Mission> missions);
+	void saveMissionItinerary(Mission mission);
+	
 	 
 	 
 	 Mission getNombreById(int id);

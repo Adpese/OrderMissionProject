@@ -33,12 +33,12 @@ Latest compiled and minified JavaScript
 <script type="text/javascript" src="./js/collayApp.js"></script>
 </head>
 <body>  -->
-
+	<div id="navegador"></div>
 
 	<div ng-controller="collaCtrl">
 
-		<table class="table table-inverse">
-			<thead>
+		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
+			<thead class="thead-inverse">
 				<tr>
 					<th>Fecha</th>
 					<th>Nombre</th>
@@ -48,13 +48,13 @@ Latest compiled and minified JavaScript
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla">
-				<td>{{ x.date }}</td>
+			<tr ng-repeat="x in colla | orderBy:['status','date']">
+				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>
 				<td>{{ x.project }}</td>
 				<td>{{ x.agency }}</td>
-				<td><button ng-click="SendData(x); reload()">Cerrar</button></td>
+				<td><button style='width:70px; color: red' ng-click="SendData(x); reload()" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px' ng-click="OpenData(x); reload()" ng-show="(x.status=='Cerrada')">Abrir</button></td>
 			</tr>
 
 		</table>

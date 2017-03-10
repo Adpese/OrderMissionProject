@@ -20,10 +20,10 @@ public class MissionController {
 	@Resource 
 	MissionServices missionServices;
 
-
-   @RequestMapping(value = "missionSave", method = RequestMethod.POST)
-   public void save(@RequestBody List<Mission> missions){
-	   missionServices.saveMissionItinerary(missions);
+	@RequestMapping(value = "missionSave", method = RequestMethod.POST)
+	public void save(@RequestBody Mission mission){
+		System.out.println("holaaaaaaaaaaaaaaaaaaaaaa");
+	   missionServices.saveMissionItinerary(mission);
    }
    
    @RequestMapping(value="getPerson/{id}", method= RequestMethod.GET)
