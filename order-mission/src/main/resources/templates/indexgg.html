@@ -5,7 +5,7 @@
 	<div class="container"  ng-controller="orderMisionManagerController">
 
 		<form class="well form-horizontal" method="post "
-			id="contact_form">
+			id="contact_form" name="userform">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -24,7 +24,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
-								ng-model="collabFirstName" placeholder="Nombre y apellidos" ng-pattern="patternNombre"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos" 
 								class="form-control" type="text" />
 						</div>
 					</div>
@@ -116,11 +116,12 @@
 					<tr ng-repeat="traject in trajects">
 						<!-- Text input-->
 						<td>
-							<div class="form-group">
+							<div class="form-group" >
 
 								<div class="input-group">
 									<input name="origin" ng-model="traject.date"
 										   placeholder="Fecha" class="form-control trip" type="text" />
+								
 								</div>
 
 							</div>
