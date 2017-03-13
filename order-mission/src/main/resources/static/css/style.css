@@ -12,7 +12,18 @@
 
 .tripsTable {
 	margin: 0 auto;
+	  
 }
+
+.input-group{
+	margin-left: 12px;
+}
+.tripsTable {
+
+    border-spacing:  12px 2px;    
+         
+}
+
 
 .remove {
 	margin-left: 120%;

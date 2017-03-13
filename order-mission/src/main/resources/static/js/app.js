@@ -77,6 +77,29 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 		]
 	};
 	
+	$scope.transport = {
+            model : null,
+            availableOptions : [
+                   {
+                          id : '1',
+                          name : 'Avión'
+                   },
+                   
+                   {
+                          id : '2',
+                          name : 'Tren'
+                   },
+                   
+                   {
+                          id : '3',
+                          name : 'Seleccione medio de transporte'
+                   }
+                   
+            ]
+     };
+
+
+	
 	$scope.emisiones1 = [
 			
 			 

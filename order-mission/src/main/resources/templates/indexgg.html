@@ -120,7 +120,7 @@
 
 								<div class="input-group">
 									<input name="origin" ng-model="traject.date"
-										   placeholder="Fecha" class="form-control trip" type="text" />
+										   placeholder="Fecha" class="form-control trip" type="date" />
 								
 								</div>
 
@@ -172,13 +172,22 @@
 						<td>
 							<div class="form-group">
 
+
 								<div class="input-group">
-									<input name="transport" ng-model="traject.transport"
-										placeholder="Tipo Transporte" class="form-control trip" type="text" />
+									<select placeholder="Medio de Transporte" name="repeatSelect"
+										id="repeatSelect" ng-model="traject.transport"
+										class="form-control selectpicker">
+										<option ng-selected="{{defaultvalue == value.id}}"
+											ng-repeat="option in transport.availableOptions"
+											value="{{option.name}}">{{option.name}}</option>
+									</select>
 								</div>
 
 							</div>
+
 						</td>
+
+
 
 						<td>
 							<div class="form-group">
