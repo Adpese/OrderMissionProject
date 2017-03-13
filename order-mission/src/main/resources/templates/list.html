@@ -48,7 +48,7 @@ Latest compiled and minified JavaScript
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla | orderBy:['status','date']">
+			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Abierta' }">
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>

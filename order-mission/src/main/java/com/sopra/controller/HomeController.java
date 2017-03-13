@@ -22,4 +22,8 @@ public class HomeController {
 		return "list";
 	}
 
+	@RequestMapping("/listar_close")
+	public String listar_close() {
+		return "list_close";
+	}
 }

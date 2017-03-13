@@ -1,0 +1,28 @@
+	<div id="navegador"></div>
+
+	<div ng-controller="collaCtrl">
+
+		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
+			<thead class="thead-inverse">
+				<tr>
+					<th>Fecha</th>
+					<th>Nombre</th>
+					<th>Status</th>
+					<th>Proyecto</th>
+					<th>Agencia</th>
+				</tr>
+			</thead>
+			
+			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Cerrada' }">
+				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
+				<td>{{ x.collabFirstName }}</td>
+				<td>{{ x.status }}</td>
+				<td>{{ x.project }}</td>
+				<td>{{ x.agency }}</td>
+				<td><button style='width:70px; color: red' ng-click="SendData(x)" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px; color: green' ng-click="SendData(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
+			</tr>
+
+		</table>
+
+</div>

@@ -225,7 +225,7 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
 
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-
+	$urlRouterProvider.otherwise("/addcolb");
 
     $stateProvider
         .state('addcolb', {
@@ -236,6 +236,11 @@ taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stat
             url: "/listar",
             templateUrl: "listar",
         }) 
+        .state('listar_close', {
+            url: "/listar_close",
+            templateUrl: "listar_close",
+        }) 
+
 
 }]);
 
