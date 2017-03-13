@@ -31,11 +31,11 @@ public class ServicesImp implements MissionServices {
 			   it.setMission(missions);
 			}
 	   	}
-		for(RentACar rent : missions.getRentACar()) {
-			if(rent != null){
-				rent.setMission(missions);
-			}
-	   	}
+//		for(RentACar rent : missions.getRentACar()) {
+//			if(rent != null){
+//				rent.setMission(missions);
+//			}
+//	   	}
 				
 		   missionRepository.save(missions);
 	
