@@ -7,7 +7,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.status = "Abierta";
 	$scope.date = new Date();
 	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
-	$scope.patternNombre=/^[0-9]+([,.][0-9]+)?$/; ;
 	
 	$scope.trajects = [];
 	$scope.addNewTraject = function() {
