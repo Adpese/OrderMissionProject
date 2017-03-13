@@ -9,14 +9,12 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
 	$scope.patternNombre=/^[0-9]+([,.][0-9]+)?$/; ;
 	
-	var tripObject = $scope.trajects = [];
+	$scope.trajects = [];
 	$scope.addNewTraject = function() {
 		//console.log($scope.dateTraject);
 
-		var newItem = $scope.trajects.length + 1;
-		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
 
-		console.log($scope.trajects);
+		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
 	};
 
 	$scope.removeTraject = function() {
@@ -28,26 +26,23 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.addNewRent = function() {
 		
 		$scope.rents.push({});
-		console.log($scope.rents);
 	};
 	
 	$scope.removeRent = function() {
-		var lastItem = $scope.rents.lenght -1;
-		$scope.rents.splice(lastItem);
-	}
+		var lastRent = $scope.rents.length -1;
+		$scope.rents.splice(lastRent);
+	};
 	
 	$scope.accommodations = [];
 	$scope.addNewAccommodation = function() {
 		
 		$scope.accommodations.push({});
-		
-		console.log($scope.accommodations);
 	};
 	
 	$scope.removeAccommodation = function() {
-		var lastItem = $scope.accommodations.lenght -1;
-		$scope.accommodations.splice(lastItem);
-	}
+		var lastAccommodation = $scope.accommodations.length -1;
+		$scope.accommodations.splice(lastAccommodation);
+	};
 	
 
 
