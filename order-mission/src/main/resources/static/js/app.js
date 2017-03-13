@@ -11,18 +11,41 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	
 	var tripObject = $scope.trajects = [];
 	$scope.addNewTraject = function() {
-		  //console.log($scope.dateTraject);
-		 
-	    var newItem = $scope.trajects.length+1;
-	    $scope.trajects.push({/*'traject':'traject'+newItem, 'Trip': tripObject*/});   
-	    
-	    console.log($scope.trajects);
-	  };
-	    
-	  $scope.removeTraject = function() {
-	    var lastItem = $scope.trajects.length-1;
-	    $scope.trajects.splice(lastItem);
-	  };
+		//console.log($scope.dateTraject);
+
+		var newItem = $scope.trajects.length + 1;
+		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
+
+//		console.log($scope.trajects);
+	};
+
+	$scope.removeTraject = function() {
+		var lastItem = $scope.trajects.length - 1;
+		$scope.trajects.splice(lastItem);
+	};
+
+	$scope.rents = [];
+	$scope.addNewRent = function() {
+		
+		$scope.rents.push({});
+	};
+	
+	$scope.removeRent = function() {
+		var lastItem = $scope.rents.lenght -1;
+		$scope.rents.splice(lastItem);
+	}
+	
+	$scope.accommodations = [];
+	$scope.addNewAccommodation = function() {
+		
+		$scope.accommodations.push({});
+	};
+	
+	$scope.removeAccommodation = function() {
+		var lastItem = $scope.accommodations.lenght -1;
+		$scope.accommodations.splice(lastItem);
+	}
+	
 
 
 	$scope.agency = {

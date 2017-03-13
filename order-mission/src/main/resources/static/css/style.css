@@ -10,7 +10,7 @@
 	margin: 0 auto;
 }
 
-.tripsTable {
+.tripsTable, .vehiculeTable {
 	margin: 0 auto;
 	  
 }
@@ -18,7 +18,7 @@
 .input-group{
 	margin-left: 12px;
 }
-.tripsTable {
+.tripsTable, .vehiculeTable{
 
     border-spacing:  12px 2px;    
          

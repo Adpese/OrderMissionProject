@@ -104,7 +104,7 @@
 				</div>  -->
 				
 				
-				<label >Información de trenes</label>
+				<label >Información de trayecto</label>
 				<br></br>
 
 			<div class="tripsContainer">
@@ -224,6 +224,210 @@
 
 				<button type="button" ng-click="addNewTraject()"
 					class="btn btn-primary">Añadir trayecto</button>
+
+			</div>
+			
+			
+			
+			
+					<label >Información de alquiler de vehículo</label>
+				<br></br>
+
+			<div class="tripsContainer">
+
+
+
+				<table class="vehiculeTable">
+
+					<tr ng-repeat="rent in rents">
+						<!-- Text input-->
+						<td>
+							<div class="form-group" >
+
+								<div class="input-group">
+									<input name="driverName" ng-model="rent.driverName"
+										   placeholder="Nombre del conductor" class="form-control trip" type="text" />
+								
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="pickupDate" ng-model="rent.pickup_Date"
+										   placeholder="Fecha de recogida" class="form-control trip" type="date" />
+								</div>
+
+							</div>
+						</td>
+
+						
+						<td>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="pickupHour" ng-model="rent.pickupHour"
+										placeholder="Hora de recogida" class="form-control trip" type="time" />
+								</div>
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="pickupPlace" ng-model="rent.pickupPlace"
+										placeholder="Lugar de recogida" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="DeliveryDate" ng-model="rent.deliveryDate"
+										placeholder="Fecha de entrega" class="form-control trip" type="date" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+
+								<div class="input-group">
+									<input name="deliveryHour" ng-model="rent.deliveryHour"
+										placeholder="Hora de entrega" class="form-control trip" type="time" />
+								</div>
+
+							</div>
+
+						</td>
+
+
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="deliveryPlace" ng-model="rent.deliveryPlace"
+										placeholder="Lugar de entrega" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.price"
+										   placeholder="Precio" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+								<button class="remove btn btn-danger" ng-show="$last"
+									ng-click="removeRent()">-</button>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+
+
+				<button type="button" ng-click="addNewRent()"
+					class="btn btn-primary">Añadir alquiler</button>
+					
+				</div>
+					
+				<label >Información de alojamiento</label>
+				<br></br>
+
+			<div class="tripsContainer">
+
+
+
+				<table class="accommodationTable">
+
+					<tr ng-repeat="accommodation in accommodations">
+						<!-- Text input-->
+						<td>
+							<div class="form-group" >
+
+								<div class="input-group">
+									<input name="HotelName" ng-model="accommodation.hotelName"
+										   placeholder="Nombre del hotel" class="form-control trip" type="text" />
+								
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="entryDate" ng-model="accommodation.entryDate"
+										   placeholder="Fecha de entrada" class="form-control trip" type="date" />
+								</div>
+
+							</div>
+						</td>
+
+						
+						<td>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="departureDate" ng-model="accommodation.departureDate"
+										placeholder="Fecha de salida" class="form-control trip" type="date" />
+								</div>
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="numberOfNights" ng-model="accommodation.numbreOfNights"
+										placeholder="Número de noches" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.price"
+										   placeholder="Precio" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+
+						<td>
+							<div class="form-group">
+								<button class="remove btn btn-danger" ng-show="$last"
+									ng-click="removeAccommodation()">-</button>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+
+
+				<button type="button" ng-click="addNewAccommodation()"
+					class="btn btn-primary">Añadir alquiler</button>
+					
 
 			</div>
 

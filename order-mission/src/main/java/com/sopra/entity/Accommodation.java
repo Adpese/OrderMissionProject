@@ -26,7 +26,7 @@ public class Accommodation {
 	 @Column(name="departure_date")
 	 private String departureDate;
 	 @Column(name="number_of_nights")
-	 private String numberOfNights;
+	 private int numberOfNights;
 	 @Column(name="price")
 	 private long price;
 	 @ManyToOne
@@ -58,10 +58,10 @@ public class Accommodation {
 	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
 	}
-	public String getNumberOfNights() {
+	public int getNumberOfNights() {
 		return numberOfNights;
 	}
-	public void setNumberOfNights(String numberOfNights) {
+	public void setNumberOfNights(int numberOfNights) {
 		this.numberOfNights = numberOfNights;
 	}
 	public long getPrice() {
