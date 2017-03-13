@@ -1,5 +1,5 @@
 	<div id="navegador"></div>
-
+	<input ng-model="prueba"/>
 	<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Cerrada' }">
+			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Cerrada' } | filter: prueba">
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>

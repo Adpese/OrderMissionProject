@@ -34,7 +34,7 @@ Latest compiled and minified JavaScript
 </head>
 <body>  -->
 	<div id="navegador"></div>
-
+	<input ng-model="prueba"/>
 	<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
@@ -48,7 +48,7 @@ Latest compiled and minified JavaScript
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Abierta' }">
+			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Abierta' } | filter: prueba">
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>
