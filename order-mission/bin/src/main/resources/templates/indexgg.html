@@ -5,7 +5,7 @@
 	<div class="container"  ng-controller="orderMisionManagerController">
 
 		<form class="well form-horizontal" method="post "
-			id="contact_form">
+			id="contact_form" name="userform">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -24,7 +24,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
-								ng-model="collabFirstName" placeholder="Nombre y apellidos" ng-pattern="patternNombre"
+								ng-model="collabFirstName" placeholder="Nombre y apellidos" 
 								class="form-control" type="text" />
 						</div>
 					</div>
@@ -115,45 +115,35 @@
 
 					<tr ng-repeat="traject in trajects">
 						<!-- Text input-->
-
 						<td>
-							<div class="form-group">
+							<div class="form-group" >
 
 								<div class="input-group">
-									<input name="dateTraject" ng-model="traject.Date"
-										placeholder="Fecha" class="form-control trip" type="text" />
-								</div>
-							</div>
-						</td>
-
-						 <td>
-							<div class="form-group">
-
-								<div class="input-group">
-									<input name="origin" ng-model="traject.Origin"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="origin" ng-model="traject.date"
+										   placeholder="Fecha" class="form-control trip" type="text" />
+								
 								</div>
 
 							</div>
 						</td>
-
 						<td>
 							<div class="form-group">
+
 								<div class="input-group">
-									<input name="destiny" ng-model="traject.Destiny"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="origin" ng-model="traject.origin"
+										   placeholder="Origen" class="form-control trip" type="text" />
 								</div>
+
 							</div>
 						</td>
 
+						
 						<td>
 							<div class="form-group">
-
 								<div class="input-group">
-									<input name="initialdate" ng-model="traject.Departure"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="destiny" ng-model="traject.destination"
+										placeholder="Destino" class="form-control trip" type="text" />
 								</div>
-
 							</div>
 						</td>
 
@@ -161,8 +151,8 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="finaldate" ng-model="traject.Arrival"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="initialdate" ng-model="traject.departureHour"
+										placeholder="Hora Salida" class="form-control trip" type="text" />
 								</div>
 
 							</div>
@@ -172,8 +162,8 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="transport" ng-model="traject.Transport"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="finaldate" ng-model="traject.arrivalHour"
+										placeholder="Hora llegada" class="form-control trip" type="text" />
 								</div>
 
 							</div>
@@ -183,12 +173,33 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="company" ng-model="traject.Company"
-										placeholder="Fecha" class="form-control trip" type="text" />
+									<input name="transport" ng-model="traject.transport"
+										placeholder="Tipo Transporte" class="form-control trip" type="text" />
 								</div>
 
 							</div>
-						</td> 
+						</td>
+
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.company"
+										placeholder="Compañia" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input name="company" ng-model="traject.price"
+										   placeholder="Precio" class="form-control trip" type="text" />
+								</div>
+
+							</div>
+						</td>
 
 						<td>
 							<div class="form-group">

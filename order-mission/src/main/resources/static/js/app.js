@@ -97,42 +97,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
                    
             ]
      };
-
-
-	
-	$scope.emisiones1 = [
-			
-			 
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Open',
-					agency : 'Valencia', 
-					proyect: 'Proyecto A'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Close',
-					agency : 'Valencia', 
-					proyect: 'Proyecto B'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Open',
-					agency : 'Tenerife', 
-					proyect: 'Proyecto C'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Close',
-					agency : 'Barcelona', 
-					proyect: 'Proyecto C'
-				}
-			
-		];
 	
 	//add a new colab
 		$scope.addCollab = function addCollab() {
@@ -162,9 +126,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 						return 0;
 					}
 				}
-				
-				
-				
 				
 				$http.post(urlBase + '/missionSave', {
 					collabFirstName : $scope.collabFirstName,
@@ -257,10 +218,6 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     	          });
     		
     	}
-         
-         
-         
-
          
      };  
 });

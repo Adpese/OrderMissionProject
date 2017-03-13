@@ -54,7 +54,8 @@ Latest compiled and minified JavaScript
 				<td>{{ x.status }}</td>
 				<td>{{ x.project }}</td>
 				<td>{{ x.agency }}</td>
-				<td><button style='width:70px; color: red' ng-click="SendData(x); reload()" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px' ng-click="OpenData(x); reload()" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<td><button style='width:70px; color: red' ng-click="SendData(x)" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px; color: green' ng-click="SendData(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 			</tr>
 
 		</table>

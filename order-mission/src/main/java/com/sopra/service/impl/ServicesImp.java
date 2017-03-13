@@ -1,15 +1,15 @@
 package com.sopra.service.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
-import com.sopra.repository.*;
-
+import com.sopra.entity.RentACar;
+import com.sopra.repository.ItineraryRepository;
+import com.sopra.repository.MissionRepository;
+import com.sopra.repository.RentACarRepository;
 import com.sopra.service.MissionServices;
 
 
@@ -21,6 +21,8 @@ public class ServicesImp implements MissionServices {
 	private MissionRepository  missionRepository;
 	@Resource
 	private ItineraryRepository itineraryReposity;
+	@Resource
+	private RentACarRepository rentACarRepository;
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
@@ -29,8 +31,17 @@ public class ServicesImp implements MissionServices {
 			   it.setMission(missions);
 			}
 	   	}
+		for(RentACar rent : missions.getRentACar()) {
+			if(rent != null){
+				rent.setMission(missions);
+			}
+	   	}
+				
 		   missionRepository.save(missions);
+	
 	   }
+	
+	
 	@Override
 	public Mission getNombreById(int id){
 		Mission m = missionRepository.findOne(id);
