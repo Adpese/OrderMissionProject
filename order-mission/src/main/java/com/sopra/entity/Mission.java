@@ -1,21 +1,20 @@
 package com.sopra.entity;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="Mission")
@@ -45,7 +44,11 @@ public class Mission {
 	private String status;
 	
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<RentACar> rentACar;
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
+	
 
 	public int getId() {
 		return Id;
@@ -110,7 +113,13 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
+	public List<RentACar> getRentACar() {
+		return rentACar;
+	}
 
+	public void setRentACar(List<RentACar> rentACar) {
+		this.rentACar = rentACar;
+	}
 	@Override
 	public String toString() {
 		return "Mission [Id=" + Id + ", collabFirstName=" + collabFirstName + ", date=" + date + ", project=" + project

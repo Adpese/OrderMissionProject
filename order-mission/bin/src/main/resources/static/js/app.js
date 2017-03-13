@@ -7,44 +7,10 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.status = "Abierta";
 	$scope.date = new Date();
 	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
+	$scope.patternNombre=/^[0-9]+([,.][0-9]+)?$/; ;
 	
-
-
-	
-	
-	
-	var tripObject = $scope.trajects = [
-		
-//		{
-//			"Date" : '',
-//			"Origin" : '',
-//			"Destiny" : '',
-//			"Departure" : '',
-//			"Arrival" : '',
-//			"Transport" : '',
-//			"Company" : ''
-//		}
-		
-	];
-//	$scope.tripfields = ["Date", "Origin", "Destiny", "Departure", "Arrival", "Transport", "Company"];
-//	var tripObject = $scope.trip = {
-//			tripfields: {
-//				"Date" : '',
-//				"Origin" : '',
-//				"Destiny" : '',
-//				"Departure" : '',
-//				"Arrival" : '',
-//				"Transport" : '',
-//				"Company" : ''
-//			}
-//	}
-
-	
-	$scope.actualTraject;
-	
-
-	  
-	  $scope.addNewTraject = function() {
+	var tripObject = $scope.trajects = [];
+	$scope.addNewTraject = function() {
 		  //console.log($scope.dateTraject);
 		 
 	    var newItem = $scope.trajects.length+1;
@@ -148,27 +114,47 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	//add a new colab
 		$scope.addCollab = function addCollab() {
 
-			if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
+			if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null || $scope.project == "") {
 				
-				swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
+				
+				
+				swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
 				//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 			
 			} else if(!$scope.collabFirstName){
 				swal("Error", "Los datos de usuario son incorrectos.", "error");
 			}
 			else {
-				$http.post(urlBase + '/missions', {
+				
+				for(var i = 0; i < $scope.trajects.length; i++){
+					if($scope.trajects[i].arrivalHour == null || $scope.trajects[i].company == null ||
+							$scope.trajects[i].date == null || $scope.trajects[i].departureHour == null ||
+							$scope.trajects[i].destination == null || $scope.trajects[i].origin == null ||
+							$scope.trajects[i].price == null || $scope.trajects[i].transport == null ||
+							$scope.trajects[i].arrivalHour == '' || $scope.trajects[i].company == '' ||
+							$scope.trajects[i].date == '' || $scope.trajects[i].departureHour == '' ||
+							$scope.trajects[i].destination == ''|| $scope.trajects[i].origin == '' ||
+							$scope.trajects[i].price == '' || $scope.trajects[i].transport == ''){
+						swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
+						return 0;
+					}
+				}
+				
+				
+				
+				
+				$http.post(urlBase + '/missionSave', {
 					collabFirstName : $scope.collabFirstName,
 					date : $scope.date,
 					project : $scope.project,
 					agency : $scope.agency.model,
 					division : $scope.division.model,
 					status : $scope.status,
-					itineraries : $scope.trajects			
+					itineraries : $scope.trajects		
 				}
 
 				).success(function(data, status, headers) {
-					swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
+					swal("Nueva emisión creada", "Se ha generado una nueva misión con los datos introducidos", "success");
 					//alert("Nueva orden añadida");
 					var newColabUri = headers()["location"];
 					console.log("Might be good to GET " + newColabUri + " and append the task.");
@@ -178,134 +164,82 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 			
 		};
-	
-	
-	
-//	$scope.addCollab = function addCollab() {
-
-//		if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null) {
-//			
-//			swal("Error", "No se han introducido los campos necesarios para generar una nueva emisión", "error");
-//			//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-//			
-//		} else if(!$scope.collabFirstName){
-//			swal("Error", "Los datos de usuario son incorrectos.", "error");
-//		}
-//		else {
-//			$http.post(urlBase + '/missions', {
-//				collabFirstName : $scope.collabFirstName,
-//				date : $scope.date,
-//				project : $scope.project,
-//				agency : $scope.agency.model,
-//				division : $scope.division.model,
-//				status : $scope.status
-//				
-//			}
-//
-//			).success(function(data, status, headers) {
-//				swal("Nueva emisión creada", "Se ha generado una nueva emisión con los datos introducidos", "success");
-//				//alert("Nueva orden añadida");
-//				var newColabUri = headers()["location"];
-//				console.log("Might be good to GET " + newColabUri + " and append the task.");
-//			});
-//			
-//		}
-//				
-//		var array = $scope.testArray = [{
-//			collabFirstName : $scope.collabFirstName,
-//			date : $scope.date,
-//			project : $scope.project,
-//			agency : $scope.agency.model,
-//			division : $scope.division.model,
-//			status : $scope.status,
-//			itineraries : $scope.trajects
-//			
-//		}];
-//		
-//		
-//		console.log(array);
-//		
-//		
-//		
-//	};
-	
-	
-	
-	
 
 });
 
 
 taskManagerModule.controller('collaCtrl', function ($scope, $http){
-
-	  
-	 
-	  
+  
     $http.get('/missions').success(function(data) {
 
       $scope.colla = data._embedded.missions;
-
-      
-      
       
     });
-
+    
     
     $scope.SendData = function (x) {
         // use $.param jQuery function to serialize data from JSON 
-         var data = ({
-        	collabFirstName : x.collabFirstName,
-				date : x.date,
-				project : x.project,
-				agency : x.agency,
-				division : x.division,
-				status : "Cerrada"
-         });
+    	
+    	if(x.status === "Abierta"){
+    		
+    		console.log("Entra cerrada");
+    		
+    		var data = ({
+            	collabFirstName : x.collabFirstName,
+    				date : x.date,
+    				project : x.project,
+    				agency : x.agency,
+    				division : x.division,
+    				status : "Cerrada"
+             });
+    		
+    		$http.put('/missions/' + x.id, data)
+            .success(function (data, status, headers, config) {
+                //$scope.PostDataResponse = data;
+            	x.status = "Cerrada";
+            	$scope.buttonState = "Abrir";
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+    		
+    	} else if(x.status === "Cerrada") {
+    		
+    		console.log("Entra Abierrta");
+    		
+    		 var data = ({
+    	         	collabFirstName : x.collabFirstName,
+    	 				date : x.date,
+    	 				project : x.project,
+    	 				agency : x.agency,
+    	 				division : x.division,
+    	 				status : "Abierta"
+    	          });
+    	          
+    	          
+
+    	          $http.put('/missions/' + x.id, data)
+    	          .success(function (data, status, headers, config) {
+    	        	  x.status = "Abierta";
+    	        	  $scope.buttonState = "Cerrar";
+    	          })
+    	          .error(function (data, status, header, config) {
+    	              $scope.ResponseDetails = "Data: " + data +
+    	                  "<hr />status: " + status +
+    	                  "<hr />headers: " + header +
+    	                  "<hr />config: " + config;
+    	          });
+    		
+    	}
+         
          
          
 
-         $http.put('/missions/' + x.id, data)
-         .success(function (data, status, headers, config) {
-             //$scope.PostDataResponse = data;
-         })
-         .error(function (data, status, header, config) {
-             $scope.ResponseDetails = "Data: " + data +
-                 "<hr />status: " + status +
-                 "<hr />headers: " + header +
-                 "<hr />config: " + config;
-         });
-     };
-    
-     $scope.OpenData = function (x) {
-         // use $.param jQuery function to serialize data from JSON 
-          var data = ({
-         	collabFirstName : x.collabFirstName,
- 				date : x.date,
- 				project : x.project,
- 				agency : x.agency,
- 				division : x.division,
- 				status : "Abierta"
-          });
-          
-          
-
-          $http.put('/missions/' + x.id, data)
-          .success(function (data, status, headers, config) {
-              //$scope.PostDataResponse = data;
-          })
-          .error(function (data, status, header, config) {
-              $scope.ResponseDetails = "Data: " + data +
-                  "<hr />status: " + status +
-                  "<hr />headers: " + header +
-                  "<hr />config: " + config;
-          });
-      };
-     
-     $scope.reload = function()
-     {
-        location.reload(); 
-     }
-     
+         
+     };  
 });
 
 
