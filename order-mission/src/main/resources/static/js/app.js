@@ -16,7 +16,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 		var newItem = $scope.trajects.length + 1;
 		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
 
-//		console.log($scope.trajects);
+		console.log($scope.trajects);
 	};
 
 	$scope.removeTraject = function() {
@@ -28,6 +28,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.addNewRent = function() {
 		
 		$scope.rents.push({});
+		console.log($scope.rents);
 	};
 	
 	$scope.removeRent = function() {
@@ -39,6 +40,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.addNewAccommodation = function() {
 		
 		$scope.accommodations.push({});
+		
+		console.log($scope.accommodations);
 	};
 	
 	$scope.removeAccommodation = function() {
@@ -157,7 +160,9 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 					agency : $scope.agency.model,
 					division : $scope.division.model,
 					status : $scope.status,
-					itineraries : $scope.trajects		
+					itineraries : $scope.trajects,	
+					rents : $scope.rents,
+					accommodations : $scope.accommodations
 				}
 
 				).success(function(data, status, headers) {

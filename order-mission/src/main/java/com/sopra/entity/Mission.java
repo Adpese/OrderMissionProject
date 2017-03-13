@@ -43,12 +43,21 @@ public class Mission {
 	@Column(name="status")
 	private String status;
 	
-	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	private List<RentACar> rentACar;
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
-	
+	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
+	private List<Accommodation> accommodations;
+	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<RentACar> rentACar;
+
+	public List<Accommodation> getAccommodations() {
+		return accommodations;
+	}
+
+	public void setAccommodations(List<Accommodation> accommodations) {
+		this.accommodations = accommodations;
+	}
 
 	public int getId() {
 		return Id;

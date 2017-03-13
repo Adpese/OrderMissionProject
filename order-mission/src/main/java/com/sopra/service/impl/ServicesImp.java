@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.sopra.entity.Accommodation;
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
 import com.sopra.entity.RentACar;
@@ -26,14 +27,19 @@ public class ServicesImp implements MissionServices {
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
-		for(Itinerary it : missions.getItineraries()) {
-			if(it != null){
-			   it.setMission(missions);
-			}
-	   	}
+//		for(Itinerary it : missions.getItineraries()) {
+//			if(it != null){
+//			   it.setMission(missions);
+//			}
+//	   	}
 //		for(RentACar rent : missions.getRentACar()) {
 //			if(rent != null){
 //				rent.setMission(missions);
+//			}
+//	   	}
+//		for(Accommodation acc : missions.getAccommodations()) {
+//			if(acc != null){
+//				acc.setMission(missions);
 //			}
 //	   	}
 				
