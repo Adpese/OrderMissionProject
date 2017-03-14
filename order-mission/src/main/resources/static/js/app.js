@@ -67,10 +67,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			{
 				id : '3',
 				name : 'Barcelona'
-			},
-			{
-				id : '3',
-				name : 'Seleccione una agencia por favor'
 			}
 		]
 	};
@@ -89,10 +85,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			{
 				id : '3',
 				name : 'División C'
-			},
-			{
-				id : '3',
-				name : 'Seleccione una división por favor'
 			}
 		]
 	};
@@ -128,7 +120,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
 				//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
 			
-			} else if(!$scope.collabFirstName){
+} 
+				else if(!$scope.collabFirstName){
 				swal("Error", "Los datos de usuario son incorrectos.", "error");
 			}
 			else {
@@ -148,7 +141,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				}
 				
 				$http.post(urlBase + '/missionSave', {
-					collabFirstName : $scope.collabFirstName,
+					collabFirstName :$scope.collabFirstName,
 					date : $scope.date,
 					project : $scope.project,
 					agency : $scope.agency.model,
@@ -164,6 +157,10 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 					//alert("Nueva orden añadida");
 					var newColabUri = headers()["location"];
 					console.log("Might be good to GET " + newColabUri + " and append the task.");
+				}).error(function(fallback)
+				{
+					swal(fallback.exception.toString(),fallback.message);
+					
 				});
 				
 			}

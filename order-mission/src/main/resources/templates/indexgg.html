@@ -52,21 +52,12 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<!--
-								 <select name="agency"
-								ng-model="agency" class="form-control selectpicker">
-								<option value=" ">Seleccione su agencia por favor</option>
-								<option>Valencia</option>
-								<option>Levante</option>
-								<option>Barcelona</option>
-								<option>Madrid</option>
-								<option>Tenerife</option>
-
-							</select>
-							 -->
-							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
-						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in agency.availableOptions" value="{{option.name}}">{{option.name}}</option>
+						
+							 <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
+						      	<option ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						      	<option ng-disabled="true" ng-selected="true">Seleccione una agencia por favor</option>
 						    </select>
+
 						</div>
 					</div>
 				</div>
@@ -79,20 +70,11 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<!--  
-								 <select name="division"
-								ng-model="division" class="form-control selectpicker">
-								<option value=" ">Seleccione su división por favor</option>
-								<option>División A</option>
-								<option>División B</option>
-								<option>División C</option>
-								<option>División D</option>
-								<option>División E</option>
-								-->
-								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
-						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in division.availableOptions" value="{{option.name}}">{{option.name}}</option>
 								
-							</select>
+								 <select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
+						      	<option ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						      	<option ng-disabled="true" ng-selected="true">Seleccione una división por favor</option>
+						    </select>
 						</div>
 					</div>
 				</div>
