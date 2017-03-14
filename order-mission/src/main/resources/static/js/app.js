@@ -10,9 +10,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	
 	$scope.trajects = [];
 	$scope.addNewTraject = function() {
-		//console.log($scope.dateTraject);
-
-
 		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
 	};
 
@@ -153,10 +150,11 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				}
 
 				).success(function(data, status, headers) {
-					swal("Nueva emisión creada", "Se ha generado una nueva misión con los datos introducidos", "success");
-					//alert("Nueva orden añadida");
+					swal("Nueva misión creada", "Se ha generado una nueva misión con los datos introducidos", "success");
+					
 					var newColabUri = headers()["location"];
-					console.log("Might be good to GET " + newColabUri + " and append the task.");
+				
+					
 				}).error(function(fallback)
 				{
 					swal(fallback.exception.toString(),fallback.message);
@@ -171,6 +169,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 });
 
 
+
+
 taskManagerModule.controller('collaCtrl', function ($scope, $http){
   
     $http.get('/missions').success(function(data) {
@@ -181,7 +181,6 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     
     
     $scope.SendData = function (x) {
-        // use $.param jQuery function to serialize data from JSON 
     	
     	if(x.status === "Abierta"){
     		

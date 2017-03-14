@@ -52,9 +52,12 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
+								
+								
+	
 						
 							 <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker">
-						      	<option ng-repeat="option in agency.availableOptions" value="{{option.id}}">{{option.name}}</option>
+						      	<option ng-repeat="option in agency.availableOptions" value="{{option.name}}">{{option.name}}</option>
 						      	<option ng-disabled="true" ng-selected="true">Seleccione una agencia por favor</option>
 						    </select>
 
@@ -72,8 +75,8 @@
 								class="glyphicon glyphicon-list"></i></span>
 								
 								 <select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker">
-						      	<option ng-repeat="option in division.availableOptions" value="{{option.id}}">{{option.name}}</option>
-						      	<option ng-disabled="true" ng-selected="true">Seleccione una división por favor</option>
+						      	<option ng-repeat="option in division.availableOptions" value="{{option.name}}">{{option.name}}</option>
+						      	<option value="Default" ng-disabled="true" ng-selected="true">Seleccione una división por favor</option>
 						    </select>
 						</div>
 					</div>

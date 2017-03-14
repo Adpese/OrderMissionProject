@@ -107,7 +107,7 @@ public class Mission {
 		this.division = division;
 	}
 
-	public String getStatus() {
+	public String  getStatus() {
 		return status;
 	}
 
