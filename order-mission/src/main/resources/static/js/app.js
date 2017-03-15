@@ -192,7 +192,8 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     				project : x.project,
     				agency : x.agency,
     				division : x.division,
-    				status : "Cerrada"
+    				status : "Cerrada",
+    				createdBy : x.createdBy
              });
     		
     		$http.put('/missions/' + x.id, data)
@@ -218,7 +219,8 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     	 				project : x.project,
     	 				agency : x.agency,
     	 				division : x.division,
-    	 				status : "Abierta"
+    	 				status : "Abierta",
+    	 				createdBy : x.createdBy
     	          });
     	          
     	          

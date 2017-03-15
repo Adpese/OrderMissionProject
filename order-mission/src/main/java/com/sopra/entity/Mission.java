@@ -42,6 +42,9 @@ public class Mission {
 
 	@Column(name="status",nullable=false)
 	private String status;
+	@Column(name="created_By")
+	private String createdBy;
+	
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
@@ -61,6 +64,14 @@ public class Mission {
 
 	public int getId() {
 		return Id;
+	}
+	
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public void setId(int id) {
