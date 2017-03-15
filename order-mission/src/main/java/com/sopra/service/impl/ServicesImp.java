@@ -12,7 +12,8 @@ import com.sopra.repository.ItineraryRepository;
 import com.sopra.repository.MissionRepository;
 import com.sopra.repository.RentACarRepository;
 import com.sopra.service.MissionServices;
-
+import com.sun.jna.platform.win32.Secur32Util;
+import com.sun.jna.platform.win32.Secur32;
 
 
 @Service(value = "services")
@@ -42,7 +43,9 @@ public class ServicesImp implements MissionServices {
 //				acc.setMission(missions);
 //			}
 //	   	}
-				
+			String s = Secur32Util.getUserNameEx(Secur32.EXTENDED_NAME_FORMAT.NameDisplay);
+			System.out.println(s);
+			missions.setCreatedBy(s);
 		   missionRepository.save(missions);
 	
 	   }
