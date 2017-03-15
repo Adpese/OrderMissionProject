@@ -10,7 +10,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	
 	$scope.trajects = [];
 	$scope.addNewTraject = function() {
-		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
+		$scope.trajects.push({ });
 	};
 
 	$scope.removeTraject = function() {
@@ -211,7 +211,7 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     		
     	} else if(x.status === "Cerrada") {
     		
-    		console.log("Entra Abierrta");
+    		console.log("Entra Abierta");
     		
     		 var data = ({
     	         	collabFirstName : x.collabFirstName,
