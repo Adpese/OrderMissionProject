@@ -43,3 +43,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	padding-top: 35px;
 }
 
+.cosauno{
+	vertical-align: text-top;
+}
+
+.error, .error:focus { 
+
+    border:2px solid red; 
+}
+
+.form-group{
+	margin-bottom: 5px;
+}
+
+.text_valider {
+	text-align: center;
+	color: red;
+	font: verdana;
+}
