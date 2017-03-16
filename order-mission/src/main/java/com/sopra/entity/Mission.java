@@ -25,23 +25,26 @@ public class Mission {
 	@Column(name="id_mission")
 	private int Id; 
 	
-	@Column(name="Collab_firstName")
+	@Column(name="Collab_firstName",nullable=false)
 	private String collabFirstName;
 	
-	@Column(name="date")
+	@Column(name="date",nullable=false)
 	private Date date;
 	
-	@Column(name="project")
+	@Column(name="project",nullable=false)
 	private String project;
 	
-	@Column(name="agency")
+	@Column(name="agency",nullable=false)
 	private String agency;
 	
-	@Column(name="division")
+	@Column(name="division",nullable=false)
 	private String division;
 
-	@Column(name="status")
+	@Column(name="status",nullable=false)
 	private String status;
+	@Column(name="created_By")
+	private String createdBy;
+	
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
@@ -61,6 +64,14 @@ public class Mission {
 
 	public int getId() {
 		return Id;
+	}
+	
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public void setId(int id) {
@@ -107,7 +118,7 @@ public class Mission {
 		this.division = division;
 	}
 
-	public String getStatus() {
+	public String  getStatus() {
 		return status;
 	}
 

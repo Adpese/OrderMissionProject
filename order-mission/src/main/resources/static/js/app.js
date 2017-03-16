@@ -12,45 +12,37 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$scope.holaaa = todayDate;
 //	console.log(todayDate);
 	
-	var tripObject = $scope.trajects = [];
+	$scope.trajects = [];
 	$scope.addNewTraject = function() {
-		//console.log($scope.dateTraject);
-
-		var newItem = $scope.trajects.length + 1;
 		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
-
-		console.log($scope.trajects);
 	};
 
 	$scope.removeTraject = function() {
 		var lastItem = $scope.trajects.length - 1;
-		$scope.trajects.splice(lastItem);
+		$scope.trajects.splice(lastItem); 
 	};
 
 	$scope.rents = [];
 	$scope.addNewRent = function() {
 		
-		$scope.rents.push({});
-		console.log($scope.rents);
+		$scope.rents.push({}); 
 	};
 	
 	$scope.removeRent = function() {
-		var lastItem = $scope.rents.lenght -1;
-		$scope.rents.splice(lastItem);
-	}
+		var lastRent = $scope.rents.length -1;
+		$scope.rents.splice(lastRent);
+	};
 	
 	$scope.accommodations = [];
 	$scope.addNewAccommodation = function() {
 		
 		$scope.accommodations.push({});
-		
-		console.log($scope.accommodations);
 	};
 	
 	$scope.removeAccommodation = function() {
-		var lastItem = $scope.accommodations.lenght -1;
-		$scope.accommodations.splice(lastItem);
-	}
+		var lastAccommodation = $scope.accommodations.length -1;
+		$scope.accommodations.splice(lastAccommodation);
+	};
 	
 
 
@@ -77,10 +69,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				id : '3',
 				name : 'Barcelona'
 			},
-			{
-				id : '3',
-				name : 'Seleccione una agencia por favor'
-			}
 		]
 	};
 
@@ -99,10 +87,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				id : '3',
 				name : 'División C'
 			},
-			{
-				id : '3',
-				name : 'Seleccione una división por favor'
-			}
 		]
 	};
 	
@@ -118,11 +102,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
                           id : '2',
                           name : 'Tren'
                    },
-                   
-                   {
-                          id : '3',
-                          name : 'Seleccione medio de transporte'
-                   }
                    
             ]
      };
@@ -157,7 +136,7 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 //				}
 				
 				$http.post(urlBase + '/missionSave', {
-					collabFirstName : $scope.collabFirstName,
+					collabFirstName :$scope.collabFirstName,
 					date : $scope.date,
 					project : $scope.project,
 					agency : $scope.agency.model,
@@ -183,6 +162,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 });
 
 
+
+
 taskManagerModule.controller('collaCtrl', function ($scope, $http){
   
     $http.get('/missions').success(function(data) {
@@ -193,7 +174,6 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     
     
     $scope.SendData = function (x) {
-        // use $.param jQuery function to serialize data from JSON 
     	
     	if(x.status === "Abierta"){
     		
@@ -203,15 +183,16 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
             	collabFirstName : x.collabFirstName,
     				date : x.date,
     				project : x.project,
-    				agency : x.agency,
+    				agency : x.agency, 
     				division : x.division,
-    				status : "Cerrada"
+    				status : "Cerrada",
+    				createdBy : x.createdBy
              });
     		
     		$http.put('/missions/' + x.id, data)
             .success(function (data, status, headers, config) {
-                //$scope.PostDataResponse = data;
-            	x.status = "Cerrada";
+                //$scope.PostDataResponse = data; 
+            	x.status = "Cerrada"; 
             	$scope.buttonState = "Abrir";
             })
             .error(function (data, status, header, config) {
@@ -231,7 +212,8 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     	 				project : x.project,
     	 				agency : x.agency,
     	 				division : x.division,
-    	 				status : "Abierta"
+    	 				status : "Abierta",
+    	 				createdBy : x.createdBy
     	          });
     	          
     	          

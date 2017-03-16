@@ -60,20 +60,10 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<!--
-								 <select name="agency"
-								ng-model="agency" class="form-control selectpicker">
-								<option value=" ">Seleccione su agencia por favor</option>
-								<option>Valencia</option>
-								<option>Levante</option>
-								<option>Barcelona</option>
-								<option>Madrid</option>
-								<option>Tenerife</option>
-
-							</select>
-							 -->
-							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker" ng-required="true">
-						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in agency.availableOptions" value="{{option.name}}">{{option.name}}</option>
+								
+							  <select name="repeatSelect" id="repeatSelect" ng-model="agency.model" class="form-control selectpicker"  ng-required="true">
+						      	<option ng-repeat="option in agency.availableOptions" value="{{option.name}}">{{option.name}}</option>
+						      	<option ng-disabled="true" ng-selected="true">Seleccione una agencia por favor</option>
 						    </select>
 						</div>
 					</div>
@@ -87,29 +77,13 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<!--  
-								 <select name="division"
-								ng-model="division" class="form-control selectpicker">
-								<option value=" ">Seleccione su división por favor</option>
-								<option>División A</option>
-								<option>División B</option>
-								<option>División C</option>
-								<option>División D</option>
-								<option>División E</option>
-								-->
-								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker" ng-required="true">
-						      	<option ng-selected="{{defaultvalue == value.id}}" ng-repeat="option in division.availableOptions" value="{{option.name}}">{{option.name}}</option>
-								
-							</select>
+								<select name="repeatSelect" id="repeatSelect" ng-model="division.model" class="form-control selectpicker"  ng-required="true">
+						      	<option ng-repeat="option in division.availableOptions" value="{{option.name}}">{{option.name}}</option>
+						      	<option value="Default" ng-disabled="true" ng-selected="true">Seleccione una división por favor</option>
+						    </select>
 						</div>
 					</div>
 				</div>
-
-				<!-- Success message 
-				<div class="alert alert-success" role="alert" id="success_message">
-					Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for
-					contacting us, we will get back to you shortly.
-				</div>  -->
 				
 				
 				<label >Información de trayecto</label>
@@ -172,13 +146,13 @@
 							<div class="form-group">
 								<div class="input-group">
 									
-									<input name="destino" ng-model="traject.destination" class="form-control trip" ng-pattern="patternNombre"
-									placeholder="Destino" ng-required="true" ng-class="{ error: urlFormDestine.destino.$error.pattern }"/>
+									<input name="destiny" ng-model="traject.destination" class="form-control trip" ng-pattern="patternNombre"
+									placeholder="Destino" ng-required="true" ng-class="{ error: urlFormDestine.destiny.$error.pattern }"/>
 								</div>
 							</div>
 						</ng-form>
 						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormDestine.destino.$error.pattern">Solo letras</p>
+										ng-show="urlFormDestine.destiny.$error.pattern">Solo letras</p>
 						</td>
 
 						<td class="cosauno">
@@ -210,10 +184,11 @@
 								<div class="input-group">
 									<select placeholder="Medio de Transporte" name="repeatSelect"
 										id="repeatSelect" ng-model="traject.transport"
-										class="form-control selectpicker">
-										<option ng-selected="{{defaultvalue == value.id}}" ng-required="true"
+										class="form-control selectpicker"  ng-required="true">
+										<option 
 											ng-repeat="option in transport.availableOptions"
 											value="{{option.name}}">{{option.name}}</option>
+										<option value="Default" ng-disabled="true" ng-selected="true">Seleccione un medio de transporte por favor</option>
 									</select>
 								</div>
 
@@ -252,7 +227,7 @@
 						<td class="cosauno">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
-									ng-click="removeTraject()">-</button>
+									ng-click="removeTraject()">x</button>
 							</div>
 						</td>
 
@@ -262,7 +237,7 @@
 
 
 				<button type="button" ng-click="addNewTraject()"
-					class="btn btn-primary">Añadir trayecto</button>
+					class="btn btnchck">Añadir trayecto</button>
 
 			</div>
 			
@@ -313,7 +288,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="pickupDate" ng-model="rent.pickup_Date" ng-required="true"
+									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true"
 										   placeholder="Fecha de recogida" class="form-control trip" type="date" min="{{holaaa}}"/>
 								</div>
 
@@ -411,7 +386,7 @@
 
 
 				<button type="button" ng-click="addNewRent()"
-					class="btn btn-primary">Añadir alquiler</button>
+					class="btn btnchck">Añadir alquiler</button>
 					
 				</div>
 					
@@ -508,7 +483,7 @@
 
 
 				<button type="button" ng-click="addNewAccommodation()"
-					class="btn btn-primary">Añadir alquiler</button>
+					class="btn btnchck">Añadir alquiler</button>
 					
 
 			</div>
@@ -520,7 +495,7 @@
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
 						<button  ng-disabled="userform.$invalid" type="submit" ng-click="addCollab()"
-							class="btn btn-warning">
+							class="btn btnchck">
 							Enviar <span class="glyphicon glyphicon-send"></span>
 						</button>
 						<p class="text_valider" ng-model="faulty"
