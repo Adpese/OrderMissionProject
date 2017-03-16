@@ -52,7 +52,7 @@ public class Mission {
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Accommodation> accommodations;
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<RentACar> rentACar;
+	private List<Rent> rents;
 
 	public List<Accommodation> getAccommodations() {
 		return accommodations;
@@ -133,12 +133,12 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
-	public List<RentACar> getRentACar() {
-		return rentACar;
+	public List<Rent> getRents() {
+		return rents;
 	}
 
-	public void setRentACar(List<RentACar> rentACar) {
-		this.rentACar = rentACar;
+	public void setRents(List<Rent> rents) {
+		this.rents = rents;
 	}
 	@Override
 	public String toString() {

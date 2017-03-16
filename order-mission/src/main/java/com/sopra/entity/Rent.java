@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="rentacar")
-public class RentACar {
+public class Rent {
 	
 	
 	
@@ -22,7 +22,7 @@ public class RentACar {
 	 @Column(name="driver_name")
 	 private String driverName;
 	 @Column(name="pickup_date")
-	 private String pickup_Date;
+	 private String pickupDate;
 	 @Column(name="pickup_hour")
 	 private String pickupHour;
 	 @Column(name="pickup_place")
@@ -51,11 +51,11 @@ public class RentACar {
 		public void setDriverName(String driverName) {
 			this.driverName = driverName;
 		}
-		public String getPickup_Date() {
-			return pickup_Date;
+		public String getPickupDate() {
+			return pickupDate;
 		}
-		public void setPickup_Date(String pickup_Date) {
-			this.pickup_Date = pickup_Date;
+		public void setPickupDate(String pickupDate) {
+			this.pickupDate = pickupDate;
 		}
 		public String getPickupHour() {
 			return pickupHour;
@@ -101,7 +101,7 @@ public class RentACar {
 		}
 		@Override
 		public String toString() {
-			return "RentACar [Id=" + Id + ", driverName=" + driverName + ", pickup_Date=" + pickup_Date
+			return "Rents [Id=" + Id + ", driverName=" + driverName + ", pickupDate=" + pickupDate
 					+ ", pickupHour=" + pickupHour + ", pickupPlace=" + pickupPlace + ", deliveryDate=" + deliveryDate
 					+ ", deliveryHour=" + deliveryHour + ", deliveryPlace=" + deliveryPlace + ", price=" + price + "]";
 		}
