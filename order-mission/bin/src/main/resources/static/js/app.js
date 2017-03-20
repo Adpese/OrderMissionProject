@@ -1,4 +1,4 @@
-var taskManagerModule = angular.module('orderMisionManagerApp', ['ui.router']);
+	var taskManagerModule = angular.module('orderMisionManagerApp', ['ui.router']);
 
 taskManagerModule.controller('orderMisionManagerController', function($scope, $http) {
 
@@ -6,23 +6,44 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 	$http.defaults.headers.post["Content-Type"] = "application/json";
 	$scope.status = "Abierta";
 	$scope.date = new Date();
-	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú]{1,}[\s]*)+$/ ;
-	$scope.patternNombre=/^[0-9]+([,.][0-9]+)?$/; ;
+	$scope.patternNombre=/^([a-zA-ZÁÉÍÓÚñáéíóú][\s]*)+$/ ;
+
+	var todayDate = (new Date()).toLocaleString('en-GB').slice(0,10).split("\/").reverse().join("-");
+	$scope.holaaa = todayDate;
+//	console.log(todayDate);
 	
-	var tripObject = $scope.trajects = [];
+	$scope.trajects = [];
 	$scope.addNewTraject = function() {
-		  //console.log($scope.dateTraject);
-		 
-	    var newItem = $scope.trajects.length+1;
-	    $scope.trajects.push({/*'traject':'traject'+newItem, 'Trip': tripObject*/});   
-	    
-	    console.log($scope.trajects);
-	  };
-	    
-	  $scope.removeTraject = function() {
-	    var lastItem = $scope.trajects.length-1;
-	    $scope.trajects.splice(lastItem);
-	  };
+		$scope.trajects.push({ /*'traject':'traject'+newItem, 'Trip': tripObject*/ });
+	};
+
+	$scope.removeTraject = function() {
+		var lastItem = $scope.trajects.length - 1;
+		$scope.trajects.splice(lastItem); 
+	};
+
+	$scope.rents = [];
+	$scope.addNewRent = function() {
+		
+		$scope.rents.push({}); 
+	};
+	
+	$scope.removeRent = function() {
+		var lastRent = $scope.rents.length -1;
+		$scope.rents.splice(lastRent);
+	};
+	
+	$scope.accommodations = [];
+	$scope.addNewAccommodation = function() {
+		
+		$scope.accommodations.push({});
+	};
+	
+	$scope.removeAccommodation = function() {
+		var lastAccommodation = $scope.accommodations.length -1;
+		$scope.accommodations.splice(lastAccommodation);
+	};
+	
 
 
 	$scope.agency = {
@@ -48,10 +69,6 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				id : '3',
 				name : 'Barcelona'
 			},
-			{
-				id : '3',
-				name : 'Seleccione una agencia por favor'
-			}
 		]
 	};
 
@@ -70,87 +87,64 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 				id : '3',
 				name : 'División C'
 			},
-			{
-				id : '3',
-				name : 'Seleccione una división por favor'
-			}
 		]
 	};
 	
-	$scope.emisiones1 = [
-			
-			 
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Open',
-					agency : 'Valencia', 
-					proyect: 'Proyecto A'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Close',
-					agency : 'Valencia', 
-					proyect: 'Proyecto B'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Open',
-					agency : 'Tenerife', 
-					proyect: 'Proyecto C'
-				},
-				{
-					date : '10/10/10',
-					name : 'División A',
-					status : 'Close',
-					agency : 'Barcelona', 
-					proyect: 'Proyecto C'
-				}
-			
-		];
+	$scope.transport = {
+            model : null,
+            availableOptions : [
+                   {
+                          id : '1',
+                          name : 'Avión'
+                   },
+                   
+                   {
+                          id : '2',
+                          name : 'Tren'
+                   },
+                   
+            ]
+     };
 	
 	//add a new colab
 		$scope.addCollab = function addCollab() {
 
-			if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null || $scope.project == "") {
-				
-				
-				
-				swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
-				//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-			
-			} else if(!$scope.collabFirstName){
-				swal("Error", "Los datos de usuario son incorrectos.", "error");
-			}
-			else {
-				
-				for(var i = 0; i < $scope.trajects.length; i++){
-					if($scope.trajects[i].arrivalHour == null || $scope.trajects[i].company == null ||
-							$scope.trajects[i].date == null || $scope.trajects[i].departureHour == null ||
-							$scope.trajects[i].destination == null || $scope.trajects[i].origin == null ||
-							$scope.trajects[i].price == null || $scope.trajects[i].transport == null ||
-							$scope.trajects[i].arrivalHour == '' || $scope.trajects[i].company == '' ||
-							$scope.trajects[i].date == '' || $scope.trajects[i].departureHour == '' ||
-							$scope.trajects[i].destination == ''|| $scope.trajects[i].origin == '' ||
-							$scope.trajects[i].price == '' || $scope.trajects[i].transport == ''){
-						swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
-						return 0;
-					}
-				}
-				
-				
-				
+//			if ($scope.project == null || $scope.agency.model == null || $scope.division.model == null || $scope.date == null || $scope.project == "") {
+//				
+//				
+//				
+//				swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
+//				//alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
+//			
+//			} else if(!$scope.collabFirstName){
+//				swal("Error", "Los datos de usuario son incorrectos.", "error");
+//			}
+//			else {
+//				
+//				for(var i = 0; i < $scope.trajects.length; i++){
+//					if($scope.trajects[i].arrivalHour == null || $scope.trajects[i].company == null ||
+//							$scope.trajects[i].date == null || $scope.trajects[i].departureHour == null ||
+//							$scope.trajects[i].destination == null || $scope.trajects[i].origin == null ||
+//							$scope.trajects[i].price == null || $scope.trajects[i].transport == null ||
+//							$scope.trajects[i].arrivalHour == '' || $scope.trajects[i].company == '' ||
+//							$scope.trajects[i].date == '' || $scope.trajects[i].departureHour == '' ||
+//							$scope.trajects[i].destination == ''|| $scope.trajects[i].origin == '' ||
+//							$scope.trajects[i].price == '' || $scope.trajects[i].transport == ''){
+//						swal("Error", "No se han introudcido datos correctos en los trayectos.", "error");
+//						return 0;
+//					}
+//				}
 				
 				$http.post(urlBase + '/missionSave', {
-					collabFirstName : $scope.collabFirstName,
+					collabFirstName :$scope.collabFirstName,
 					date : $scope.date,
 					project : $scope.project,
 					agency : $scope.agency.model,
 					division : $scope.division.model,
 					status : $scope.status,
-					itineraries : $scope.trajects		
+					itineraries : $scope.trajects,	
+					rents : $scope.rents,
+					accommodations : $scope.accommodations
 				}
 
 				).success(function(data, status, headers) {
@@ -160,12 +154,14 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 					console.log("Might be good to GET " + newColabUri + " and append the task.");
 				});
 				
-			}
+//			}
 
 			
 		};
 
 });
+
+
 
 
 taskManagerModule.controller('collaCtrl', function ($scope, $http){
@@ -178,7 +174,6 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     
     
     $scope.SendData = function (x) {
-        // use $.param jQuery function to serialize data from JSON 
     	
     	if(x.status === "Abierta"){
     		
@@ -188,15 +183,16 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
             	collabFirstName : x.collabFirstName,
     				date : x.date,
     				project : x.project,
-    				agency : x.agency,
+    				agency : x.agency, 
     				division : x.division,
-    				status : "Cerrada"
+    				status : "Cerrada",
+    				createdBy : x.createdBy
              });
     		
     		$http.put('/missions/' + x.id, data)
             .success(function (data, status, headers, config) {
-                //$scope.PostDataResponse = data;
-            	x.status = "Cerrada";
+                //$scope.PostDataResponse = data; 
+            	x.status = "Cerrada"; 
             	$scope.buttonState = "Abrir";
             })
             .error(function (data, status, header, config) {
@@ -216,7 +212,8 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     	 				project : x.project,
     	 				agency : x.agency,
     	 				division : x.division,
-    	 				status : "Abierta"
+    	 				status : "Abierta",
+    	 				createdBy : x.createdBy
     	          });
     	          
     	          
@@ -235,17 +232,13 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
     		
     	}
          
-         
-         
-
-         
      };  
 });
 
 
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-
+	$urlRouterProvider.otherwise("/addcolb");
 
     $stateProvider
         .state('addcolb', {
@@ -256,6 +249,11 @@ taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stat
             url: "/listar",
             templateUrl: "listar",
         }) 
+        .state('listar_close', {
+            url: "/listar_close",
+            templateUrl: "listar_close",
+        }) 
+
 
 }]);
 

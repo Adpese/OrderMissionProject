@@ -93,8 +93,8 @@
 
 			<!-- <p class="text_valider" ng-model="faulty"
 										ng-show="trajects.length">Solo letras</p> -->
-
-				<table class="tripsTable">
+<!-- 				<table class="tripsTable"> -->
+				<table class="tablepos">
 				
 			<thead class="thead-inverse" ng-show="trajects.length">
 				<tr>
@@ -218,7 +218,7 @@
 
 								<div class="input-group">
 									<input name="company" ng-model="traject.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0"/>
 								</div>
 
 							</div>
@@ -251,8 +251,8 @@
 
 
 
-				<table class="vehiculeTable">
-				
+<!-- 				<table class="vehiculeTable"> -->
+				<table class="tablepos">
 				<thead class="thead-inverse" ng-show="rents.length">
 				<tr>
 					<th>Nombre del Conductor</th>
@@ -288,7 +288,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true"
+									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true" ng-change="rent.deliveryDate = null; changecar(rent.pickupDate)"
 										   placeholder="Fecha de recogida" class="form-control trip" type="date" min="{{holaaa}}"/>
 								</div>
 
@@ -326,7 +326,7 @@
 
 								<div class="input-group">
 									<input name="deliveryDate" ng-model="rent.deliveryDate" ng-required="true"
-										placeholder="Fecha de entrega" class="form-control trip" type="date" min="{{holaaa}}"/>
+										placeholder="Fecha de entrega" class="form-control trip" type="date" min="{{UpdateDateCar}}"/>
 								</div>
 
 							</div>
@@ -367,7 +367,7 @@
 
 								<div class="input-group">
 									<input name="company" ng-model="rent.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
@@ -376,7 +376,7 @@
 						<td class="cosauno">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
-									ng-click="removeRent()">-</button>
+									ng-click="removeRent()">x</button>
 							</div>
 						</td>
 
@@ -397,7 +397,8 @@
 
 
 
-				<table class="accommodationTable">
+<!-- 				<table class="accommodationTable"> -->
+			<table class="tablepos">
 				
 				<thead class="thead-inverse" ng-show="accommodations.length">
 				<tr>
@@ -431,7 +432,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true"
+									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true" ng-change="accommodation.departureDate=null; changeacc(accommodation.entryDate)"
 										   placeholder="Fecha de entrada" class="form-control trip" type="date" min="{{holaaa}}"/>
 								</div>
 
@@ -443,7 +444,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<input name="departureDate" ng-model="accommodation.departureDate" ng-required="true"
-										placeholder="Fecha de salida" class="form-control trip" type="date" min="{{holaaa}}"/>
+										placeholder="Fecha de salida" class="form-control trip" type="date" min="{{UpdateDateAcc}}"/>
 								</div>
 							</div>
 						</td>
@@ -453,7 +454,7 @@
 
 								<div class="input-group">
 									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-required="true"
-										placeholder="Número de noches" class="form-control trip" type="number" />
+										placeholder="Número de noches" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
@@ -464,7 +465,7 @@
 
 								<div class="input-group">
 									<input name="company" ng-model="accommodation.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
@@ -473,7 +474,7 @@
 						<td class="cosauno">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
-									ng-click="removeAccommodation()">-</button>
+									ng-click="removeAccommodation()">x</button>
 							</div>
 						</td>
 
@@ -493,13 +494,21 @@
 			<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
-					<div class="col-md-4">
-						<button  ng-disabled="userform.$invalid" type="submit" ng-click="addCollab()"
+					<div class="col-md-4" ng-if="userform.$invalid">
+						<button   type="submit"
 							class="btn btnchck">
 							Enviar <span class="glyphicon glyphicon-send"></span>
 						</button>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="userform.$error.required">Rellena los campos vacíos</p>
+<!-- 						<p class="text_valider" ng-model="faulty" -->
+<!-- 										ng-show="userform.$error.required">Rellena los campos vacíos</p> -->
+					</div>
+					<div class="col-md-4" ng-if="!userform.$invalid">
+						<button   type="submit" ng-click="addCollab()"
+							class="btn btnchck">
+							Enviar <span class="glyphicon glyphicon-send"></span>
+						</button>
+<!-- 						<p class="text_valider" ng-model="faulty" -->
+<!-- 										ng-show="userform.$error.required">Rellena los campos vacíos</p> -->
 					</div>
 				</div>
 
