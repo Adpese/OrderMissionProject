@@ -2,6 +2,7 @@ package com.sopra.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -30,7 +31,7 @@ public class Accommodation {
 	 @Column(name="price")
 	 private long price;
 	 @ManyToOne
-    @JoinColumn(name="id_mission")
+     @JoinColumn(name = "id_mission") 
     private Mission mission;
 	
 	

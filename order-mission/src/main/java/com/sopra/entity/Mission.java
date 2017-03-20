@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -45,22 +47,17 @@ public class Mission {
 	@Column(name="created_By")
 	private String createdBy;
 	
-	
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
+	@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Accommodation> accommodations;
-	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<RentACar> rentACar;
+	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
+	private List<RentACar> rents;
 
-	public List<Accommodation> getAccommodations() {
-		return accommodations;
-	}
-
-	public void setAccommodations(List<Accommodation> accommodations) {
-		this.accommodations = accommodations;
-	}
+	
 
 	public int getId() {
 		return Id;
@@ -133,13 +130,21 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
-	public List<RentACar> getRentACar() {
-		return rentACar;
+	public List<RentACar> getRents() {
+		return rents;
 	}
 
-	public void setRentACar(List<RentACar> rentACar) {
-		this.rentACar = rentACar;
+	public void setRentACar(List<RentACar> rents) {
+		this.rents = rents;
 	}
+	public List<Accommodation> getAccommodations() {
+		return accommodations;
+	}
+	public void setAccommodations(List<Accommodation> accommodations) {
+		this.accommodations = accommodations;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Mission [Id=" + Id + ", collabFirstName=" + collabFirstName + ", date=" + date + ", project=" + project

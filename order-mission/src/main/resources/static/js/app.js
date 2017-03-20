@@ -123,20 +123,29 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 			}
 			else {
 				
-				for(var i = 0; i < $scope.trajects.length; i++){
-					if($scope.trajects[i].arrivalHour == null || $scope.trajects[i].company == null ||
-							$scope.trajects[i].date == null || $scope.trajects[i].departureHour == null ||
-							$scope.trajects[i].destination == null || $scope.trajects[i].origin == null ||
-							$scope.trajects[i].price == null || $scope.trajects[i].transport == null ||
-							$scope.trajects[i].arrivalHour == '' || $scope.trajects[i].company == '' ||
-							$scope.trajects[i].date == '' || $scope.trajects[i].departureHour == '' ||
-							$scope.trajects[i].destination == ''|| $scope.trajects[i].origin == '' ||
-							$scope.trajects[i].price == '' || $scope.trajects[i].transport == ''){
-						swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
-						return 0;
-					}
-				}
+//				for(var i = 0; i < $scope.trajects.length; i++){
+//					if($scope.trajects[i].arrivalHour == null || $scope.trajects[i].company == null ||
+//							$scope.trajects[i].date == null || $scope.trajects[i].departureHour == null ||
+//							$scope.trajects[i].destination == null || $scope.trajects[i].origin == null ||
+//							$scope.trajects[i].price == null || $scope.trajects[i].transport == null ||
+//							$scope.trajects[i].arrivalHour == '' || $scope.trajects[i].company == '' ||
+//							$scope.trajects[i].date == '' || $scope.trajects[i].departureHour == '' ||
+//							$scope.trajects[i].destination == ''|| $scope.trajects[i].origin == '' ||
+//							$scope.trajects[i].price == '' || $scope.trajects[i].transport == ''){
+//						swal("Error", "No se han introducido los campos necesarios para generar una nueva misión", "error");
+//						return 0;
+//					}
+//				}
 				
+				console.log($scope.collabFirstName);
+				console.log($scope.date);
+				console.log($scope.project);
+				console.log($scope.agency.model);
+				console.log($scope.division.model);
+				console.log($scope.status);
+				console.log($scope.trajects);
+				console.log($scope.rents);
+				console.log($scope.accommodations);
 				$http.post(urlBase + '/missionSave', {
 					collabFirstName :$scope.collabFirstName,
 					date : $scope.date,
@@ -145,8 +154,8 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 					division : $scope.division.model,
 					status : $scope.status,
 					itineraries : $scope.trajects,	
-					rents : $scope.rents,
-					accommodations : $scope.accommodations
+					accommodations : $scope.accommodations,
+					rents : $scope.rents
 				}
 
 				).success(function(data, status, headers) {

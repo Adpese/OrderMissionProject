@@ -2,6 +2,7 @@ package com.sopra.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -22,7 +23,7 @@ public class RentACar {
 	 @Column(name="driver_name")
 	 private String driverName;
 	 @Column(name="pickup_date")
-	 private String pickup_Date;
+	 private String pickupDate;
 	 @Column(name="pickup_hour")
 	 private String pickupHour;
 	 @Column(name="pickup_place")
@@ -36,7 +37,7 @@ public class RentACar {
 	 @Column(name="price")
 	 private long price;
 	 @ManyToOne
-     @JoinColumn(name="id_mission")
+	  @JoinColumn(name = "id_mission") 
      private Mission mission;
 
 	 public int getId() {
@@ -52,10 +53,10 @@ public class RentACar {
 			this.driverName = driverName;
 		}
 		public String getPickup_Date() {
-			return pickup_Date;
+			return pickupDate;
 		}
 		public void setPickup_Date(String pickup_Date) {
-			this.pickup_Date = pickup_Date;
+			this.pickupDate = pickup_Date;
 		}
 		public String getPickupHour() {
 			return pickupHour;
@@ -93,15 +94,16 @@ public class RentACar {
 		public void setPrice(long price) {
 			this.price = price;
 		}
-		public Mission getMission() {
-			return mission;
-		}
-		public void setMission(Mission mission) {
-			this.mission = mission;
-		}
+		 public Mission getMission() {
+	            return mission;
+	        }
+
+	        public void setMission(Mission mission) {
+	            this.mission = mission;
+	        }
 		@Override
 		public String toString() {
-			return "RentACar [Id=" + Id + ", driverName=" + driverName + ", pickup_Date=" + pickup_Date
+			return "RentACar [Id=" + Id + ", driverName=" + driverName + ", pickupDate=" + pickupDate
 					+ ", pickupHour=" + pickupHour + ", pickupPlace=" + pickupPlace + ", deliveryDate=" + deliveryDate
 					+ ", deliveryHour=" + deliveryHour + ", deliveryPlace=" + deliveryPlace + ", price=" + price + "]";
 		}

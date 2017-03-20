@@ -55,7 +55,8 @@ public class Itinerary {
         private String price;
 
         @ManyToOne
-        @JoinColumn(name="id_mission")
+       
+        @JoinColumn(name = "id_mission") 
         private Mission mission;
 
         public int getId() {
