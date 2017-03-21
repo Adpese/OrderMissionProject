@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name="rentacar")
@@ -21,20 +22,28 @@ public class Rent {
 	 
 	 @Column(name="driver_name")
 	 private String driverName;
+	 
 	 @Column(name="pickup_date")
-	 private String pickupDate;
+	 private Date pickupDate;
+	 
 	 @Column(name="pickup_hour")
 	 private String pickupHour;
+	 
 	 @Column(name="pickup_place")
 	 private String pickupPlace;
+	 
 	 @Column(name="delivery_date")
-	 private String deliveryDate;
+	 private Date deliveryDate;
+	 
 	 @Column(name="delivery_hour")
 	 private String deliveryHour;
+	 
 	 @Column(name="delivery_place")
 	 private String deliveryPlace;
+	 
 	 @Column(name="price")
 	 private long price;
+	 
 	 @ManyToOne
      @JoinColumn(name="id_mission")
      private Mission mission;
@@ -51,10 +60,10 @@ public class Rent {
 		public void setDriverName(String driverName) {
 			this.driverName = driverName;
 		}
-		public String getPickupDate() {
+		public Date getPickupDate() {
 			return pickupDate;
 		}
-		public void setPickupDate(String pickupDate) {
+		public void setPickupDate(Date pickupDate) {
 			this.pickupDate = pickupDate;
 		}
 		public String getPickupHour() {
@@ -69,10 +78,10 @@ public class Rent {
 		public void setPickupPlace(String pickupPlace) {
 			this.pickupPlace = pickupPlace;
 		}
-		public String getDeliveryDate() {
+		public Date getDeliveryDate() {
 			return deliveryDate;
 		}
-		public void setDeliveryDate(String deliveryDate) {
+		public void setDeliveryDate(Date deliveryDate) {
 			this.deliveryDate = deliveryDate;
 		}
 		public String getDeliveryHour() {

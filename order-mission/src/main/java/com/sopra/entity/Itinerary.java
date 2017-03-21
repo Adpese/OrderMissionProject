@@ -1,6 +1,7 @@
 package com.sopra.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Sebastian on 09/03/2017.
@@ -31,7 +32,7 @@ public class Itinerary {
 
 
         @Column(name="date")
-        private String date;
+        private Date date;
         
         @Column(name="origin")
         private String origin;
@@ -65,11 +66,11 @@ public class Itinerary {
         public void setId(int id) {
             Id = id;
         }
-        public String getDate() {
+        public Date getDate() {
             return date;
         }
 
-        public void setDate(String date) {
+        public void setDate(Date date) {
             this.date = date;
         }
 

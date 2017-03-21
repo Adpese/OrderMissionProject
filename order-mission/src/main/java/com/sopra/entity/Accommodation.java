@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import java.util.Date;
 
 @Entity
 @Table(name="accommodation")
@@ -21,14 +21,19 @@ public class Accommodation {
 	 
 	 @Column(name="hotel_name")
 	 private String hotelName;
+	 
 	 @Column(name="entry_date")
-	 private String entryDate;
+	 private Date entryDate;
+	 
 	 @Column(name="departure_date")
-	 private String departureDate;
+	 private Date departureDate;
+	 
 	 @Column(name="number_of_nights")
 	 private int numberOfNights;
+	 
 	 @Column(name="price")
 	 private long price;
+	 
 	 @ManyToOne
     @JoinColumn(name="id_mission")
     private Mission mission;
@@ -46,16 +51,16 @@ public class Accommodation {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-	public String getEntryDate() {
+	public Date getEntryDate() {
 		return entryDate;
 	}
-	public void setEntryDate(String entryDate) {
+	public void setEntryDate(Date entryDate) {
 		this.entryDate = entryDate;
 	}
-	public String getDepartureDate() {
+	public Date getDepartureDate() {
 		return departureDate;
 	}
-	public void setDepartureDate(String departureDate) {
+	public void setDepartureDate(Date departureDate) {
 		this.departureDate = departureDate;
 	}
 	public int getNumberOfNights() {
