@@ -34,7 +34,7 @@ Latest compiled and minified JavaScript
 </head>
 <body>  -->
 	<div id="navegador"></div>
-
+	<p>Esto es un filtro</p><input ng-model="filtro"/>
 	<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
@@ -45,23 +45,25 @@ Latest compiled and minified JavaScript
 					<th>Status</th>
 					<th>Proyecto</th>
 					<th>Agencia</th>
+					<th>Creador</th>
 				</tr>
 			</thead>
 			
-			<tr ng-repeat="x in colla | orderBy:['status','date']">
+			<tr ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Abierta' } | filter: filtro">
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>
 				<td>{{ x.project }}</td>
 				<td>{{ x.agency }}</td>
-				<td><button style='width:70px; color: red' ng-click="SendData(x)" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px; color: green' ng-click="SendData(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<td>{{ x.createdBy }}</td>
+				<td><button style='width:70px; color: red' ng-click="SendData(x)" confirm="Are you sure?" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px; color: green' ng-click="SendData(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 			</tr>
 
 		</table>
 
 </div>
-
+ 
 
 <!-- 
 </body>

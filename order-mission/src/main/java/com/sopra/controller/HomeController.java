@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
 	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
 	@RequestMapping("/home")
 	public String home() {
 		return "index";
@@ -26,4 +30,5 @@ public class HomeController {
 	public String listar_close() {
 		return "list_close";
 	}
+	
 }

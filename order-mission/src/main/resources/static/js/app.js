@@ -158,7 +158,15 @@ taskManagerModule.controller('orderMisionManagerController', function($scope, $h
 
 			
 		};
-
+		$scope.changecar=function(x){
+			var updateDateCar = x.toLocaleString('en-GB').slice(0,10).split("\/").reverse().join("-");
+			$scope.UpdateDateCar = updateDateCar; 	
+		}
+		
+		$scope.changeacc=function(x){
+			var updateDateAcc = x.toLocaleString('en-GB').slice(0,10).split("\/").reverse().join("-");
+			$scope.UpdateDateAcc = updateDateAcc; 	
+		}
 });
 
 
@@ -238,9 +246,14 @@ taskManagerModule.controller('collaCtrl', function ($scope, $http){
 
 taskManagerModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-	$urlRouterProvider.otherwise("/addcolb");
+	$urlRouterProvider.otherwise("/login");
 
     $stateProvider
+    
+    .state('login', {
+        url: "/login",
+        templateUrl: "login",
+    })
         .state('addcolb', {
             url: "/addcolb",
             templateUrl: "addcolb",

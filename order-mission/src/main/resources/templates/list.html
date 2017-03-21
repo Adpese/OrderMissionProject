@@ -34,15 +34,14 @@ Latest compiled and minified JavaScript
 </head>
 <body>  -->
 	<div id="navegador"></div>
-	<div style='float: right; padding:20px'>
-	<table>
-		<thead class="thead-inverse">
-			<tr>
-				<th></th>
-				<td>Buscar Orden:  </td>
-				<td><input ng-model="filtro"/></td>
-			</tr>
-		</thead>
+	<div class="filter">
+	<table >
+	<thead>
+	<tr>
+	<th class="glyphicon glyphicon-search" style='padding-right:10px'></th>
+	<th><input ng-model="filtro"/></th>
+	</tr>
+	</thead>
 	</table>
 	</div>
 	<div ng-controller="collaCtrl">
