@@ -417,8 +417,8 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-required="true" value="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}"
-										placeholder="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}" class="form-control trip" type="number" min="0" ng-disabled="true"/>
+									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-disabled="true" value="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}"
+										placeholder="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
