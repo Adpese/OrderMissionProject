@@ -28,21 +28,21 @@ public class ServicesImp implements MissionServices {
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
-//		for(Itinerary it : missions.getItineraries()) {
-//			if(it != null){
-//			   it.setMission(missions);
-//			}
-//	   	}
-//		for(RentACar rent : missions.getRentACar()) {
-//			if(rent != null){
-//				rent.setMission(missions);
-//			}
-//	   	}
-//		for(Accommodation acc : missions.getAccommodations()) {
-//			if(acc != null){
-//				acc.setMission(missions);
-//			}
-//	   	}
+		for(Itinerary it : missions.getItineraries()) {
+			if(it != null){
+			   it.setMission(missions);
+			}
+	   	}
+		for(Rent rent : missions.getRents()) {
+			if(rent != null){
+				rent.setMission(missions);
+			}
+	   	}
+		for(Accommodation acc : missions.getAccommodations()) {
+			if(acc != null){
+				acc.setMission(missions);
+			}
+	   	}
 //			String s = Secur32Util.getUserNameEx(Secur32.EXTENDED_NAME_FORMAT.NameDisplay);
 //			System.out.println(s);
 			missions.setCreatedBy(System.getProperty("user.name") 

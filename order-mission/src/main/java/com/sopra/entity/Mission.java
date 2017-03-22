@@ -46,7 +46,7 @@ public class Mission {
 	private String createdBy;
 	
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
+
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)

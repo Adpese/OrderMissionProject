@@ -1,10 +1,10 @@
 var taskManagerModule = angular
-		.module('orderMisionManagerApp', [ 'ui.router' ]);
+		.module('orderMisionManagerApp', [ 'ui.router', "ngStorage" ]);
 
 taskManagerModule
 		.controller(
 				'orderMisionManagerController',
-				function($scope, $http) {
+				function($scope, $http, $sessionStorage) {
 
 					var urlBase = "";
 					$http.defaults.headers.post["Content-Type"] = "application/json";
@@ -19,11 +19,10 @@ taskManagerModule
 
 					$scope.trajects = [];
 					$scope.addNewTraject = function() {
-						$scope.trajects.push({ /*
-												 * 'traject':'traject'+newItem,
-												 * 'Trip': tripObject
-												 */});
+						$scope.trajects.push({ });
 					};
+					
+					 $sessionStorage.SessionMessage = "Hola Session Storage";
 
 					$scope.removeTraject = function() {
 						var lastItem = $scope.trajects.length - 1;
@@ -124,14 +123,16 @@ taskManagerModule
 													"Nueva misión creada",
 													"Se ha generado una nueva misión con los datos introducidos",
 													"success");
-											// alert("Nueva orden añadida");
+											
 											var newColabUri = headers()["location"];
-											console.log("Might be good to GET "
-													+ newColabUri
-													+ " and append the task.");
-										});
-
-						// }
+										
+										}).error(
+												function(data, status, header, config) {
+													swal(
+															"Error",
+															"No ha sido posible realizar la orden, por favor, vuelva a intentarlo",
+															"error");
+												});
 
 					};
 					
