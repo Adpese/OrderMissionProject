@@ -10,11 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="Mission")
@@ -31,8 +30,6 @@ public class Mission {
 	@Column(name="date",nullable=false)
 	private Date date;
 	
-	@Column(name="project",nullable=false)
-	private String project;
 	
 	@Column(name="agency",nullable=false)
 	private String agency;
@@ -46,13 +43,18 @@ public class Mission {
 	private String createdBy;
 	
 	
-
+	@ManyToOne
+	@JoinColumn(name="id_project")
+	private Project project;
+	
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Accommodation> accommodations;
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Rent> rents;
+	
+	
 
 	public List<Accommodation> getAccommodations() {
 		return accommodations;
@@ -94,11 +96,11 @@ public class Mission {
 		this.date = date;
 	}
 
-	public String getProject() {
+	public Project getProject() {
 		return project;
 	}
 
-	public void setProject(String project) {
+	public void setProject(Project project) {
 		this.project = project;
 	}
 

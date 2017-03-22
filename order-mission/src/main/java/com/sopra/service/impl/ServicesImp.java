@@ -1,5 +1,7 @@
 package com.sopra.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sopra.entity.Accommodation;
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
+import com.sopra.entity.Project;
 import com.sopra.entity.Rent;
 import com.sopra.repository.ItineraryRepository;
 import com.sopra.repository.MissionRepository;
@@ -28,6 +31,14 @@ public class ServicesImp implements MissionServices {
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
+		
+	
+	Project proj= missions.getProject();
+	List<Mission> misiones = (List<Mission>) proj.getMission();
+	misiones.add(missions);
+	proj.setMission(misiones);
+			
+	   	
 		for(Itinerary it : missions.getItineraries()) {
 			if(it != null){
 			   it.setMission(missions);
