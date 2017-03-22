@@ -128,7 +128,13 @@ taskManagerModule
 											console.log("Might be good to GET "
 													+ newColabUri
 													+ " and append the task.");
-										});
+										}).error(
+												function(data, status, header, config) {
+													swal(
+															"Error",
+															"No ha sido posible realizar la orden, porfavor, vuelva a intentarlo",
+															"error");
+												});
 
 						// }
 
