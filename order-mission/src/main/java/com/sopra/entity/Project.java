@@ -20,6 +20,8 @@ public class Project {
 	@Column(name="id_project")
 	private int Id;
 	
+	
+
 	@Column(name="name_proj")
 	private String nameProj;
 	
@@ -61,7 +63,12 @@ public class Project {
 	}
 
 	public void setMission(List<Mission> misiones) {
-		this.missions = missions;
+		this.missions = misiones;
 		
+	}
+	@Override
+	public String toString() {
+		return "Project [Id=" + Id + ", nameProj=" + nameProj + ", agency=" + agency + ", division=" + division
+				+ ", missions=" + missions + "]";
 	}
 }

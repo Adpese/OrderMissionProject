@@ -1,5 +1,6 @@
 package com.sopra.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,23 +33,25 @@ public class ServicesImp implements MissionServices {
 	@Override
 	public void saveMissionItinerary(Mission missions) {
 		
-	
+	//	PROYECTO
 	Project proj= missions.getProject();
-	List<Mission> misiones = (List<Mission>) proj.getMission();
+	List<Mission> misiones = new ArrayList<Mission>();
 	misiones.add(missions);
 	proj.setMission(misiones);
-			
-	   	
+	
+//	ITINERARIO
 		for(Itinerary it : missions.getItineraries()) {
 			if(it != null){
 			   it.setMission(missions);
 			}
 	   	}
+//	ALQUILER COCHE
 		for(Rent rent : missions.getRents()) {
 			if(rent != null){
 				rent.setMission(missions);
 			}
 	   	}
+//	ALQUILER ALOJAMIENTO
 		for(Accommodation acc : missions.getAccommodations()) {
 			if(acc != null){
 				acc.setMission(missions);

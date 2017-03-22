@@ -30,13 +30,6 @@ public class Mission {
 	@Column(name="date",nullable=false)
 	private Date date;
 	
-	
-	@Column(name="agency",nullable=false)
-	private String agency;
-	
-	@Column(name="division",nullable=false)
-	private String division;
-
 	@Column(name="status",nullable=false)
 	private String status;
 	@Column(name="created_By")
@@ -104,21 +97,6 @@ public class Mission {
 		this.project = project;
 	}
 
-	public String getAgency() {
-		return agency;
-	}
-
-	public void setAgency(String agency) {
-		this.agency = agency;
-	}
-
-	public String getDivision() {
-		return division;
-	}
-
-	public void setDivision(String division) {
-		this.division = division;
-	}
 
 	public String  getStatus() {
 		return status;
@@ -145,7 +123,7 @@ public class Mission {
 	@Override
 	public String toString() {
 		return "Mission [Id=" + Id + ", collabFirstName=" + collabFirstName + ", date=" + date + ", project=" + project
-				+ ", agency=" + agency + ", division=" + division + ", status=" + status + ", itineraries="
+				 + ", status=" + status + ", itineraries="
 				+ itineraries + "]";
 	}
 	

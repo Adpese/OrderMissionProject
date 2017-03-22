@@ -51,40 +51,48 @@ taskManagerModule
 						$scope.accommodations.splice(lastAccommodation);
 					};
 
-					$scope.agency = {
-						model : null,
-						availableOptions : [ {
-							id : '1',
-							name : 'Valencia'
-						}, {
-							id : '2',
-							name : 'Alicante'
-						}, {
-							id : '3',
-							name : 'Madrid'
-						}, {
-							id : '4',
-							name : 'Tenerife'
-						}, {
-							id : '5',
-							name : 'Barcelona'
-						}, ]
-					};
-
-					$scope.division = {
-						model : null,
-						availableOptions : [ {
-							id : '1',
-							name : 'División A'
-						}, {
-							id : '2',
-							name : 'División B'
-						}, {
-							id : '3',
-							name : 'División C'
-						}, ]
-					};
-
+//					$scope.agency = {
+//						model : null,
+//						availableOptions : [ {
+//							id : '1',
+//							name : 'Valencia'
+//						}, {
+//							id : '2',
+//							name : 'Alicante'
+//						}, {
+//							id : '3',
+//							name : 'Madrid'
+//						}, {
+//							id : '4',
+//							name : 'Tenerife'
+//						}, {
+//							id : '5',
+//							name : 'Barcelona'
+//						}, ]
+//					};
+//
+//					$scope.division = {
+//						model : null,
+//						availableOptions : [ {
+//							id : '1',
+//							name : 'División A'
+//						}, {
+//							id : '2',
+//							name : 'División B'
+//						}, {
+//							id : '3',
+//							name : 'División C'
+//						}, ]
+//					};
+					$http.get('/projects').success(function(data) {
+						
+						$scope.projects = data._embedded.projects;
+						$scope.nameProj = data._embedded.projects[0].nameProj;
+						console.log("NAMEPROJ: "+$scope.nameProj);
+						
+					});
+					
+					
 					$scope.transport = {
 						model : null,
 						availableOptions : [ {
@@ -99,17 +107,43 @@ taskManagerModule
 
 						]
 					};
-
+					var projectData= []
 					// add a new colab
+					
+					$scope.setProject = function(x){
+						console.log(x);	
+						var proj = $scope.projects;
+						console.log(proj);	
+						for(i in proj){
+							console.log(i);	
+							if( proj[i].nameProj == x){
+								var projectData = {
+										nameProj : proj[i].nameProj,
+										agency : proj[i].agency,
+										division : proj[i].division,
+										id : proj[i].id
+									};
+								
+							}
+							
+						}
+						$scope.projectData = projectData;
+						
+					}
+					
 					$scope.addCollab = function addCollab() {
 
+					
+						
+						console.log($scope.projectData);	
 						$http
 								.post(urlBase + '/missionSave', {
+									
 									collabFirstName : $scope.collabFirstName,
 									date : $scope.date,
-									project : $scope.project,
-									agency : $scope.agency.model,
-									division : $scope.division.model,
+									project : $scope.projectData,
+//									agency : $scope.agency.model,
+//									division : $scope.division.model,
 									status : $scope.status,
 									itineraries : $scope.trajects,
 									rents : $scope.rents,
@@ -160,6 +194,7 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 		$scope.colla = data._embedded.missions;
 
 	});
+
 
 	$scope.SendData = function(x) {
 
