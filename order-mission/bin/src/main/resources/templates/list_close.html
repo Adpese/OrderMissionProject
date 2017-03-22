@@ -1,5 +1,14 @@
 	<div id="navegador"></div>
-	<p>Esto es un filtro</p><input ng-model="filtro"/>
+	<div class="filter">
+	<table >
+	<thead>
+	<tr>
+	<th class="glyphicon glyphicon-search" style='padding-right:10px'></th>
+	<th><input ng-model="filtro"/></th>
+	</tr>
+	</thead>
+	</table>
+	</div>
 	<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>

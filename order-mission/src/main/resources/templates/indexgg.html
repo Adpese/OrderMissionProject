@@ -43,7 +43,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-home"></i></span> <input name="project"
-								ng-model="project" placeholder="Proyecto" class="form-control" ng-pattern="patternNombre" ng-class="{ error: urlFormProject.project.$error.pattern }"
+								ng-model="project" placeholder="Proyecto" class="form-control" ng-pattern="patternWNumbers" ng-class="{ error: urlFormProject.project.$error.pattern }"
 								type="text" ng-required="true"/>
 						</div>
 					</div>
@@ -204,7 +204,7 @@
 
 								<div class="input-group">
 									<input name="company" ng-model="traject.company" ng-class="{ error: urlFormCompany.company.$error.pattern }"
-										ng-pattern="patternNombre" ng-required="true"
+										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Compañia" class="form-control trip" type="text" />
 								</div>
 
@@ -311,7 +311,7 @@
 
 								<div class="input-group">
 									<input name="pickupPlace" ng-model="rent.pickupPlace" ng-class="{ error: urlFormPick.pickupPlace.$error.pattern }"
-										ng-pattern="patternNombre" ng-required="true"
+										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Lugar de recogida" class="form-control trip" type="text" />
 								</div>
 
@@ -353,7 +353,7 @@
 
 								<div class="input-group">
 									<input name="deliveryPlace" ng-model="rent.deliveryPlace" ng-class="{ error: urlFormDelivery.deliveryPlace.$error.pattern }"
-										ng-pattern="patternNombre" ng-required="true"
+										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Lugar de entrega" class="form-control trip" type="text" />
 								</div>
 
@@ -402,11 +402,11 @@
 				
 				<thead class="thead-inverse" ng-show="accommodations.length">
 				<tr>
-					<th>Nombre del hotel</th>
-					<th>Fecha de entrada</th>
-					<th>Fecha de salida</th>
-					<th>Número de noches</th>
-					<th>Precio</th>
+					<td>Nombre del hotel</td>
+					<td>Fecha de entrada</td>
+					<td>Fecha de salida</td>
+					<td>Número de noches</td>
+					<td>Precio</td>
 				</tr>
 				</thead>
 
@@ -418,7 +418,7 @@
 
 								<div class="input-group">
 									<input name="HotelName" ng-model="accommodation.hotelName" ng-class="{ error: urlFormHotel.HotelName.$error.pattern }"
-										ng-pattern="patternNombre" ng-required="true"
+										ng-pattern="patternWNumbers" ng-required="true"
 										   placeholder="Nombre del hotel" class="form-control trip" type="text" />
 								
 								</div>
@@ -453,8 +453,8 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-required="true"
-										placeholder="Número de noches" class="form-control trip" type="number" min="0" />
+									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-required="true" value="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}"
+										placeholder="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}" class="form-control trip" type="number" min="0" ng-disabled="true"/>
 								</div>
 
 							</div>
@@ -495,12 +495,12 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4" ng-if="userform.$invalid">
-						<button   type="submit"
+						<button   type="submit" ng-disabled="userform.$error.pattern"
 							class="btn btnchck">
 							Enviar <span class="glyphicon glyphicon-send"></span>
 						</button>
-<!-- 						<p class="text_valider" ng-model="faulty" -->
-<!-- 										ng-show="userform.$error.required">Rellena los campos vacíos</p> -->
+						<p class="text_valider" ng-model="faulty"
+										ng-show="userform.$error.pattern">*Revisa los errores!</p>
 					</div>
 					<div class="col-md-4" ng-if="!userform.$invalid">
 						<button   type="submit" ng-click="addCollab()"
