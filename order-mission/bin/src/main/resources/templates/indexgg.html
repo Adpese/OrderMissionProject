@@ -93,8 +93,8 @@
 
 			<!-- <p class="text_valider" ng-model="faulty"
 										ng-show="trajects.length">Solo letras</p> -->
-
-				<table class="tripsTable">
+<!-- 				<table class="tripsTable"> -->
+				<table class="tablepos">
 				
 			<thead class="thead-inverse" ng-show="trajects.length">
 				<tr>
@@ -111,18 +111,18 @@
 
 					<tr ng-repeat="traject in trajects">
 						<!-- Text input-->
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group" >
 
 								<div class="input-group">
 									<input name="dateTraject" ng-model="traject.date"  ng-required="true"
-										   placeholder="Fecha" class="form-control trip" type="date" min="{{holaaa}}" />
+										   placeholder="Fecha" class="form-control trip" type="date" min="{{minDate}}" />
 								
 								</div>
 
 							</div>
 						</td>
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormOrigin">
 							<div class="form-group">
 
@@ -141,7 +141,7 @@
 						</td>
 
 						
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormDestine">
 							<div class="form-group">
 								<div class="input-group">
@@ -155,7 +155,7 @@
 										ng-show="urlFormDestine.destiny.$error.pattern">Solo letras</p>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
@@ -166,7 +166,7 @@
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
@@ -177,7 +177,7 @@
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 
@@ -198,7 +198,7 @@
 
 
 
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormCompany">
 							<div class="form-group">
 
@@ -213,18 +213,18 @@
 							<p class="text_valider" ng-model="faulty"
 										ng-show="urlFormCompany.company.$error.pattern">Solo letras</p>
 						</td>
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
 									<input name="company" ng-model="traject.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0"/>
 								</div>
 
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
 									ng-click="removeTraject()">x</button>
@@ -251,8 +251,8 @@
 
 
 
-				<table class="vehiculeTable">
-				
+<!-- 				<table class="vehiculeTable"> -->
+				<table class="tablepos">
 				<thead class="thead-inverse" ng-show="rents.length">
 				<tr>
 					<th>Nombre del Conductor</th>
@@ -268,7 +268,7 @@
 
 					<tr ng-repeat="rent in rents">
 						<!-- Text input-->
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormDriver">
 							<div class="form-group" >
 
@@ -284,19 +284,19 @@
 						<p class="text_valider" ng-model="faulty"
 										ng-show="urlFormDriver.driverName.$error.pattern">Solo letras</p>
 						</td>
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true"
-										   placeholder="Fecha de recogida" class="form-control trip" type="date" min="{{holaaa}}"/>
+									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true" ng-change="rent.deliveryDate = null; changeCar(rent.pickupDate)"
+										   placeholder="Fecha de recogida" class="form-control trip" type="date" min="{{minDate}}"/>
 								</div>
 
 							</div>
 						</td>
 
 						
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 								<div class="input-group">
 									<input name="pickupHour" ng-model="rent.pickupHour" ng-required="true"
@@ -305,7 +305,7 @@
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormPick">
 							<div class="form-group">
 
@@ -321,18 +321,18 @@
 										ng-show="urlFormPick.pickupPlace.$error.pattern">Solo letras</p>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
 									<input name="deliveryDate" ng-model="rent.deliveryDate" ng-required="true"
-										placeholder="Fecha de entrega" class="form-control trip" type="date" min="{{holaaa}}"/>
+										placeholder="Fecha de entrega" class="form-control trip" type="date" min="{{updateDateCar}}"/>
 								</div>
 
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 
@@ -347,7 +347,7 @@
 
 
 
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormDelivery">
 							<div class="form-group">
 
@@ -362,21 +362,21 @@
 						<p class="text_valider" ng-model="faulty"
 										ng-show="urlFormDelivery.deliveryPlace.$error.pattern">Solo letras</p>
 						</td>
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
 									<input name="company" ng-model="rent.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
-									ng-click="removeRent()">-</button>
+									ng-click="removeRent()">x</button>
 							</div>
 						</td>
 
@@ -397,7 +397,8 @@
 
 
 
-				<table class="accommodationTable">
+<!-- 				<table class="accommodationTable"> -->
+			<table class="tablepos">
 				
 				<thead class="thead-inverse" ng-show="accommodations.length">
 				<tr>
@@ -411,7 +412,7 @@
 
 					<tr ng-repeat="accommodation in accommodations">
 						<!-- Text input-->
-						<td class="cosauno">
+						<td class="tableInfo">
 						<ng-form name="urlFormHotel">
 							<div class="form-group" >
 
@@ -427,53 +428,53 @@
 						<p class="text_valider" ng-model="faulty"
 										ng-show="urlFormHotel.HotelName.$error.pattern">Solo letras</p>
 						</td>
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true"
-										   placeholder="Fecha de entrada" class="form-control trip" type="date" min="{{holaaa}}"/>
+									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true" ng-change="accommodation.departureDate=null; changeAcc(accommodation.entryDate)"
+										   placeholder="Fecha de entrada" class="form-control trip" type="date" min="{{minDate}}"/>
 								</div>
 
 							</div>
 						</td>
 
 						
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 								<div class="input-group">
 									<input name="departureDate" ng-model="accommodation.departureDate" ng-required="true"
-										placeholder="Fecha de salida" class="form-control trip" type="date" min="{{holaaa}}"/>
+										placeholder="Fecha de salida" class="form-control trip" type="date" min="{{updateDateAcc}}"/>
 								</div>
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
 									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-required="true"
-										placeholder="Número de noches" class="form-control trip" type="number" />
+										placeholder="Número de noches" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 
 								<div class="input-group">
 									<input name="company" ng-model="accommodation.price" ng-required="true"
-										   placeholder="Precio" class="form-control trip" type="number" />
+										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
 						</td>
 
-						<td class="cosauno">
+						<td class="tableInfo">
 							<div class="form-group">
 								<button class="remove btn btn-danger" ng-show="$last"
-									ng-click="removeAccommodation()">-</button>
+									ng-click="removeAccommodation()">x</button>
 							</div>
 						</td>
 
@@ -493,13 +494,21 @@
 			<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
-					<div class="col-md-4">
-						<button  ng-disabled="userform.$invalid" type="submit" ng-click="addCollab()"
+					<div class="col-md-4" ng-if="userform.$invalid">
+						<button   type="submit"
 							class="btn btnchck">
 							Enviar <span class="glyphicon glyphicon-send"></span>
 						</button>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="userform.$error.required">Rellena los campos vacíos</p>
+<!-- 						<p class="text_valider" ng-model="faulty" -->
+<!-- 										ng-show="userform.$error.required">Rellena los campos vacíos</p> -->
+					</div>
+					<div class="col-md-4" ng-if="!userform.$invalid">
+						<button   type="submit" ng-click="addCollab()"
+							class="btn btnchck">
+							Enviar <span class="glyphicon glyphicon-send"></span>
+						</button>
+<!-- 						<p class="text_valider" ng-model="faulty" -->
+<!-- 										ng-show="userform.$error.required">Rellena los campos vacíos</p> -->
 					</div>
 				</div>
 

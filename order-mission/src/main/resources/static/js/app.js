@@ -10,7 +10,8 @@ taskManagerModule
 					$http.defaults.headers.post["Content-Type"] = "application/json";
 					$scope.status = "Abierta";
 					$scope.date = new Date();
-					$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú][\s]*)+$/;
+					$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
+					$scope.patternWNumbers = /^([a-zA-ZÁÉÍÓÚñáéíóú0-9&-][\s]*)+$/;
 
 					var todayDate = (new Date()).toLocaleString('en-GB').slice(
 							0, 10).split("\/").reverse().join("-");

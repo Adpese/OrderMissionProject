@@ -43,7 +43,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	padding-top: 35px;
 }
 
-.cosauno{
+.tableInfo{
 	vertical-align: text-top;
 }
 
@@ -352,4 +352,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	color: #ffffff;
 	background-color: #faaa0a;
 	border-color: #f07d00
+}
+/* -------------------------------ESTILO TABLAS-------------------------------- */
+.tablepos{
+	
+	margin-left: 200px;
+}
+
+/* -------------------------------ESTILO FILTRO-------------------------------- */
+
+.filter{
+	
+	float: right;
+	padding-right: 100px;
 }

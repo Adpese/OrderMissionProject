@@ -1,0 +1,49 @@
+<meta charset="UTF-8" />
+<div id="navegador"></div>
+<div class="container"  ng-controller="orderMisionManagerController">
+
+		<form class="well form-horizontal" method="post "
+			id="contact_form" name="userform">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Login</legend>
+
+				
+				<div class="form-group">
+					<label class="col-md-4 control-label">Usuario</label>
+					<ng-form name="urlFormName">
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input name="collabFirstName"
+								ng-model="collabFirstName" placeholder="Usuario" ng-pattern="patternNombre" ng-class="{ error: urlFormName.collabFirstName.$error.pattern }"
+								class="form-control" type="text" ng-required="true" />
+						</div>
+					</div>
+					</ng-form>
+						<p class="text_valider" ng-model="faulty"
+										ng-show="urlFormName.collabFirstName.$error.pattern">Solo letras</p>
+				</div>
+
+				<!-- Text input-->
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">Contraseña</label>
+					<ng-form name="urlFormProject">
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-home"></i></span> <input name="project"
+								ng-model="project" placeholder="Contraseña" class="form-control" ng-pattern="patternNombre" ng-class="{ error: urlFormProject.project.$error.pattern }"
+								type="text" ng-required="true"/>
+						</div>
+					</div>
+					</ng-form>
+						<p class="text_valider" ng-model="faulty"
+										ng-show="urlFormProject.project.$error.pattern">Solo letras</p>
+				</div>
+				</fieldset>
+				</form>
+				</div>
+				
