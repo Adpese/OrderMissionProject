@@ -41,9 +41,8 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<select name="repeatSelect" id="repeatSelect" ng-Change="setProject(project)" ng-model="project" class="form-control selectpicker"  ng-required="true">
-						      	<option ng-repeat="project in projects" >{{project.nameProj}}</option>
-						      	<option value="Default" ng-disabled="true" ng-selected="true">Seleccione una división por favor</option>
+								<select name="repeatSelect" id="repeatSelect" ng-model="selectedProject" ng-options="option.nameProj for option in projects" class="form-control selectpicker"  ng-required="true">
+						      	<option value="" ng-disabled="true"  selected="selected">Seleccione un proyecto por favor</option>
 						    </select>
 						</div>
 					</div>

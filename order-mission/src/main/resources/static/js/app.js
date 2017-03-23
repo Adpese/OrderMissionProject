@@ -51,39 +51,6 @@ taskManagerModule
 						$scope.accommodations.splice(lastAccommodation);
 					};
 
-//					$scope.agency = {
-//						model : null,
-//						availableOptions : [ {
-//							id : '1',
-//							name : 'Valencia'
-//						}, {
-//							id : '2',
-//							name : 'Alicante'
-//						}, {
-//							id : '3',
-//							name : 'Madrid'
-//						}, {
-//							id : '4',
-//							name : 'Tenerife'
-//						}, {
-//							id : '5',
-//							name : 'Barcelona'
-//						}, ]
-//					};
-//
-//					$scope.division = {
-//						model : null,
-//						availableOptions : [ {
-//							id : '1',
-//							name : 'División A'
-//						}, {
-//							id : '2',
-//							name : 'División B'
-//						}, {
-//							id : '3',
-//							name : 'División C'
-//						}, ]
-//					};
 					$http.get('/projects').success(function(data) {
 						
 						$scope.projects = data._embedded.projects;
@@ -107,29 +74,7 @@ taskManagerModule
 
 						]
 					};
-					var projectData= []
-					// add a new colab
-					
-					$scope.setProject = function(x){
-						console.log(x);	
-						var proj = $scope.projects;
-						console.log(proj);	
-						for(i in proj){
-							console.log(i);	
-							if( proj[i].nameProj == x){
-								var projectData = {
-										nameProj : proj[i].nameProj,
-										agency : proj[i].agency,
-										division : proj[i].division,
-										id : proj[i].id
-									};
-								
-							}
-							
-						}
-						$scope.projectData = projectData;
-						
-					}
+				
 					
 					$scope.addCollab = function addCollab() {
 
@@ -141,7 +86,7 @@ taskManagerModule
 									
 									collabFirstName : $scope.collabFirstName,
 									date : $scope.date,
-									project : $scope.projectData,
+									project : $scope.selectedProject,
 //									agency : $scope.agency.model,
 //									division : $scope.division.model,
 									status : $scope.status,
