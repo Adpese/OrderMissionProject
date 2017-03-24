@@ -17,4 +17,7 @@ public interface MissionServices {
 	 
 	 
 	 Mission getNombreById(int id);
+	 
+	 
+	 String login(String credentialsJSON);
 }

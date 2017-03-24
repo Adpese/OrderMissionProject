@@ -2,19 +2,26 @@ package com.sopra.doa;
 
 public class Persona {
 	
-	private String nombre;
-	private int telefono;
+	private String name;
+	private String password;
+	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getNombre() {
-		return nombre;
+		return name;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String name) {
+		this.name = name;
 	}
-	public int getTelefono() {
-		return telefono;
+	@Override
+	public String toString() {
+		return "Persona [name=" + name + ", password=" + password + "]";
 	}
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
-	}
+	
 
 }

@@ -1,12 +1,19 @@
 package com.sopra.service.impl;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.ldap.InitialLdapContext;
+import javax.naming.ldap.LdapContext;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.sopra.doa.Persona;
 import com.sopra.entity.Accommodation;
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
@@ -73,5 +80,32 @@ public class ServicesImp implements MissionServices {
 	}
 		
 	
-
+	public String login(String credentialsJSON){
+		
+	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
+	   System.out.println(persona.getNombre());
+	   
+	   
+	   Hashtable<String, String> env = new Hashtable<String, String>();//NOSONAR Hashtable is mandatory for InitialLdapContext initialization
+	   
+	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
+       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
+       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
+       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389/OU=users");
+       env.put(Context.REFERRAL, "follow");
+	   
+       LdapContext ldapContext;
+       try {
+    	   
+           ldapContext = new InitialLdapContext(env, null);
+           
+           System.out.println("Login correcto!!!!");
+           return "redirect:http://localhost:8080/home#/addcolb";
+       } catch (NamingException nex) {
+    	   System.out.println("ERROR " + nex);
+    	   return "redirect:http://localhost:8080/home#/addcolb";
+           
+       }
+	}
 }

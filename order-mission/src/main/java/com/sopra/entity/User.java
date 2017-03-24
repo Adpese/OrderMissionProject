@@ -20,6 +20,9 @@ public class User {
 	private int Id;
 	@Column(name="name") 
 	private String Nombre;
+	
+	private String password;
+	
 	@OneToOne
 	@JoinColumn(name="id_role")
 	private Role rol;
@@ -42,6 +45,13 @@ public class User {
 	}
 	public void setRol(Role rol) {
 		this.rol = rol;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

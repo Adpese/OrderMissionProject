@@ -221,3 +221,17 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 			})
 
 		} ]);
+
+
+taskManagerModule.controller('loginController', function($scope, $http) {
+
+	var urlBase = "";
+	$scope.credentials = function(){	
+		$http.post(urlBase + '/loginLDAP', {
+			
+			name : $scope.userCollab,
+			password : $scope.password
+			
+		});
+	};
+});
