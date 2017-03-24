@@ -1,5 +1,6 @@
 package com.sopra.service.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -19,9 +20,13 @@ import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
 import com.sopra.entity.Project;
 import com.sopra.entity.Rent;
+import com.sopra.entity.Role;
+import com.sopra.entity.User;
 import com.sopra.repository.ItineraryRepository;
 import com.sopra.repository.MissionRepository;
 import com.sopra.repository.RentACarRepository;
+import com.sopra.repository.RoleRepository;
+import com.sopra.repository.UserRepository;
 import com.sopra.service.MissionServices;
 //import com.sun.jna.platform.win32.Secur32Util;
 //import com.sun.jna.platform.win32.Secur32;
@@ -36,6 +41,11 @@ public class ServicesImp implements MissionServices {
 	private ItineraryRepository itineraryReposity;
 	@Resource
 	private RentACarRepository rentACarRepository;
+	@Resource
+	private UserRepository userRepository;
+	@Resource
+	private RoleRepository roleRepository;
+	
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
@@ -99,13 +109,13 @@ public class ServicesImp implements MissionServices {
        try {
     	   
            ldapContext = new InitialLdapContext(env, null);
-           
            System.out.println("Login correcto!!!!");
-           return "redirect:http://localhost:8080/home#/addcolb";
+           User user = userRepository.findUserByName(persona.getNombre());
+           Role role = roleRepository.findOne(user.getId());
+           return role.getRol();
        } catch (NamingException nex) {
     	   System.out.println("ERROR " + nex);
-    	   return "redirect:http://localhost:8080/home#/addcolb";
-           
+           return "Error";
        }
 	}
 }

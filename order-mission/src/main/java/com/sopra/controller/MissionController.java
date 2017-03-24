@@ -44,9 +44,10 @@ public class MissionController {
    }
    
    @RequestMapping(value = "loginLDAP", method = RequestMethod.POST)
-	public void login(@RequestBody String credentialsJSON){
+	public String login(@RequestBody String credentialsJSON){
 	   
-	   missionServices.login(credentialsJSON);
+	   
+	   return missionServices.login(credentialsJSON);
 	
 //	   Persona persona = new Gson().fromJson(s, Persona.class);
 //	   System.out.println(persona.getNombre());

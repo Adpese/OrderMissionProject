@@ -19,14 +19,14 @@ public class User {
 	@Column(name="id_user") 
 	private int Id;
 	@Column(name="name") 
-	private String Nombre;
+	private String name;
 	
-	private String password;
 	
 	@OneToOne
 	@JoinColumn(name="id_role")
 	private Role rol;
 	
+
 
 	public int getId() {
 		return Id;
@@ -34,12 +34,13 @@ public class User {
 	public void setId(int id) {
 		Id = id;
 	}
-	public String getNombre() {
-		return Nombre;
+	public String getName() {
+		return name;
 	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+	public void setName(String name) {
+		name = name;
 	}
+	private String password;
 	public Role getRol() {
 		return rol;
 	}
@@ -53,7 +54,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	@Override
+	public String toString() {
+		return "User [Id=" + Id + ", Name=" + name + ", rol=" + rol + ", password=" + password + "]";
+	}
 	
 
 }
