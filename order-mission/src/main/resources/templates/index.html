@@ -46,15 +46,10 @@
 
 	<div>
 		<ul class="btnav">
-			<li role="presentation"><a ng-click='UpdateIncr(0)'>Login</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
 		</ul>
-
-
-		<ng-include src="'login'" ng-show="UpdateIncrdos() == 0"></ng-include>
-
 
 
 		<ng-include src="'addcolb'" ng-show="UpdateIncrdos() == 1"></ng-include>

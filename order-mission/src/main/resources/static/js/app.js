@@ -10,7 +10,7 @@ taskManagerModule
 					$http.defaults.headers.post["Content-Type"] = "application/json";
 					$scope.status = "Abierta";
 					
-					$scope.prueba=0;
+					$scope.prueba=1;
 					//$scope.pruebados = localStorage.getItem('incre');
 					
 					$scope.date = new Date();
