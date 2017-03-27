@@ -19,7 +19,9 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <link rel="stylesheet" type="text/css" href="./css/css/sweetalert.css" />
-<link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+<link
+	href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+	rel="stylesheet" />
 <link href='./css/style.css' rel="stylesheet" type="text/css" />
 
 
@@ -32,22 +34,43 @@
 <script type="text/javascript" src="./js/app.js"></script>
 <script type="text/javascript" src="./js/sweetalert-dev.js"></script>
 <script type="text/javascript" src="./js/sweetalert.min.js"></script>
-<script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+<script
+	src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
 
 
 </head>
 
-<body>
+<body ng-controller="orderMisionManagerController">
 
-<div>
-<ul class="btnav">
-  <li role="presentation"><a ui-sref="login">Login</a></li>
-  <li role="presentation"><a ui-sref="addcolb">Nueva orden de misión</a></li>
-  <li role="presentation"><a ui-sref="listar">Listado de ordenes abiertas</a></li>
-  <li role="presentation"><a ui-sref="listar_close">Listado de ordenes cerradas</a></li>
-</ul>
-</div>
+	<div>
+		<ul class="btnav">
+			<li role="presentation"><a ng-click='UpdateIncr(0)'>Login</a></li>
+			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
+			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
+			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
+		</ul>
+
+
+		<ng-include src="'login'" ng-show="UpdateIncrdos() == 0"></ng-include>
+
+
+
+		<ng-include src="'addcolb'" ng-show="UpdateIncrdos() == 1"></ng-include>
+
+
+		<div ng-if="UpdateIncrdos() == 2">
+			<ng-include src="'listar'"></ng-include>
+		</div>
+
+
+		<div ng-if="UpdateIncrdos() == 3">
+			<ng-include src="'listar_close'"></ng-include>
+		</div>
+
+
+	</div>
 	<div>
 		<ui-view></ui-view>
 	</div>

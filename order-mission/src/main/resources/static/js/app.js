@@ -9,9 +9,15 @@ taskManagerModule
 					var urlBase = "";
 					$http.defaults.headers.post["Content-Type"] = "application/json";
 					$scope.status = "Abierta";
+					
+					$scope.prueba=0;
+					//$scope.pruebados = localStorage.getItem('incre');
+					
 					$scope.date = new Date();
 					$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
 					$scope.patternWNumbers = /^([a-zA-ZÁÉÍÓÚñáéíóú0-9&-][\s]*)+$/;
+					
+					
 
 					var todayDate = (new Date()).toLocaleString('en-GB').slice(
 							0, 10).split("\/").reverse().join("-");
@@ -55,7 +61,7 @@ taskManagerModule
 						
 						$scope.projects = data._embedded.projects;
 						$scope.nameProj = data._embedded.projects[0].nameProj;
-						console.log("NAMEPROJ: "+$scope.nameProj);
+						//console.log("NAMEPROJ: "+$scope.nameProj);
 						
 					});
 					
@@ -129,6 +135,18 @@ taskManagerModule
 						 x.toLocaleString('en-GB').slice(0,10).split("\/").reverse().join("-");
 						$scope.updateDateAcc = updateDateAcc;
 					}
+					
+					$scope.UpdateIncr = function(x){
+						localStorage.setItem('incre', x);
+					}
+
+					$scope.UpdateIncrdos = function(){
+						
+						var getincre = localStorage.getItem('incre');
+						return getincre;
+						
+					}
+					//console.log($scope.prueba);
 				});
 
 
@@ -202,22 +220,22 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 		function($stateProvider, $urlRouterProvider) {
 
-			$urlRouterProvider.otherwise("/login");
+			//$urlRouterProvider.otherwise("/login");
 
 			$stateProvider
 
 			.state('login', {
 				url : "/login",
-				templateUrl : "login",
+				//templateUrl : "login",
 			}).state('addcolb', {
 				url : "/addcolb",
-				templateUrl : "addcolb",
+				//templateUrl : "addcolb",
 			}).state('listar', {
 				url : "/listar",
-				templateUrl : "listar",
+				//templateUrl : "listar",
 			}).state('listar_close', {
 				url : "/listar_close",
-				templateUrl : "listar_close",
+				//templateUrl : "listar_close",
 			})
 
 		} ]);
