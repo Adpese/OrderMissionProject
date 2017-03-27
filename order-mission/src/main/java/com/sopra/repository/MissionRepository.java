@@ -7,6 +7,5 @@ import com.sopra.entity.Mission;
 public interface MissionRepository  extends CrudRepository<Mission, Integer> {
 	
 	
-	
 
 }

@@ -1,20 +1,32 @@
 package com.sopra.service.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.ldap.InitialLdapContext;
+import javax.naming.ldap.LdapContext;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.sopra.doa.Persona;
 import com.sopra.entity.Accommodation;
 import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
 import com.sopra.entity.Project;
 import com.sopra.entity.Rent;
+import com.sopra.entity.Role;
+import com.sopra.entity.User;
 import com.sopra.repository.ItineraryRepository;
 import com.sopra.repository.MissionRepository;
 import com.sopra.repository.RentACarRepository;
+import com.sopra.repository.RoleRepository;
+import com.sopra.repository.UserRepository;
 import com.sopra.service.MissionServices;
 //import com.sun.jna.platform.win32.Secur32Util;
 //import com.sun.jna.platform.win32.Secur32;
@@ -29,6 +41,11 @@ public class ServicesImp implements MissionServices {
 	private ItineraryRepository itineraryReposity;
 	@Resource
 	private RentACarRepository rentACarRepository;
+	@Resource
+	private UserRepository userRepository;
+	@Resource
+	private RoleRepository roleRepository;
+	
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
@@ -73,5 +90,32 @@ public class ServicesImp implements MissionServices {
 	}
 		
 	
-
+	public String login(String credentialsJSON){
+		
+	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
+	   System.out.println(persona.getNombre());
+	   
+	   
+	   Hashtable<String, String> env = new Hashtable<String, String>();//NOSONAR Hashtable is mandatory for InitialLdapContext initialization
+	   
+	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
+       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
+       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
+       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389/OU=users");
+       env.put(Context.REFERRAL, "follow");
+	   
+       LdapContext ldapContext;
+       try {
+    	   
+           ldapContext = new InitialLdapContext(env, null);
+           System.out.println("Login correcto!!!!");
+           User user = userRepository.findUserByName(persona.getNombre());
+           Role role = roleRepository.findOne(user.getId());
+           return role.getRol();
+       } catch (NamingException nex) {
+    	   System.out.println("ERROR " + nex);
+           return "Error";
+       }
+	}
 }
