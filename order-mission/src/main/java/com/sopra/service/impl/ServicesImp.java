@@ -93,7 +93,7 @@ public class ServicesImp implements MissionServices {
 	public String login(String credentialsJSON){
 		
 	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
-	   System.out.println(persona.getNombre());
+	   System.out.println(persona.getPassword());
 	   
 	   
 	   Hashtable<String, String> env = new Hashtable<String, String>();//NOSONAR Hashtable is mandatory for InitialLdapContext initialization
@@ -111,7 +111,7 @@ public class ServicesImp implements MissionServices {
            ldapContext = new InitialLdapContext(env, null);
            System.out.println("Login correcto!!!!");
            User user = userRepository.findUserByName(persona.getNombre());
-           Role role = roleRepository.findOne(user.getId());
+           Role role = roleRepository.findOne(user.getRol().getId());
            return role.getRol();
        } catch (NamingException nex) {
     	   System.out.println("ERROR " + nex);

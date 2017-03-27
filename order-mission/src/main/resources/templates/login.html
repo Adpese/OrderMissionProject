@@ -17,13 +17,12 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input name="userCollab"
-								ng-model="userCollab" placeholder="Usuario" ng-pattern="patternNombre" ng-class="{ error: urlFormName.collabFirstName.$error.pattern }"
+								ng-model="userCollab" placeholder="Usuario"
 								class="form-control" type="text" ng-required="true" />
 						</div>
 					</div>
 					</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormName.collabFirstName.$error.pattern">Solo letras</p>
+						
 				</div>
 
 				<!-- Text input-->
@@ -35,13 +34,12 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-home"></i></span> <input name="password"
-								ng-model="password" placeholder="Contraseña" class="form-control" ng-pattern="patternNombre" ng-class="{ error: urlFormProject.project.$error.pattern }"
+								ng-model="userPassword" placeholder="Contraseña" class="form-control" 
 								type="password" ng-required="true"/>
 						</div>
 					</div>
 					</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormProject.project.$error.pattern">Solo letras</p>
+						
 				</div>
 				</fieldset>
 				

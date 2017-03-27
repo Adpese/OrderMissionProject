@@ -60,7 +60,7 @@ taskManagerModule
 					$http.get('/projects').success(function(data) {
 						
 						$scope.projects = data._embedded.projects;
-						$scope.nameProj = data._embedded.projects[0].nameProj;
+					//	$scope.nameProj = data._embedded.projects[0].nameProj;
 						//console.log("NAMEPROJ: "+$scope.nameProj);
 						
 					});
@@ -244,11 +244,13 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 taskManagerModule.controller('loginController', function($scope, $http) {
 
 	var urlBase = "";
+	
+	console.log($scope.userPassword);
 	$scope.credentials = function(){	
 		$http.post(urlBase + '/loginLDAP', {
 			
 			name : $scope.userCollab,
-			password : $scope.password
+			password : $scope.userPassword
 			
 		}).success(
 				function(data, status, headers) {
