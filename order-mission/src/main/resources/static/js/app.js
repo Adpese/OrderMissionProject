@@ -1,17 +1,16 @@
 var taskManagerModule = angular
-		.module('orderMisionManagerApp', [ 'ui.router', "ngStorage" ]);
+		.module('orderMisionManagerApp', [ 'ui.router' ]);
 
 taskManagerModule
 		.controller(
 				'orderMisionManagerController',
-				function($scope, $http, $sessionStorage) {
+				function($scope, $http) {
 
 					var urlBase = "";
 					$http.defaults.headers.post["Content-Type"] = "application/json";
 					$scope.status = "Abierta";
 					
-					$scope.prueba=1;
-					//$scope.pruebados = localStorage.getItem('incre');
+					
 					
 					$scope.date = new Date();
 					$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
@@ -28,7 +27,7 @@ taskManagerModule
 						$scope.trajects.push({ });
 					};
 					
-					 $sessionStorage.SessionMessage = "Hola Session Storage";
+					
 
 					$scope.removeTraject = function() {
 						var lastItem = $scope.trajects.length - 1;
@@ -60,8 +59,7 @@ taskManagerModule
 					$http.get('/projects').success(function(data) {
 						
 						$scope.projects = data._embedded.projects;
-					//	$scope.nameProj = data._embedded.projects[0].nameProj;
-						//console.log("NAMEPROJ: "+$scope.nameProj);
+				
 						
 					});
 					
@@ -93,8 +91,6 @@ taskManagerModule
 									collabFirstName : $scope.collabFirstName,
 									date : $scope.date,
 									project : $scope.selectedProject,
-//									agency : $scope.agency.model,
-//									division : $scope.division.model,
 									status : $scope.status,
 									itineraries : $scope.trajects,
 									rents : $scope.rents,
@@ -146,7 +142,7 @@ taskManagerModule
 						return getincre;
 						
 					}
-					//console.log($scope.prueba);
+					
 				});
 
 
@@ -177,7 +173,6 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 
 			$http.put('/missions/' + x.id, data).success(
 					function(data, status, headers, config) {
-						// $scope.PostDataResponse = data;
 						x.status = "Cerrada";
 						$scope.buttonState = "Abrir";
 					}).error(
@@ -245,7 +240,7 @@ taskManagerModule.controller('loginController', function($scope, $http) {
 
 	var urlBase = "";
 	
-	console.log($scope.userPassword);
+
 	$scope.credentials = function(){	
 		$http.post(urlBase + '/loginLDAP', {
 			

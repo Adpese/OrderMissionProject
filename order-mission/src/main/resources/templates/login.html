@@ -48,8 +48,7 @@
 	<div id="navegador"></div>
 	<div class="container" ng-controller="loginController">
 
-		<form class="well form-horizontal" method="post " id="contact_form"
-			name="userform">
+		<form class="well form-horizontal" ng-submit="credentials()">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -89,7 +88,7 @@
 				</div>
 			</fieldset>
 
-			<button type="button" ng-click="credentials()" class="btn btnchck">Login</button>
+			<button type="submit" class="btn btnchck">Login</button>
 
 		</form>
 	</div>
