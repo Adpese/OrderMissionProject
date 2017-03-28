@@ -38,6 +38,7 @@
 	src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 
 
 </head>
@@ -69,6 +70,8 @@
 	<div>
 		<ui-view></ui-view>
 	</div>
+	
+	<button ng-click="logout()">Logout</button>
 
 </body>
 
