@@ -108,8 +108,7 @@ public class ServicesImp implements MissionServices {
        LdapContext ldapContext;
        try {
     	   
-           ldapContext = new InitialLdapContext(env, null);
-           System.out.println("Login correcto!!!!");
+           ldapContext = new InitialLdapContext(env, null);        
            User user = userRepository.findUserByName(persona.getNombre());
            Role role = roleRepository.findOne(user.getRol().getId());
            return role.getRol();

@@ -180,7 +180,6 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 
 			$http.put('/missions/' + x.id, data).success(
 				function(data, status, headers, config) {
-					// $scope.PostDataResponse = data;
 					x.status = "Cerrada";
 					$scope.buttonState = "Abrir";
 				}).error(

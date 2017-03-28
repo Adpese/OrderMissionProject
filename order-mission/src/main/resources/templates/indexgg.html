@@ -122,7 +122,7 @@
 							<div class="form-group">
 
 								<div class="input-group">
-									<input name="initialdate" ng-model="traject.departureHour" ng-required="true"
+									<input name="initialdate" ng-model="traject.departureHour" ng-model-options="{timezone: 'UTC'}" ng-required="true"
 										placeholder="Hora Salida" class="form-control trip" type="time" />
 								</div>
 
