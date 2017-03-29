@@ -244,12 +244,14 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 
 taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $location) {
 	return {
-		login : function(username) {
+		login : function(username, role) {
 			$cookies.username = username;
+			$cookies.role = role;
 			$window.location.href = "http://localhost:8080/home";
 		},
 		logout : function() {
 			$cookieStore.remove("username");
+			$cookieStore.remove("role");
 			$window.location.href = "http://localhost:8080/login";
 		},
 		checkStatus : function() {
@@ -271,6 +273,9 @@ taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $loc
 				}
 			}
 			return false;
+		},
+		getRole : function() {
+			return $cookies.role;
 		}
 	}
 
@@ -291,8 +296,8 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 				console.log(data);
 
 
-				if (data === "Colaborador") {
-					auth.login($scope.userCollab);
+				if (data === "Assistant" || data === "Director" || data === "Jefe" || data === "Colaborador") {
+					auth.login($scope.userCollab, data);
 				} else {
 					swal(
 						"Error",
@@ -314,5 +319,6 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 
 taskManagerModule.run(function($rootScope, auth)
 {
+		console.log(auth.getRole());
 		auth.checkStatus();
 })
