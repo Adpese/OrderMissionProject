@@ -4,9 +4,9 @@ var taskManagerModule = angular
 taskManagerModule
 	.controller(
 		'orderMisionManagerController',
-		function($scope, $http, $sessionStorage, auth) {
-			var user =$sessionStorage.SessionMessage;
-			console.log(user);
+		function($scope, $http, $sessionStorage, auth, $cookies) {
+			$scope.usuario = $cookies.username
+			console.log();
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			$scope.status = "Abierta";
@@ -246,6 +246,7 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $location) {
 	return {
 		login : function(username, role) {
+			
 			$cookies.username = username;
 			$cookies.role = role;
 			$window.location.href = "http://localhost:8080/home";

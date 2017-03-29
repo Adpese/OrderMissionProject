@@ -49,7 +49,9 @@
 			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
-			<li ng-controller="orderMisionManagerController"><button class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button>{{user}}</li>
+			
+			<li style="float:right;padding-right:30" ><button style="width:55;height:45" class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button></li>
+			<li style="font-weight: bold;float:right; padding-right:30" ng-model="scope">¡Hola {{usuario}}!</li>
 		</ul>
 
 
