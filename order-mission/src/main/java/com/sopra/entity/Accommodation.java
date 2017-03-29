@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 @Entity
@@ -76,6 +79,7 @@ public class Accommodation {
 	public void setPrice(long price) {
 		this.price = price;
 	}
+	@JsonIgnore
 	public Mission getMission() {
 		return mission;
 	}

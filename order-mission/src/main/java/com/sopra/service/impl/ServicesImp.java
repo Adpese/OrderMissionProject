@@ -1,6 +1,5 @@
 package com.sopra.service.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -12,6 +11,11 @@ import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.sopra.doa.Persona;
@@ -24,14 +28,14 @@ import com.sopra.entity.Role;
 import com.sopra.entity.User;
 import com.sopra.repository.ItineraryRepository;
 import com.sopra.repository.MissionRepository;
+import com.sopra.repository.ProjectRepository;
 import com.sopra.repository.RentACarRepository;
 import com.sopra.repository.RoleRepository;
 import com.sopra.repository.UserRepository;
 import com.sopra.service.MissionServices;
 //import com.sun.jna.platform.win32.Secur32Util;
 //import com.sun.jna.platform.win32.Secur32;
-
-
+@RestController
 @Service(value = "services")
 public class ServicesImp implements MissionServices {
 	
@@ -45,7 +49,8 @@ public class ServicesImp implements MissionServices {
 	private UserRepository userRepository;
 	@Resource
 	private RoleRepository roleRepository;
-	
+	@Resource
+	private ProjectRepository projectRepository;
 
 	@Override
 	public void saveMissionItinerary(Mission missions) {
@@ -83,6 +88,8 @@ public class ServicesImp implements MissionServices {
 	   }
 	
 	
+	
+	
 	@Override
 	public Mission getNombreById(int id){
 		Mission m = missionRepository.findOne(id);
@@ -117,5 +124,13 @@ public class ServicesImp implements MissionServices {
     	   System.out.println("ERROR " + nex);
            return "Error";
        }
+	}
+	
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.GET, value="/busquedaMission/{id}")
+	public Mission Busqueda (@PathVariable("id") int id)
+	{
+		
+		return missionRepository.findOne(id);
 	}
 }

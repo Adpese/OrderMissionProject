@@ -17,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="itinerary")
 public class Itinerary {
@@ -130,7 +132,7 @@ public class Itinerary {
         public void setPrice(String price) {
             this.price = price;
         }
-
+        @JsonIgnore
         public Mission getMission() {
             return mission;
         }

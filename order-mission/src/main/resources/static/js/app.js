@@ -10,8 +10,14 @@ taskManagerModule
 					$http.defaults.headers.post["Content-Type"] = "application/json";
 					$scope.status = "Abierta";
 					
-					$scope.prueba=1;
-					//$scope.pruebados = localStorage.getItem('incre');
+					//$scope.prueba=1;
+					//localStorage.getItem('incre');
+					//localStorage.setItem('incre', 1);
+					
+					//localStorage.removeItem('incre');
+					
+					
+					
 					
 					$scope.date = new Date();
 					$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
@@ -80,6 +86,8 @@ taskManagerModule
 
 						]
 					};
+					
+					
 				
 					
 					$scope.addCollab = function addCollab() {
@@ -138,6 +146,8 @@ taskManagerModule
 					
 					$scope.UpdateIncr = function(x){
 						localStorage.setItem('incre', x);
+						
+						//sessionStorage
 					}
 
 					$scope.UpdateIncrdos = function(){
@@ -146,18 +156,36 @@ taskManagerModule
 						return getincre;
 						
 					}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					//console.log($scope.prueba);
 				});
 
 
 taskManagerModule.controller('collaCtrl', function($scope, $http) {
+	
+	localStorage.removeItem('showTables');
+	
 
 	$http.get('/missions').success(function(data) {
 
 		$scope.colla = data._embedded.missions;
 
 	});
+	$http.get('/projects').success(function(data) {
 
+	console.log(data);
+
+	});
 
 	$scope.SendData = function(x) {
 
@@ -215,6 +243,36 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 		}
 
 	};
+	
+	
+	$scope.callCOllaBD = function(x){
+		
+		var showTable = localStorage.getItem('showTables');
+		
+		
+		if (showTable != x){
+		localStorage.setItem('showTables', x);
+		
+
+		$http.get('/busquedaMission/'+ x).success(function(data) {
+
+			$scope.collaitin = data.itineraries;
+			$scope.collarents = data.rents;
+			$scope.collaccom= data.accommodations;
+
+		});
+		}else {localStorage.setItem('showTables', -1);}
+		
+	}
+	
+	$scope.callShowTables = function(){
+		
+		var showTable = localStorage.getItem('showTables');
+		return showTable;
+		
+	}
+	
+	
 });
 
 taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
@@ -254,7 +312,7 @@ taskManagerModule.controller('loginController', function($scope, $http) {
 			
 		}).success(
 				function(data, status, headers) {
-					console.log(data);
+					//console.log(data);
 					
 					
 					if(data === "Colaborador") {
