@@ -43,12 +43,13 @@
 </head>
 
 <body ng-controller="orderMisionManagerController">
-	<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
+	<nav >
+	<div >
 		<ul class="btnav">
 			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
+			<li ><button class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button></li>
 		</ul>
 
 
@@ -69,9 +70,9 @@
 	<div>
 		<ui-view></ui-view>
 	</div>
-	</nav>
-	<button ng-click="logout()">Logout</button>
 	
+
+	</nav>
 </body>
 
 

@@ -153,16 +153,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .btnav>ul{
 	list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: auto;
     overflow: hidden;
+    
 
 	
 }
 .btnav>li {
-	position: relative;
+	position: center;
 	display: inline-table;
 	float: left;
 	background-color: #cf022b;
+	cursor: pointer;
+}
+.btnav>button {
+	padding-top: 34px;
+	display: inline-table;
+	color: #ffffff;
+	background-color: #cf022b;
+	border-color: #000000;
+	position: center;
+	width:50px;
+	border-radius:6px;
 }
 
 .btnav>li>a {
@@ -177,7 +189,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .btnav>li>a:focus, .btnav>li>a:hover {
 	text-decoration: none;
-	background-color: #c0c0c0
+	background-color: #f07d00
 }
 
 .btnav>li.disabled>a {
@@ -255,6 +267,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	left: auto
 }
 
+.btnchck {
+	color: #ffffff;
+	background-color: #faaa0a;
+	border-color: #f07d00
+}
+
+.btnlogout {
+	color: #ffffff;
+	background-color: #cf022b;
+	border-color: #000000;
+	position: center;
+	width:50px;
+	border-radius:6px;
+}
 /* -------------------------------ESTILO TEXTO FORMULARIO-------------------------------- */
 
 .form-horizontal .control-label {
@@ -273,15 +299,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	color: #000000;
 }
 
-.btnchck {
-	color: #ffffff;
-	background-color: #faaa0a;
-	border-color: #f07d00
-}
+
 
 .text-over-input{
 	font-family: SoprafontR;
-	text-decoration: underline;
+/* 	text-decoration: underline; */
 	padding-left: 10px;
 	padding-bottom: 5px;
 	font-size:14px;
