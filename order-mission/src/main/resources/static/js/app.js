@@ -314,7 +314,7 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 					"Error al intentar conectarse al servicio, porfavor, vuelva a intentarlo",
 					"error");
 			});
-		;
+		
 	};
 });
 

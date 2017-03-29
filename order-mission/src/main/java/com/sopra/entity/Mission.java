@@ -110,7 +110,7 @@ public class Mission {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@JsonIgnore
+	//@JsonIgnore
 	public List<Itinerary> getItineraries() {
 		return itineraries;
 	}
@@ -118,7 +118,7 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
-	@JsonIgnore
+	//@JsonIgnore
 	public List<Rent> getRents() {
 		return rents;
 	}
