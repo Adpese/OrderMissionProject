@@ -44,12 +44,12 @@
 
 <body ng-controller="orderMisionManagerController">
 	<nav >
-	<div >
+	<div ng-controller="loginController" >
 		<ul class="btnav">
 			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
-			<li ><button class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button></li>
+			<li ><button class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button>{{userCollab}}</li>
 		</ul>
 
 

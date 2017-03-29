@@ -5,7 +5,7 @@ taskManagerModule
 	.controller(
 		'orderMisionManagerController',
 		function($scope, $http, $sessionStorage, auth) {
-
+			console.log($scope.userCollab);
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			$scope.status = "Abierta";
@@ -338,9 +338,6 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 taskManagerModule.run(function($rootScope, auth)
 {
 	console.log("run");
-	
-
-	
 
 		auth.checkStatus();
 
