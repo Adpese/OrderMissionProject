@@ -281,6 +281,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	width:50px;
 	border-radius:6px;
 }
+.play_button {
+    position:relative; 
+    transition: .5s ease;
+    top: 50%;  
+    text-align: rigth;
+} 
 /* -------------------------------ESTILO TEXTO FORMULARIO-------------------------------- */
 
 .form-horizontal .control-label {
