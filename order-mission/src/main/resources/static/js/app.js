@@ -155,9 +155,21 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 	$http.get('/missions').success(function(data) {
 
 		$scope.colla = data._embedded.missions;
+		$scope.project = data._embedded.missions;
+		$scope.colla.push({});
+		var col =$scope.colla
+		
+		var cont =0;
+		for (i=1; i<col.length; i++){
+			$http.get('/missions/'+i+'/project').success(function(data) {
+				$scope.colla[cont].proj = data
+				cont++;
+			});
+			}
 
 	});
 
+	
 
 	$scope.SendData = function(x) {
 
