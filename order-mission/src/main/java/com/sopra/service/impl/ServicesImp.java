@@ -1,5 +1,6 @@
 package com.sopra.service.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -11,10 +12,6 @@ import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.sopra.doa.Persona;
@@ -34,7 +31,7 @@ import com.sopra.service.MissionServices;
 //import com.sun.jna.platform.win32.Secur32Util;
 //import com.sun.jna.platform.win32.Secur32;
 
-@RestController
+
 @Service(value = "services")
 public class ServicesImp implements MissionServices {
 	
@@ -86,8 +83,6 @@ public class ServicesImp implements MissionServices {
 	   }
 	
 	
-	
-	
 	@Override
 	public Mission getNombreById(int id){
 		Mission m = missionRepository.findOne(id);
@@ -112,9 +107,8 @@ public class ServicesImp implements MissionServices {
 	   
        LdapContext ldapContext;
        try {
-    	   	
-           ldapContext = new InitialLdapContext(env, null);
-           System.out.println("Login correcto!!!!");
+    	   
+           ldapContext = new InitialLdapContext(env, null);        
            User user = userRepository.findUserByName(persona.getNombre());
            Role role = roleRepository.findOne(user.getRol().getId());
            return role.getRol();
@@ -123,6 +117,4 @@ public class ServicesImp implements MissionServices {
            return "Error";
        }
 	}
-	
-	
 }

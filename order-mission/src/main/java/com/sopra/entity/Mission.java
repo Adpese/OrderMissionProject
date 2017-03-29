@@ -37,20 +37,18 @@ public class Mission {
 	private String status;
 	@Column(name="created_By")
 	private String createdBy;
-	
-	@JsonManagedReference
+
 	@ManyToOne
 	@JoinColumn(name="id_project")
 	private Project project;
 	
-	@JsonManagedReference
+	
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
-	
-	@JsonManagedReference
+
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Accommodation> accommodations;
-	@JsonManagedReference
+
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Rent> rents;
 	
