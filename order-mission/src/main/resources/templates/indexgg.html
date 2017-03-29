@@ -2,7 +2,7 @@
 
 <div id="navegador"></div>
 
-	<div class="container"  ng-controller="orderMisionManagerController">
+	<div class="contenedor"  ng-controller="orderMisionManagerController">
 
 		<form class="well form-horizontal" method="post "
 			id="contact_form" name="userform">
@@ -30,8 +30,8 @@
 						</div>
 					</div>
 					</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormName.collabFirstName.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormName.collabFirstName.$error.pattern">Formato no válido. Solo letras</p>
 				</div>
 
 
@@ -59,25 +59,25 @@
 <!-- 				<table class="tripsTable"> -->
 				<table class="tablepos">
 				
-			<thead class="thead-inverse" ng-show="trajects.length">
-				<tr>
-					<th>Fecha</th>
-					<th>Origen</th>
-					<th>Destino</th>
-					<th>Hora salida</th>
-					<th>Hora llegada</th>
-					<th>Transporte</th>
-					<th>Compañia</th>
-					<th>Importe</th>
+			<thead  ng-show="trajects.length">
+				<tr >
+					<th class="text-over-input">Fecha</th>
+					<th class="text-over-input" >Origen</th>
+					<th class="text-over-input">Destino</th>
+					<th class="text-over-input">Hora salida</th>
+					<th class="text-over-input">Hora llegada</th>
+					<th class="text-over-input">Transporte</th>
+					<th class="text-over-input">Compañia</th>
+					<th class="text-over-input">Importe</th>
 				</tr>
 			</thead>
 
 					<tr ng-repeat="traject in trajects">
 						<!-- Text input-->
 						<td class="tableInfo">
-							<div class="form-group" >
+							<div class= "input-area-date" >
 
-								<div class="input-group">
+								<div >
 									<input name="dateTraject" ng-model="traject.date"  ng-required="true"
 										   placeholder="Fecha" class="form-control trip" type="date" min="{{minDate}}" />
 								
@@ -87,9 +87,9 @@
 						</td>
 						<td class="tableInfo">
 						<ng-form name="urlFormOrigin">
-							<div class="form-group">
+							<div class= "input-area">
 
-								<div class="input-group">
+								<div>
 									<input name="origin" ng-model="traject.origin" placeholder="Origen" ng-class="{ error: urlFormOrigin.origin.$error.pattern }"
 										ng-pattern="patternNombre" ng-required="true" 
 										class="form-control trip" type="text" /> 
@@ -99,30 +99,30 @@
 							</div>
 							
 						</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormOrigin.origin.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormOrigin.origin.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 
 						
 						<td class="tableInfo">
 						<ng-form name="urlFormDestine">
-							<div class="form-group">
-								<div class="input-group">
+							<div class="input-area">
+								<div>
 									
 									<input name="destiny" ng-model="traject.destination" class="form-control trip" ng-pattern="patternNombre"
 									placeholder="Destino" ng-required="true" ng-class="{ error: urlFormDestine.destiny.$error.pattern }"/>
 								</div>
 							</div>
 						</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormDestine.destiny.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormDestine.destiny.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
-									<input name="initialdate" ng-model="traject.departureHour" ng-model-options="{timezone: 'UTC'}" ng-required="true"
+								<div>
+									<input name="initialdate" ng-model="traject.departureHour" ng-required="true"
 										placeholder="Hora Salida" class="form-control trip" type="time" />
 								</div>
 
@@ -130,9 +130,9 @@
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
+								<div>
 									<input name="finaldate" ng-model="traject.arrivalHour" ng-required="true"
 										placeholder="Hora llegada" class="form-control trip" type="time" />
 								</div>
@@ -141,17 +141,17 @@
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area">
 
 
-								<div class="input-group">
+								<div>
 									<select placeholder="Medio de Transporte" name="repeatSelect"
 										id="repeatSelect" ng-model="traject.transport"
 										class="form-control selectpicker"  ng-required="true">
 										<option 
 											ng-repeat="option in transport.availableOptions"
 											value="{{option.name}}">{{option.name}}</option>
-										<option value="Default" ng-disabled="true" ng-selected="true">Seleccione un medio de transporte por favor</option>
+										<option value="Default" ng-disabled="true" ng-selected="true">Transporte</option>
 									</select>
 								</div>
 
@@ -163,9 +163,9 @@
 
 						<td class="tableInfo">
 						<ng-form name="urlFormCompany">
-							<div class="form-group">
+							<div class="input-area">
 
-								<div class="input-group">
+								<div>
 									<input name="company" ng-model="traject.company" ng-class="{ error: urlFormCompany.company.$error.pattern }"
 										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Compañia" class="form-control trip" type="text" />
@@ -173,13 +173,13 @@
 
 							</div>
 							</ng-form>
-							<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormCompany.company.$error.pattern">Solo letras</p>
+							<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormCompany.company.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
+								<div>
 									<input name="company" ng-model="traject.price" ng-required="true"
 										   placeholder="Precio" class="form-control trip" type="number" min="0"/>
 								</div>
@@ -218,14 +218,14 @@
 				<table class="tablepos">
 				<thead class="thead-inverse" ng-show="rents.length">
 				<tr>
-					<th>Nombre del Conductor</th>
-					<th>Fecha de recogida</th>
-					<th>Hora de recogida</th>
-					<th>Lugar de recogida</th>
-					<th>Fecha de entrega</th>
-					<th>hora de entrega</th>
-					<th>Lugar de entrega</th>
-					<th>Importe</th>
+					<th class="text-over-input">Nombre conductor</th>
+					<th class="text-over-input">Fecha recogida</th>
+					<th class="text-over-input">Hora recogida</th>
+					<th class="text-over-input">Lugar recogida</th>
+					<th class="text-over-input">Fecha entrega</th>
+					<th class="text-over-input">Hora entrega</th>
+					<th class="text-over-input">Lugar entrega</th>
+					<th class="text-over-input">Importe</th>
 				</tr>
 				</thead>
 
@@ -233,9 +233,9 @@
 						<!-- Text input-->
 						<td class="tableInfo">
 						<ng-form name="urlFormDriver">
-							<div class="form-group" >
+							<div class="input-area" >
 
-								<div class="input-group">
+								<div>
 									<input name="driverName" ng-model="rent.driverName" ng-class="{ error: urlFormDriver.driverName.$error.pattern }"
 										ng-pattern="patternNombre" ng-required="true"
 										   placeholder="Nombre del conductor" class="form-control trip" type="text" />
@@ -244,13 +244,13 @@
 
 							</div>
 							</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormDriver.driverName.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormDriver.driverName.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-date">
 
-								<div class="input-group">
+								<div>
 									<input name="pickupDate" ng-model="rent.pickupDate" ng-required="true" ng-change="rent.deliveryDate = null; changeCar(rent.pickupDate)"
 										   placeholder="Fecha de recogida" class="form-control trip" type="date" min="{{minDate}}"/>
 								</div>
@@ -260,8 +260,8 @@
 
 						
 						<td class="tableInfo">
-							<div class="form-group">
-								<div class="input-group">
+							<div class="input-area-time">
+								<div>
 									<input name="pickupHour" ng-model="rent.pickupHour" ng-required="true"
 										placeholder="Hora de recogida" class="form-control trip" type="time" />
 								</div>
@@ -270,9 +270,9 @@
 
 						<td class="tableInfo">
 						<ng-form name="urlFormPick">
-							<div class="form-group">
+							<div class="input-area">
 
-								<div class="input-group">
+								<div>
 									<input name="pickupPlace" ng-model="rent.pickupPlace" ng-class="{ error: urlFormPick.pickupPlace.$error.pattern }"
 										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Lugar de recogida" class="form-control trip" type="text" />
@@ -280,14 +280,14 @@
 
 							</div>
 							</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormPick.pickupPlace.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormPick.pickupPlace.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-date">
 
-								<div class="input-group">
+								<div>
 									<input name="deliveryDate" ng-model="rent.deliveryDate" ng-required="true"
 										placeholder="Fecha de entrega" class="form-control trip" type="date" min="{{updateDateCar}}"/>
 								</div>
@@ -296,10 +296,10 @@
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
 
-								<div class="input-group">
+								<div>
 									<input name="deliveryHour" ng-model="rent.deliveryHour" ng-required="true"
 										placeholder="Hora de entrega" class="form-control trip" type="time" />
 								</div>
@@ -312,9 +312,9 @@
 
 						<td class="tableInfo">
 						<ng-form name="urlFormDelivery">
-							<div class="form-group">
+							<div class="input-area">
 
-								<div class="input-group">
+								<div>
 									<input name="deliveryPlace" ng-model="rent.deliveryPlace" ng-class="{ error: urlFormDelivery.deliveryPlace.$error.pattern }"
 										ng-pattern="patternWNumbers" ng-required="true"
 										placeholder="Lugar de entrega" class="form-control trip" type="text" />
@@ -322,13 +322,13 @@
 
 							</div>
 							</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormDelivery.deliveryPlace.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormDelivery.deliveryPlace.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
+								<div>
 									<input name="company" ng-model="rent.price" ng-required="true"
 										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
@@ -365,11 +365,11 @@
 				
 				<thead class="thead-inverse" ng-show="accommodations.length">
 				<tr>
-					<td>Nombre del hotel</td>
-					<td>Fecha de entrada</td>
-					<td>Fecha de salida</td>
-					<td>Número de noches</td>
-					<td>Precio</td>
+					<td class="text-over-input">Nombre del hotel</td>
+					<td class="text-over-input">Fecha de entrada</td>
+					<td class="text-over-input">Fecha de salida</td>
+					<td class="text-over-input">Nº de noches</td>
+					<td class="text-over-input">Precio</td>
 				</tr>
 				</thead>
 
@@ -377,9 +377,9 @@
 						<!-- Text input-->
 						<td class="tableInfo">
 						<ng-form name="urlFormHotel">
-							<div class="form-group" >
+							<div class="input-area" >
 
-								<div class="input-group">
+								<div>
 									<input name="HotelName" ng-model="accommodation.hotelName" ng-class="{ error: urlFormHotel.HotelName.$error.pattern }"
 										ng-pattern="patternWNumbers" ng-required="true"
 										   placeholder="Nombre del hotel" class="form-control trip" type="text" />
@@ -388,13 +388,13 @@
 
 							</div>
 							</ng-form>
-						<p class="text_valider" ng-model="faulty"
-										ng-show="urlFormHotel.HotelName.$error.pattern">Solo letras</p>
+						<p class="text-wrong" ng-model="faulty"
+										ng-show="urlFormHotel.HotelName.$error.pattern">Formato no válido. Solo letras</p>
 						</td>
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-date">
 
-								<div class="input-group">
+								<div>
 									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true" ng-change="accommodation.departureDate=null; changeAcc(accommodation.entryDate)"
 										   placeholder="Fecha de entrada" class="form-control trip" type="date" min="{{minDate}}"/>
 								</div>
@@ -404,8 +404,8 @@
 
 						
 						<td class="tableInfo">
-							<div class="form-group">
-								<div class="input-group">
+							<div class="input-area-date">
+								<div>
 									<input name="departureDate" ng-model="accommodation.departureDate" ng-required="true"
 										placeholder="Fecha de salida" class="form-control trip" type="date" min="{{updateDateAcc}}"/>
 								</div>
@@ -413,20 +413,20 @@
 						</td>
 
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
+								<div>
 									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-disabled="true" value="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}"
 										placeholder="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}" class="form-control trip" type="number" min="0" />
 								</div>
 
 							</div>
 						</td>
-
+						
 						<td class="tableInfo">
-							<div class="form-group">
+							<div class="input-area-time">
 
-								<div class="input-group">
+								<div>
 									<input name="company" ng-model="accommodation.price" ng-required="true"
 										   placeholder="Precio" class="form-control trip" type="number" min="0" />
 								</div>
@@ -462,7 +462,7 @@
 							class="btn btnchck">
 							Enviar <span class="glyphicon glyphicon-send"></span>
 						</button>
-						<p class="text_valider" ng-model="faulty"
+						<p class="text-wrong" ng-model="faulty"
 										ng-show="userform.$error.pattern">*Revisa los errores!</p>
 					</div>
 					<div class="col-md-4" ng-if="!userform.$invalid">
