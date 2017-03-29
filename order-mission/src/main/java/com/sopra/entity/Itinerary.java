@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Sebastian on 09/03/2017.
  */
-
+ 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

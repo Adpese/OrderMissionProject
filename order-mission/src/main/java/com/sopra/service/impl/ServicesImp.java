@@ -100,30 +100,45 @@ public class ServicesImp implements MissionServices {
 	public String login(String credentialsJSON){
 		
 	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
-	   System.out.println(persona.getPassword());
-	   
-	   
-	   Hashtable<String, String> env = new Hashtable<String, String>();//NOSONAR Hashtable is mandatory for InitialLdapContext initialization
-	   
-	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
-       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
-       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
-       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389/OU=users");
-       env.put(Context.REFERRAL, "follow");
-	   
-       LdapContext ldapContext;
-       try {
+//	   System.out.println(persona.getPassword());
+//	   
+//	   
+//	   Hashtable<String, String> env = new Hashtable<String, String>();
+//	   
+//	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+//       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
+//       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
+//       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
+//       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389/OU=users");
+//       env.put(Context.REFERRAL, "follow");
+//	   
+//       LdapContext ldapContext;
+//       try {
     	   
-           ldapContext = new InitialLdapContext(env, null);
-           System.out.println("Login correcto!!!!");
-           User user = userRepository.findUserByName(persona.getNombre());
-           Role role = roleRepository.findOne(user.getRol().getId());
-           return role.getRol();
-       } catch (NamingException nex) {
-    	   System.out.println("ERROR " + nex);
-           return "Error";
-       }
+//           ldapContext = new InitialLdapContext(env, null);        
+//           User user = userRepository.findUserByName(persona.getNombre());
+//           Role role = roleRepository.findOne(user.getRol().getId());
+//           return role.getRol();
+    	   
+    	   
+    	   
+//    	   
+//       } catch (NamingException nex) {
+//    	   System.out.println("ERROR " + nex);
+//           return "Error";
+//       }
+		
+		 User user = userRepository.findUserByName(persona.getNombre());
+         Role role = roleRepository.findOne(user.getRol().getId());
+         
+         if(role != null)
+        	 return role.getRol();
+         else
+        	 return "Colaborador";
+		
+		
+		
+		
 	}
 	
 	@ResponseBody

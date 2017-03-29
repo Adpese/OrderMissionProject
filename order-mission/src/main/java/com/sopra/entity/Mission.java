@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="Mission")
 public class Mission {
@@ -34,16 +37,18 @@ public class Mission {
 	private String status;
 	@Column(name="created_By")
 	private String createdBy;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name="id_project")
 	private Project project;
 	
+	
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Itinerary> itineraries;
+
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL)
 	private List<Accommodation> accommodations;
+
 	@OneToMany(mappedBy="mission", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Rent> rents;
 	
@@ -88,7 +93,7 @@ public class Mission {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 	public Project getProject() {
 		return project;
 	}
@@ -105,7 +110,7 @@ public class Mission {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
 	public List<Itinerary> getItineraries() {
 		return itineraries;
 	}
@@ -113,6 +118,7 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
+	
 	public List<Rent> getRents() {
 		return rents;
 	}

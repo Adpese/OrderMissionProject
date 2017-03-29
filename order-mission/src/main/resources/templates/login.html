@@ -39,7 +39,7 @@
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
 
-
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 </head>
 
 <body>
@@ -48,8 +48,7 @@
 	<div id="navegador"></div>
 	<div class="container" ng-controller="loginController">
 
-		<form class="well form-horizontal" method="post " id="contact_form"
-			name="userform">
+		<form class="well form-horizontal" method="post" id="contact_form" name="userform" ng-submit="credentials()">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -89,7 +88,7 @@
 				</div>
 			</fieldset>
 
-			<button type="button" ng-click="credentials()" class="btn btnchck">Login</button>
+			<button type="submit" class="btn btnchck">Login</button>
 
 		</form>
 	</div>

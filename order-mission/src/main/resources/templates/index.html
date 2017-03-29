@@ -38,17 +38,20 @@
 	src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 
 </head>
 
 <body ng-controller="orderMisionManagerController">
-
+	<nav >
 	<div>
 		<ul class="btnav">
 			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
 			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
+			
+			<li style="float:right;padding-right:30" ><button style="width:55;height:45" class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button></li>
+			<li style="font-weight: bold;float:right; padding-right:30" ng-model="scope">¡Hola {{usuario}}!</li>
 		</ul>
 
 
@@ -69,7 +72,9 @@
 	<div>
 		<ui-view></ui-view>
 	</div>
+	
 
+	</nav>
 </body>
 
 

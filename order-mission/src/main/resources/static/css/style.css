@@ -1,3 +1,16 @@
+.contenedor{
+	padding-top: 50px;
+	padding-right: 30px;
+	padding-left: 30px;
+	border-radius: 10px
+}
+
+.logo{
+	
+	background-image: url ("./images/logobr.jpg"); 
+	width: 50px;
+	
+}
 .trip {
 	width: 100% !important;
 }
@@ -132,28 +145,41 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	padding-left: 15px;
 	margin-bottom: 0;
 	list-style: none;
-	height: 15px;
+	height: 50px;
+	background-color: #cf022b;
 	
 }
 
 .btnav>ul{
 	list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: auto;
     overflow: hidden;
+    
 
 	
 }
 .btnav>li {
-	position: relative;
+	position: center;
 	display: inline-table;
 	float: left;
-	background-color: #f0f0f0;
+	background-color: #cf022b;
+	cursor: pointer;
+}
+.btnav>button {
+	padding-top: 34px;
+	display: inline-table;
+	color: #ffffff;
+	background-color: #cf022b;
+	border-color: #000000;
+	position: center;
+	width:50px;
+	border-radius:6px;
 }
 
 .btnav>li>a {
  	display:inline-table;
-    color: #f07d00;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -163,7 +189,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .btnav>li>a:focus, .btnav>li>a:hover {
 	text-decoration: none;
-	background-color: #c0c0c0
+	background-color: #f07d00
 }
 
 .btnav>li.disabled>a {
@@ -240,95 +266,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	top: auto;
 	left: auto
 }
-@media ( min-width :768px) {
-	.btnav.nav-justified>li>a {
-		border-bottom: 1px solid #ddd;
-		border-radius: 4px 4px 0 0
-	}
-	.btnav.nav-justified>.active>a, .btnav.nav-justified>.active>a:focus,
-		.btnav.nav-justified>.active>a:hover {
-		border-bottom-color: #fff
-	}
+
+.btnchck {
+	color: #ffffff;
+	background-color: #faaa0a;
+	border-color: #f07d00
 }
 
-.nav-pills>li {
-	float: left
-}
-
-.nav-pills>li>a {
-	border-radius: 4px
-}
-
-.nav-pills>li+li {
-	margin-left: 2px
-}
-
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover
-	{
-	color: #fff;
-	background-color: #337ab7
-}
-
-.nav-stacked>li {
-	float: none
-}
-
-.nav-stacked>li+li {
-	margin-top: 2px;
-	margin-left: 0
-}
-
-.nav-justified {
-	width: 100%
-}
-
-.nav-justified>li {
-	float: none
-}
-
-.nav-justified>li>a {
-	margin-bottom: 5px;
-	text-align: center
-}
-
-.nav-justified>.dropdown .dropdown-menu {
-	top: auto;
-	left: auto
-}
-
-@media ( min-width :768px) {
-	.nav-justified>li {
-		display: table-cell;
-		width: 1%
-	}
-	.nav-justified>li>a {
-		margin-bottom: 0
-	}
-}
-
-.btnav-justified {
-	border-bottom: 0
-}
-
-.btnav-justified>li>a {
-	margin-right: 0;
-	border-radius: 4px
-}
-
-.btnav-justified>.active>a, .btnav-justified>.active>a:focus,
-	.btnav-justified>.active>a:hover {
-	border: 1px solid #ddd
-}
-
-@media ( min-width :768px) {
-	.btnav-justified>li>a {
-		border-bottom: 1px solid #ddd;
-		border-radius: 4px 4px 0 0
-	}
-	.btnav-justified>.active>a, .btnav-justified>.active>a:focus,
-		.btnav-justified>.active>a:hover {
-		border-bottom-color: #fff
-	}
+.btnlogout {
+	color: #ffffff;
+	background-color: #cf022b;
+	border-color: #000000;
+	position: center;
+	width:50px;
+	border-radius:6px;
 }
 /* -------------------------------ESTILO TEXTO FORMULARIO-------------------------------- */
 
@@ -348,10 +299,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	color: #000000;
 }
 
-.btnchck {
-	color: #ffffff;
-	background-color: #faaa0a;
-	border-color: #f07d00
+
+
+.text-over-input{
+	font-family: SoprafontR;
+/* 	text-decoration: underline; */
+	padding-left: 10px;
+	padding-bottom: 5px;
+	font-size:14px;
+	
+}
+
+.text-wrong{
+	color: red;
+	font-family: SoprafontR;
+/* 	text-decoration: underline; */
+	padding-left: 10px;
+	padding-top: 5px;
+	font-size:12px;
+	
 }
 /* -------------------------------ESTILO TABLAS-------------------------------- */
 .tablepos{
@@ -398,4 +364,26 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: inherit !important;
   -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+/* -------------------------------ESTILO CAMPOS FORMULARIO-------------------------------- */
+
+.input-area{
+	
+	padding-left:5px;
+	padding-right: 7px;
+	width: 190px;
+}
+
+.input-area-date{
+	
+	padding-left:5px;
+	padding-right: 7px;
+	width: 160px;
+}
+.input-area-time{
+	
+	padding-left:5px;
+	padding-right: 7px;
+	width: 120px;
 }
