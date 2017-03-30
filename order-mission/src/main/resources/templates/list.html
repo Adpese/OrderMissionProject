@@ -57,7 +57,7 @@ Latest compiled and minified JavaScript
 					<th>Creador</th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: 'Abierta' } | filter: filtro">
+			<tbody ng-model="scope" ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: holaaaa() } | filter: filtro">
 			<tr>
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>

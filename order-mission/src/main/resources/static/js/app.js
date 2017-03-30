@@ -154,9 +154,17 @@ taskManagerModule
 		});
 
 
-taskManagerModule.controller('collaCtrl', function($scope, $http) {
+taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
 	localStorage.removeItem('showTables');
+	
+	
+//	if($cookies.role == "Assistant"){
+//		$scope.statusdos = "ValidadoDirector";
+//		console.log("iieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "+$scope.statusdos);
+//	}
+	
+	
 
 	$http.get('/missions').success(function(data) {
 
@@ -246,6 +254,16 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 		var showTable = localStorage.getItem('showTables');
 		return showTable;
 		
+	}
+	
+	$scope.holaaaa = function(){
+		if($cookies.role == "Assistant"){
+			var showTabledos = "ValidadoDirector";
+			return showTabledos;
+		}else {
+			var showTabledos = "Abierta";
+			return showTabledos;
+		}
 	}
 	
 });
