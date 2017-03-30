@@ -116,10 +116,6 @@ background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 1
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#81817e', GradientType=1 ); */
 }
 
-
-#navegador{
-	padding-top: 35px;
-}
 /* -------------------------------ESTILO TEXTO -------------------------------- */
 
 @font-face {
@@ -141,10 +137,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 /* -------------------------------ESTILO BOTONES NAV -------------------------------- */
 
+#navegador{
+	padding-top: 35px;
+}
+
 .btnav {
-	padding-left: 15px;
-	margin-bottom: 0;
-	list-style: none;
+	
 	height: 50px;
 	background-color: #cf022b;
 	
@@ -272,21 +270,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	background-color: #faaa0a;
 	border-color: #f07d00
 }
+.log-btn {
+   font-weight: bold;
+   font-color: #ffffff;
+   text-align: center;
+   position: fixed;
 
-.btnlogout {
-	color: #ffffff;
-	background-color: #cf022b;
-	border-color: #000000;
-	position: center;
-	width:50px;
-	border-radius:6px;
+   height: 35px;
+    margin-left:80;
+      margin-top:15;
 }
-.play_button {
-    position:relative; 
-    transition: .5s ease;
-    top: 50%;  
-    text-align: rigth;
-} 
+.btnlogout {
+	
+	background-color: transparent;
+	border-radius:6px;
+	border: 2.5px solid;
+	background-image: url(../images/logout_v2.png);
+	width: 35px;
+    height: 35px;
+	border-color: #ffffff;
+    position: fixed;
+    margin-top:6;
+    margin-bottom:10;
+    margin-left:500;
+ }
+ .logosopra{
+ 	background-image: url(../images/logobr.jpg);
+ 	width: 80px;
+    height: 35px;
+ 	
+ }
+ 
 /* -------------------------------ESTILO TEXTO FORMULARIO-------------------------------- */
 
 .form-horizontal .control-label {

@@ -4,13 +4,14 @@ var taskManagerModule = angular
 taskManagerModule
 	.controller(
 		'orderMisionManagerController',
-		function($scope, $http, $sessionStorage, auth) {
-
+		function($scope, $http, $sessionStorage, auth, $cookies) {
+			$scope.usuario = $cookies.username
+			console.log();
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			$scope.status = "Abierta";
 
-			$scope.prueba = 1;
+			//$scope.prueba = 1;
 			//$scope.pruebados = localStorage.getItem('incre');
 
 			$scope.date = new Date();
@@ -155,6 +156,8 @@ taskManagerModule
 
 taskManagerModule.controller('collaCtrl', function($scope, $http) {
 
+	localStorage.removeItem('showTables');
+
 	$http.get('/missions').success(function(data) {
 
 		$scope.colla = data._embedded.missions;
@@ -217,6 +220,34 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 		}
 
 	};
+	
+	$scope.callCOllaBD = function(x){
+		
+		var showTable = localStorage.getItem('showTables');
+		
+		
+		if (showTable != x){
+		localStorage.setItem('showTables', x);
+		
+
+		$http.get('/busquedaMission/'+ x).success(function(data) {
+
+			$scope.collaitin = data.itineraries;
+			$scope.collarents = data.rents;
+			$scope.collaccom= data.accommodations;
+
+		});
+		}else {localStorage.setItem('showTables', -1);}
+		
+	}
+	
+	$scope.callShowTables = function(){
+		
+		var showTable = localStorage.getItem('showTables');
+		return showTable;
+		
+	}
+	
 });
 
 taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
@@ -244,33 +275,25 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 
 taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $location) {
 	return {
-		login : function(username) {
+		login : function(username, role) {
+			
 			$cookies.username = username;
-			console.log($cookies.username);
-//			$location.path("/home");
+			$cookies.role = role;
 			$window.location.href = "http://localhost:8080/home";
 		},
 		logout : function() {
-			console.log($cookies.username);
 			$cookieStore.remove("username");
-			console.log($cookies.username);
-//			$location.path("/login");
+			$cookieStore.remove("role");
 			$window.location.href = "http://localhost:8080/login";
 		},
 		checkStatus : function() {
-			console.log("ckeckStatus");
-			console.log($location.absUrl());
 			var privateRoutes = [ "http://localhost:8080/home"];
-			var publicRoutes = ["http://localhost:8080/login"];
-			
+			var publicRoutes = ["http://localhost:8080/login"];			
 			if (this.in_array($location.absUrl(), privateRoutes) && typeof ($cookies.username) == "undefined") {
-//				$location.path("/login");
-				console.log("asdf");
 				$window.location.href = "http://localhost:8080/login";
 			}
 
 			if (this.in_array($location.absUrl(), publicRoutes) && typeof ($cookies.username) != "undefined") {
-//				$location.path("/home");
 				$window.location.href = "http://localhost:8080/home";
 			}
 		},
@@ -282,6 +305,9 @@ taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $loc
 				}
 			}
 			return false;
+		},
+		getRole : function() {
+			return $cookies.role;
 		}
 	}
 
@@ -302,8 +328,8 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 				console.log(data);
 
 
-				if (data === "Colaborador") {
-					auth.login($scope.userCollab);
+				if (data === "Assistant" || data === "Director" || data === "Jefe" || data === "Colaborador") {
+					auth.login($scope.userCollab, data);
 				} else {
 					swal(
 						"Error",
@@ -315,7 +341,7 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 			function(data, status, header, config) {
 				swal(
 					"Error",
-					"No ha sido posible realizar la orden, por favor, vuelva a intentarlo",
+					"Error al intentar conectarse al servicio, porfavor, vuelva a intentarlo",
 					"error");
 			});
 		;
@@ -325,11 +351,6 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 
 taskManagerModule.run(function($rootScope, auth)
 {
-	console.log("run");
-	
-
-	
-
+		console.log(auth.getRole());
 		auth.checkStatus();
-
 })

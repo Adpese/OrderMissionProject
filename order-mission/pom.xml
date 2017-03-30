@@ -47,6 +47,9 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+      
 
 		<!-- <dependency> <groupId>net.java.dev.jna</groupId> <artifactId>jna-platform</artifactId> 
 			<version>4.0.0</version> </dependency> -->
