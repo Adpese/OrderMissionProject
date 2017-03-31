@@ -130,7 +130,7 @@ public class ServicesImp implements MissionServices {
 		
 		 User user = userRepository.findUserByName(persona.getNombre());
          Role role = roleRepository.findOne(user.getRol().getId());
-         
+         System.out.println(user);
          if(role != null)
         	 return role.getRol();
          else
