@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,14 +124,17 @@ public class ServicesImp implements MissionServices {
 //       }
 		
 		 User user = userRepository.findUserByName(persona.getNombre());
+         if(user == null)
+        	 return "Colaborador";
+
          Role role = roleRepository.findOne(user.getRol().getId());
+         
+
          
          if(role != null)
         	 return role.getRol();
          else
-        	 
         	 return "Colaborador";
-		
 		
 		
 		
@@ -146,6 +147,7 @@ public class ServicesImp implements MissionServices {
 		
 		return missionRepository.findOne(id);
 	}
+
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET, value="/misiones")
 	public List<Mission> Misiones()

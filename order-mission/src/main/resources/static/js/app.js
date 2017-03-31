@@ -160,7 +160,7 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 	
 	
 //	if($cookies.role == "Assistant"){
-//		$scope.statusdos = "ValidadoDirector";d
+//		$scope.statusdos = "ValidadoDirector";
 //		console.log("iieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "+$scope.statusdos);
 //	}
 	
@@ -168,68 +168,76 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
 	$http.get('/misiones').success(function(data) {
 
-		$scope.mission = data;
-		//console.log(data.project.nameProj)
+		$scope.colla = data;
+
 	});
 
 
 	$scope.SendData = function(x) {
+		
+		
+		swal({
+			  title: "Atención!",
+			  text: "Está a punto de validar la orden, ¿Está seguro?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Sí, validar la misión!",
+			  closeOnConfirm: false
+			},
+			function(){
+			  swal("Validada!", "Has validado correctamente la misión", "success");
+			
 
-		if (x.status === "Abierta") {
-
-			console.log(x.id);
-
-			var data = ({
-				id : x.id,
-				collabFirstName : "paco",
-				date : x.date,
-				project : x.project,
-				status : "Cerrada",
-				createdBy : x.createdBy
-			});
-			console.log(data);
-
-			$http.put('/missions/' + x.id, data).success(
-				function(data, status, headers, config) {
-				//	x.status = "Cerrada";
-					$scope.buttonState = "Abrir";
-				}).error(
-				function(data, status, header, config) {
-					$scope.ResponseDetails = "Data: " + data
-						+ "<hr />status: " + status + "<hr />headers: "
-						+ header + "<hr />config: " + config;
-				});
-
-		} else if (x.status === "Cerrada") {
-
-			console.log("Entra Abierrta");
-
-			var data = ({
-				collabFirstName : x.collabFirstName,
-				date : x.date,
-				project : x.project,
-				agency : x.agency,
-				division : x.division,
-				status : "Abierta",
-				createdBy : x.createdBy
-			});
-
-			$http.put('/missions/' + x.id, data).success(
-				function(data, status, headers, config) {
-					x.status = "Abierta";
-					$scope.buttonState = "Cerrar";
-				}).error(
-				function(data, status, header, config) {
-					$scope.ResponseDetails = "Data: " + data
-						+ "<hr />status: " + status + "<hr />headers: "
-						+ header + "<hr />config: " + config;
-				});
-
+			switch(x.status) {
+		    case "Abierta":
+		        if($cookies.role == "Jefe")
+		        	{x.status = "ValidadoJefe";} 
+		        else{ x.status = "ValidadoDirector"}
+		        break;
+		    case "ValidadoJefe":
+		        x.status = "ValidadoDirector";
+		        break;
+		    case "ValidadoDirector":
+		        x.status = "Cerrada";
+		        break;
 		}
+			
+				
+				$http.put('/missions/' + x.id, x).success(
+					function(data, status, headers, config) {
+	//					x.status = "Cerrada";
+	//					$scope.buttonState = "Abrir";
+					}).error(
+					function(data, status, header, config) {
+						$scope.ResponseDetails = "Data: " + data
+							+ "<hr />status: " + status + "<hr />headers: "
+							+ header + "<hr />config: " + config;
+					});
+			
+		
+			});
+//			if (x.status === "Cerrada") {
+//
+//			console.log("Entra Abierrta");
+//			x.status="Abierta";
+//		
+//			$http.put('/missions/' + x.id, x).success(
+//				function(data, status, headers, config) {
+//					
+//					//$scope.buttonState = "Cerrar";
+//				}).error(
+//				function(data, status, header, config) {
+//					$scope.ResponseDetails = "Data: " + data
+//						+ "<hr />status: " + status + "<hr />headers: "
+//						+ header + "<hr />config: " + config;
+//				});
+//
+//		}
 
 	};
 	
-	$scope.callCOllaBD = function(x){
+	$scope.callCOllaBD = function(x){  // Funcion para cargar los datos para la mision x (es el id de la mision en concreto) que pasamos por parametro
 		
 		var showTable = localStorage.getItem('showTables');
 		
@@ -239,7 +247,7 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 		
 
 		$http.get('/busquedaMission/'+ x).success(function(data) {
-			
+
 			$scope.collaitin = data.itineraries;
 			$scope.collarents = data.rents;
 			$scope.collaccom= data.accommodations;
@@ -249,22 +257,60 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 		
 	}
 	
-	$scope.callShowTables = function(){
+	$scope.callShowTables = function(){  // Funcion para cargar la id, que en la lista me permite comprobar qué mision se desplega
 		
 		var showTable = localStorage.getItem('showTables');
 		return showTable;
 		
 	}
 	
-	$scope.holaaaa = function(){
-		if($cookies.role == "Assistant"){
-			var showTabledos = "ValidadoDirector";
-			return showTabledos;
-		}else {
-			var showTabledos = "Abierta";
-			return showTabledos;
-		}
+	$scope.filtStatus = function(){    // Funcion para asignar lo valores del filtro pr status en las listas
+	
+		switch($cookies.role) {
+	    case "Assistant":
+	    	var seeStatus = "ValidadoDirector";
+	    	break;
+	    case "Director":
+	    	var seeStatus = "!Cerrada";
+	        break;
+	    case "Jefe":
+	    	var seeStatus = "!Cerrada";
+	        break;
+	    default:
+	    	var seeStatus = "Abierta";
+	        break;
+	} 
+		return seeStatus;
 	}
+	
+	$scope.showValidate = function(x){    // Funcion para asignar lo valores del filtro pr status en las listas
+		
+		switch(x) {
+	    case "Abierta":
+	    	if($cookies.role == "Jefe" || $cookies.role == "Director"){
+	    		var seeStatusbutton = 1;
+	    		}else{
+	    			var seeStatusbutton = 0;
+	    		}
+	    	break;
+	    case "ValidadoDirector":
+	    	if($cookies.role == "Assistant"){
+	    		var seeStatusbutton = 1;
+	    		}else{
+	    			var seeStatusbutton = 0;
+	    		}
+	        break;
+	    case "ValidadoJefe":
+	    	if($cookies.role == "Director"){
+	    		var seeStatusbutton = 1;
+	    		}else{
+	    			var seeStatusbutton = 0;
+	    		}
+	        break;
+	} 
+		return seeStatusbutton;
+	}
+	
 	
 });
 
@@ -362,7 +408,7 @@ taskManagerModule.controller('loginController', function($scope, $http, auth) {
 					"Error al intentar conectarse al servicio, porfavor, vuelva a intentarlo",
 					"error");
 			});
-		
+		;
 	};
 });
 

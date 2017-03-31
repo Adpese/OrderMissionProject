@@ -1,5 +1,7 @@
 	<div id="navegador"></div>
 	<div class="filter">
+	<br></br>
+	<br></br>
 	<table >
 	<thead>
 	<tr>
@@ -27,10 +29,10 @@
 				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
 				<td>{{ x.collabFirstName }}</td>
 				<td>{{ x.status }}</td>
-				<td>{{ x.proj.nameProj }}</td>
-				<td>{{ x.proj.agency }}</td>
+				<td>{{ x.project.nameProj }}</td>
+				<td>{{ x.project.agency }}</td>
 				<td>{{ x.createdBy }}</td>
-				<td><button style='width:70px; color: red' ng-click="SendData(x)" ng-show="!(x.status=='Cerrada')">Cerrar</button><button style='width:70px; color: green' ng-click="SendData(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<td><button style='width:70px; color: red' ng-click="SendData(x)" ng-show="!(x.status=='Cerrada')">Cerrar</button></td>
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 			</tr>
 
