@@ -148,4 +148,12 @@ public class ServicesImp implements MissionServices {
 		
 		return missionRepository.findOne(id);
 	}
+	
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.GET, value="/misiones")
+	public Iterable<Mission> Misiones ()
+	{
+		
+		return missionRepository.findAll();
+	}
 }
