@@ -1,20 +1,23 @@
 package com.sopra.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Sebastian on 09/03/2017.
  */
-
+ 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="itinerary")
@@ -53,8 +56,9 @@ public class Itinerary {
 
         @Column(name="price")
         private String price;
-        @JsonBackReference
+
         @ManyToOne
+       
         @JoinColumn(name = "id_mission") 
         private Mission mission;
 
@@ -128,7 +132,7 @@ public class Itinerary {
         public void setPrice(String price) {
             this.price = price;
         }
-
+        @JsonIgnore
         public Mission getMission() {
             return mission;
         }

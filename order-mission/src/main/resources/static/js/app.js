@@ -11,7 +11,7 @@ taskManagerModule
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			$scope.status = "Abierta";
 
-			$scope.prueba = 1;
+			//$scope.prueba = 1;
 			//$scope.pruebados = localStorage.getItem('incre');
 
 			$scope.date = new Date();
@@ -154,12 +154,22 @@ taskManagerModule
 		});
 
 
-taskManagerModule.controller('collaCtrl', function($scope, $http) {
+taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
-	$http.get('/missions').success(function(data) {
+	localStorage.removeItem('showTables');
+	
+	
+//	if($cookies.role == "Assistant"){
+//		$scope.statusdos = "ValidadoDirector";d
+//		console.log("iieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "+$scope.statusdos);
+//	}
+	
+	
 
-		$scope.colla = data._embedded.missions;
+	$http.get('/misiones').success(function(data) {
 
+		$scope.mission = data;
+		//console.log(data.project.nameProj)
 	});
 
 
@@ -167,21 +177,21 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 
 		if (x.status === "Abierta") {
 
-			console.log("Entra cerrada");
+			console.log(x.id);
 
 			var data = ({
-				collabFirstName : x.collabFirstName,
+				id : x.id,
+				collabFirstName : "paco",
 				date : x.date,
 				project : x.project,
-				agency : x.agency,
-				division : x.division,
 				status : "Cerrada",
 				createdBy : x.createdBy
 			});
+			console.log(data);
 
 			$http.put('/missions/' + x.id, data).success(
 				function(data, status, headers, config) {
-					x.status = "Cerrada";
+				//	x.status = "Cerrada";
 					$scope.buttonState = "Abrir";
 				}).error(
 				function(data, status, header, config) {
@@ -218,6 +228,44 @@ taskManagerModule.controller('collaCtrl', function($scope, $http) {
 		}
 
 	};
+	
+	$scope.callCOllaBD = function(x){
+		
+		var showTable = localStorage.getItem('showTables');
+		
+		
+		if (showTable != x){
+		localStorage.setItem('showTables', x);
+		
+
+		$http.get('/busquedaMission/'+ x).success(function(data) {
+			
+			$scope.collaitin = data.itineraries;
+			$scope.collarents = data.rents;
+			$scope.collaccom= data.accommodations;
+
+		});
+		}else {localStorage.setItem('showTables', -1);}
+		
+	}
+	
+	$scope.callShowTables = function(){
+		
+		var showTable = localStorage.getItem('showTables');
+		return showTable;
+		
+	}
+	
+	$scope.holaaaa = function(){
+		if($cookies.role == "Assistant"){
+			var showTabledos = "ValidadoDirector";
+			return showTabledos;
+		}else {
+			var showTabledos = "Abierta";
+			return showTabledos;
+		}
+	}
+	
 });
 
 taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
