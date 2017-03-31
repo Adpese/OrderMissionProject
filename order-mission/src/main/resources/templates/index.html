@@ -43,18 +43,16 @@
 </head>
 
 <body ng-controller="orderMisionManagerController">
-	<nav >
-	<div>
-		<ul class="btnav">
-			<li role="presentation"><a ng-click="UpdateIncr(1)">Nueva orden de misión</a></li>
-			<li role="presentation"><a ng-click="UpdateIncr(2)">Listado de ordenes abiertas</a></li>
-			<li role="presentation"><a ng-click="UpdateIncr(3)">Listado de ordenes cerradas</a></li>
-			
-			<li style="float:right;padding-right:30" ><button style="width:55;height:45" class="glyphicon glyphicon-log-out btnlogout" ng-click="logout()"></button></li>
-			<li style="font-weight: bold;float:right; padding-right:30" ng-model="scope">¡Hola {{usuario}}!</li>
-		</ul>
 
 
+	<div class="topnav">
+	  <a class = "logo" style="cursor:default"> </a>
+	  <a ng-click="UpdateIncr(1)"  >Nueva orden de misión</a>
+	  <a ng-click="UpdateIncr(2)" >Ordenes abiertas</a>
+	  <a ng-click="UpdateIncr(3)" >Ordenes cerradas</a>
+	  <div class="log-btn"  ng-model="scope">Usuario: {{usuario}}</div>
+	  <button class="btnlogout" ng-click="logout()"></button>
+	</div>
 		<ng-include src="'addcolb'" ng-show="UpdateIncrdos() == 1"></ng-include>
 
 
@@ -68,13 +66,13 @@
 		</div>
 
 
-	</div>
-	<div>
+
+	<div class="contenedor">
 		<ui-view></ui-view>
 	</div>
 	
 
-	</nav>
+
 </body>
 
 
