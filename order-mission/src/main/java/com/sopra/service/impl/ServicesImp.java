@@ -1,15 +1,12 @@
 package com.sopra.service.impl;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.naming.Context;
-import javax.naming.NamingException;
-import javax.naming.ldap.InitialLdapContext;
-import javax.naming.ldap.LdapContext;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -156,4 +153,15 @@ public class ServicesImp implements MissionServices {
 		
 		return (List<Mission>) missionRepository.findAll();
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.GET, value="/jefe/{userName}")
+	public List<Mission> Misiones(@PathVariable("userName") String uName)
+	{
+		
+		return missionRepository.find(uName);
+	}
+	
+	
 }
