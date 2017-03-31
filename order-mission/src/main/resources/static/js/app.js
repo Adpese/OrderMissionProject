@@ -174,36 +174,49 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
 
 	$scope.SendData = function(x) {
+		
+		
+		swal({
+			  title: "Atención!",
+			  text: "Está a punto de validar la orden, ¿Está seguro?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Sí, validar la misión!",
+			  closeOnConfirm: false
+			},
+			function(){
+			  swal("Validada!", "Has validado correctamente la misión", "success");
+			
 
-		
-		switch(x.status) {
-	    case "Abierta":
-	        if($cookies.role == "Jefe")
-	        	{x.status = "ValidadoJefe";} 
-	        else{ x.status = "ValidadoDirector"}
-	        break;
-	    case "ValidadoJefe":
-	        x.status = "ValidadoDirector";
-	        break;
-	    case "ValidadoDirector":
-	        x.status = "Cerrada";
-	        break;
-	}
-		
+			switch(x.status) {
+		    case "Abierta":
+		        if($cookies.role == "Jefe")
+		        	{x.status = "ValidadoJefe";} 
+		        else{ x.status = "ValidadoDirector"}
+		        break;
+		    case "ValidadoJefe":
+		        x.status = "ValidadoDirector";
+		        break;
+		    case "ValidadoDirector":
+		        x.status = "Cerrada";
+		        break;
+		}
 			
-			$http.put('/missions/' + x.id, x).success(
-				function(data, status, headers, config) {
-//					x.status = "Cerrada";
-//					$scope.buttonState = "Abrir";
-				}).error(
-				function(data, status, header, config) {
-					$scope.ResponseDetails = "Data: " + data
-						+ "<hr />status: " + status + "<hr />headers: "
-						+ header + "<hr />config: " + config;
-				});
+				
+				$http.put('/missions/' + x.id, x).success(
+					function(data, status, headers, config) {
+	//					x.status = "Cerrada";
+	//					$scope.buttonState = "Abrir";
+					}).error(
+					function(data, status, header, config) {
+						$scope.ResponseDetails = "Data: " + data
+							+ "<hr />status: " + status + "<hr />headers: "
+							+ header + "<hr />config: " + config;
+					});
 			
 		
-			
+			});
 //			if (x.status === "Cerrada") {
 //
 //			console.log("Entra Abierrta");
