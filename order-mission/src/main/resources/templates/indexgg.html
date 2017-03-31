@@ -9,16 +9,12 @@
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Formulario orden de misión</legend>
-
-
-				<div>
-					<p>{{user}}</p>
-					<p ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p>
-				</div>
+				<legend class="main-legend">Formulario orden de misión</legend>
+<!-- 					<p class="date-legend" ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p> -->
 
 				<!-- Text input-->
-				
+				<legend class="legend" ><h5>Datos del colaborador</h5></legend>
+				<br></br>
 				<div class="form-group">
 					<label class="col-md-4 control-label">Nombre y apellidos</label>
 					<ng-form name="urlFormName">
@@ -50,7 +46,7 @@
 				</div>
 				
 				
-				<label >Información de trayecto</label>
+				<legend  class="legend" ><h5>Itinerario</h5></legend>
 				<br></br>
 
 			<div class="tripsContainer">
@@ -201,14 +197,13 @@
 
 
 				<button type="button" ng-click="addNewTraject()"
-					class="btn btnchck">Añadir trayecto</button>
+					class="btn btnform">Añadir trayecto</button>
 
 			</div>
 			
 			
 			
-			
-					<label >Información de alquiler de vehículo</label>
+			<legend  class="legend" ><h5>Alquiler de coche</h5></legend>
 				<br></br>
 
 			<div class="tripsContainer">
@@ -350,11 +345,10 @@
 
 
 				<button type="button" ng-click="addNewRent()"
-					class="btn btnchck">Añadir alquiler</button>
+					class="btn btnform">Añadir alquiler</button>
 					
 				</div>
-					
-				<label >Información de alojamiento</label>
+			<legend  class="legend" ><h5>Alojamiento</h5></legend>
 				<br></br>
 
 			<div class="tripsContainer">
@@ -448,7 +442,7 @@
 
 
 				<button type="button" ng-click="addNewAccommodation()"
-					class="btn btnchck">Añadir alquiler</button>
+					class="btn btnform">Añadir alquiler</button>
 					
 
 			</div>

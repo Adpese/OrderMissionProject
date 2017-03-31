@@ -115,6 +115,40 @@ background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,
 background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(129,129,126,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#81817e', GradientType=1 ); */
 }
+/* -------------------------------ESTILO BOTONES -------------------------------- */
+
+.btn{
+	display: inline-block;
+/* 	padding: 6px 12px; */
+	margin-bottom: 0;
+	font-size: 12px;
+	font-family: SoprafontB;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: #F7A823;
+	border: 1px #f07d00;
+	border-radius: 4px;
+	color:white;
+	margin-top: 5;
+	
+}
+
+.btnform{
+	
+	position: relative;
+	margin-left: 16%;
+	
+}
 
 /* -------------------------------ESTILO TEXTO -------------------------------- */
 
@@ -146,6 +180,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	height: 50px;
 	background-color: #cf022b;
 	
+	
 }
 
 .btnav>ul{
@@ -153,13 +188,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     margin: 0;
     padding: auto;
     overflow: hidden;
+
     
 
 	
 }
 .btnav>li {
-	position: center;
-	display: inline-table;
+	position: relative;
 	float: left;
 	background-color: #cf022b;
 	cursor: pointer;
@@ -176,7 +211,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 .btnav>li>a {
- 	display:inline-table;
+	display: block;
+	
+/*  	display:inline-table; */
     color: #ffffff;
     text-align: center;
     padding: 14px 16px;
@@ -185,9 +222,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
    
 }
 
+
 .btnav>li>a:focus, .btnav>li>a:hover {
 	text-decoration: none;
-	background-color: #f07d00
+	background-color: #f07d00;
 }
 
 .btnav>li.disabled>a {
@@ -274,11 +312,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
    font-weight: bold;
    font-color: #ffffff;
    text-align: center;
-   position: fixed;
-
+   position:absolute;
+   right: 70;
    height: 35px;
-    margin-left:80;
-      margin-top:15;
+   margin-top:10;
+   cursor: default;
 }
 .btnlogout {
 	
@@ -289,17 +327,69 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	width: 35px;
     height: 35px;
 	border-color: #ffffff;
-    position: fixed;
-    margin-top:6;
-    margin-bottom:10;
-    margin-left:500;
+    position:absolute;
+    right: 10;
+    margin-top:5;
+    
  }
- .logosopra{
- 	background-image: url(../images/logobr.jpg);
- 	width: 80px;
+
+.btnlogin{
+	
+	position:relative;
+    top:50%; 
+    left:50%;
+    padding-top:20;
+	
+}
+/* -------------------------------ESTILO BARRA DE NAVEGACION-------------------------------- */ 
+ 
+ .topnav {
+  overflow: hidden;
+  background-color: #cf022b;
+  height:49;
+  width: 100%;
+  position: fixed;
+  top: 0;
+ 
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: SoprafontB;
+   cursor: pointer;
+}
+
+.topnav a:hover {
+  background-color:#f07d00;
+  color: black;
+  
+}
+
+.topnav a.active {
+    background-color: #f07d00;
+
+}
+
+/* .topnav a.default { */
+/*     background-color: #cf022b; */
+/*     color: white; */
+/* } */
+ /* -------------------------------ESTILO LOGO SOPRA-------------------------------- */
+ 
+ .logo {
+ 	background-image: url(../images/logobr.png);
+ 	width: 150px;
     height: 35px;
- 	
- }
+	margin-top:7; 
+
+   
+}
  
 /* -------------------------------ESTILO TEXTO FORMULARIO-------------------------------- */
 
@@ -308,6 +398,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 		margin-bottom: 0;
 		text-align: right;
 		font-family: SoprafontR;
+	}
+.form-group {
+		display: inline;
+		margin-bottom: 0;
+		vertical-align: middle;
 	}
 .form-control {
 
@@ -339,10 +434,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	font-size:12px;
 	
 }
+.main-legend{
+	padding-left:1.5em;
+	border-color: #c0c0c0;
+	
+}
+.legend{
+	
+	padding-left:4em;
+	border-color: #c0c0c0;
+}
+/* -------------------------------ESTILO FECHA-------------------------------- */
+
+.date-legend{
+	font-family: SoprafontR;
+	font-size:12px;
+	position:relative;
+    top:50%; 
+    left:80%;
+    padding-top:20;	
+}
+
+
+
+
 /* -------------------------------ESTILO TABLAS-------------------------------- */
 .tablepos{
 	
-	margin-left: 200px;
+	position:relative;
+	margin-left: 15.6%;
 }
 
 /* -------------------------------ESTILO FILTRO-------------------------------- */
