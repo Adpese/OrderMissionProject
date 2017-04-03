@@ -412,6 +412,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .form-control {
 
 	font-family: SoprafontL;
+	
 }
 .form-horizontal {
 
@@ -419,7 +420,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	color: #000000;
 }
 
-
+.form-search{
+	
+	width:200px;
+}
 
 .text-over-input{
 	font-family: SoprafontR;
