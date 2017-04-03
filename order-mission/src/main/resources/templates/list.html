@@ -77,8 +77,9 @@ Latest compiled and minified JavaScript
                 
     <!--     *************************************************  TABLA ITINERARIO *************************************************************    -->
                 
-                <table class="table table-striped" style='width: 90%; margin: 0 auto'>
+                <table class="table table-striped" style='width: 90%; margin: 0 auto' ng-show="collaitin.length">
                 	<thead class="thead-inverse">
+                	<caption>Itinerario</caption>
 					<tr>
 						<th>Fecha</th>
 						<th>Origen</th>
@@ -95,8 +96,8 @@ Latest compiled and minified JavaScript
 						<td>{{ y.date | date:'dd-MM-yyyy'}}</td>
 						<td>{{ y.origin }}</td>
 						<td>{{ y.destination }}</td>
-						<td>{{ y.departureHour }}</td>
-						<td>{{ y.arrivalHour }}</td>
+						<td>{{ y.departureHour | date: 'HH:mm'}}</td>
+						<td>{{ y.arrivalHour | date: 'HH:mm'}}</td>
 						<td>{{ y.transport }}</td>
 						<td>{{ y.company }}</td>
 						<td>{{ y.price }}</td>
@@ -111,8 +112,9 @@ Latest compiled and minified JavaScript
                 <br></br>
                 <br></br>
                 
-                <table class="table table-striped" style='width: 90%; margin: 0 auto'>
+                <table class="table table-striped" style='width: 90%; margin: 0 auto' ng-show="collarents.length">
                 	<thead class="thead-inverse">
+                	<caption>Alquiler de coches</caption>
 					<tr>
 						<th>Nombre del Conductor</th>
 						<th>Fecha de recogida</th>
@@ -128,10 +130,10 @@ Latest compiled and minified JavaScript
 					<tr ng-repeat="z in collarents">
 						<td>{{ z.driverName}}</td>
 						<td>{{ z.pickupDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{ z.pickupHour }}</td>
+						<td>{{ z.pickupHour | date: 'HH:mm'}}</td>
 						<td>{{ z.pickupPlace }}</td>
 						<td>{{ z.deliveryDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{ z.deliveryHour }}</td>
+						<td>{{ z.deliveryHour | date: 'HH:mm'}}</td>
 						<td>{{ z.deliveryPlace }}</td>
 						<td>{{ z.price }}</td>
 						
@@ -145,8 +147,9 @@ Latest compiled and minified JavaScript
                  <br></br>
                 <br></br>
                 
-                <table class="table table-striped" style='width: 90%; margin: 0 auto'>
+                <table class="table table-striped" style='width: 90%; margin: 0 auto' ng-show="collaccom.length">
                 	<thead class="thead-inverse">
+                	<caption>Alojamiento</caption>
 					<tr>
 						<th>Nombre del Hotel</th>
 						<th>Fecha de entrada</th>

@@ -150,6 +150,24 @@ taskManagerModule
 				return getincre;
 
 			}
+			
+			
+			
+			$scope.diffefechas = function(x, y) {
+
+				var magicNumber = (1000 * 60 * 60 * 24);
+
+				var dayDiff = Math.floor((y - x) / magicNumber);
+				if (angular.isNumber(dayDiff)) {
+					return dayDiff;
+				}
+
+
+			}
+			
+			
+			
+			
 		//console.log($scope.prueba);
 		});
 

@@ -411,8 +411,9 @@
 							<div class="input-area-time">
 
 								<div>
-									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-disabled="true" value="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}"
-										placeholder="{{(accommodation.departureDate | date:'dd') - (accommodation.entryDate | date:'dd')}}" class="form-control trip" type="number" min="0" />
+									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-readonly="readonly" ng-value="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}"
+										placeholder="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}" class="form-control trip"/>
+<!-- 									<p ng-model="accommodation.numberOfNights" ng-value="diffefechas(accommodation.entryDate, accommodation.departureDate)" ng-show="diffefechas(accommodation.entryDate, accommodation.departureDate) > 0">{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}</p> -->
 								</div>
 
 							</div>
