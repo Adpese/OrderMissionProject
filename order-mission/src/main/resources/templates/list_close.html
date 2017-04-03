@@ -7,16 +7,32 @@
 
 			<!-- Form Name -->
 			<legend class="main-legend">Ordenes cerradas</legend>
-	<div class="filter">
-	<table >
-	<thead>
-	<tr>
-	<th class="glyphicon glyphicon-search" style='padding-right:10px'></th>
-	<th><input ng-model="filtro"/></th>
-	</tr>
-	</thead>
-	</table>
-	</div>
+			
+			
+<!-- 	<div class="filter"> -->
+<!-- 	<table > -->
+<!-- 	<thead> -->
+<!-- 	<tr> -->
+<!-- 	<th class="glyphicon glyphicon-search" style='padding-right:10px'></th> -->
+<!-- 	<th><input ng-model="filtro"/></th> -->
+<!-- 	</tr> -->
+<!-- 	</thead> -->
+<!-- 	</table> -->
+<!-- 	</div> -->
+	
+		<div class="form-search">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-search"></i></span> <input name="collabFirstName"
+								ng-model="filtro" placeholder="Buscador"
+								class="form-control" type="text" ng-required="true" />
+						</div>
+					</div>
+	
+	
+	
+	
+	
 	<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
