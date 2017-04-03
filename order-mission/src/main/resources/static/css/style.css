@@ -30,6 +30,7 @@
 
 .input-group{
 	margin-left: 12px;
+	margin-bottom: 7px;
 }
 .tripsTable, .vehiculeTable, .accommodationTable{
 
@@ -128,6 +129,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: middle;
+	horizontal-align: middle;
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
 	cursor: pointer;
@@ -306,7 +308,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .btnchck {
 	color: #ffffff;
 	background-color: #faaa0a;
-	border-color: #f07d00
+	border-color: #f07d00;
+	position: relative;
+	margin: auto;
 }
 .log-btn {
    font-weight: bold;
@@ -408,6 +412,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .form-control {
 
 	font-family: SoprafontL;
+	
 }
 .form-horizontal {
 
@@ -415,7 +420,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	color: #000000;
 }
 
-
+.form-search{
+	
+	width:200px;
+}
 
 .text-over-input{
 	font-family: SoprafontR;
@@ -438,12 +446,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .main-legend{
 	padding-left:1.5em;
 	border-color: #c0c0c0;
+	border-width: 1px 1px 3px 1px;
 	
 }
 .legend{
 	
-	padding-left:4em;
+	padding-left:1.5em;
 	border-color: #c0c0c0;
+	width: 95%;
+	positon:relative;
+	margin: auto;
+	
 }
 /* -------------------------------ESTILO FECHA-------------------------------- */
 
@@ -514,6 +527,7 @@ select:-webkit-autofill:focus {
 	padding-left:5px;
 	padding-right: 7px;
 	width: 190px;
+	margin-bottom: 10px;
 }
 
 .input-area-date{
@@ -521,10 +535,12 @@ select:-webkit-autofill:focus {
 	padding-left:5px;
 	padding-right: 7px;
 	width: 160px;
+	margin-bottom: 10px;
 }
 .input-area-time{
 	
 	padding-left:5px;
 	padding-right: 7px;
 	width: 120px;
+	margin-bottom: 10px;
 }

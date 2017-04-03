@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,6 +35,7 @@ public class Project {
 	
 	@OneToMany(mappedBy="project", cascade = CascadeType.ALL)
     private List<Mission> missions;
+	
 
 	public int getId() {
 		return Id;

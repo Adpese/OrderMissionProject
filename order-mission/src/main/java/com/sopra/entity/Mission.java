@@ -93,7 +93,7 @@ public class Mission {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	public Project getProject() {
 		return project;
 	}
@@ -110,7 +110,7 @@ public class Mission {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
 	public List<Itinerary> getItineraries() {
 		return itineraries;
 	}
@@ -118,7 +118,7 @@ public class Mission {
 	public void setItineraries(List<Itinerary> itineraries) {
 		this.itineraries = itineraries;
 	}
-	
+
 	public List<Rent> getRents() {
 		return rents;
 	}

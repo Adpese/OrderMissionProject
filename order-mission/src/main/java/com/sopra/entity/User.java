@@ -1,11 +1,15 @@
 package com.sopra.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -26,11 +30,16 @@ public class User {
 	@JoinColumn(name="id_role")
 	private Role rol;
 	
+	@ManyToMany
+	private List<Project> project;
+	
+	@Column(name="agency") 
+	private String agency;
 
 
 	public int getId() {
 		return Id;
-	}
+	} 
 	public void setId(int id) {
 		Id = id;
 	}
