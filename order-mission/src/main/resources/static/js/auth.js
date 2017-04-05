@@ -3,7 +3,7 @@ app.factory("auth", function($cookies, $cookieStore, $window, $location) {
 		login : function(username, role) {
 			
 			$cookies.username = username;
-			$cookies.role = role;
+			
 			$window.location.href = "http://localhost:8080/home";
 		},
 		logout : function() {

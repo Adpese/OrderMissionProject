@@ -123,18 +123,21 @@ public class ServicesImp implements MissionServices {
     	   
     	   
            ldapContext = new InitialLdapContext(env, null);
-//           String searchFilter = "(&(sAMAccountName=" + persona.getNombre() + "))";
-           String searchFilter = "(&(department=341 cs espagne))";
+           String searchFilter = "(&(sAMAccountName=" + persona.getNombre() + "))";
+//           String searchFilter = "(&(department=341 cs espagne))";
            SearchControls searchControls = new SearchControls();
            searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
 //           NamingEnumeration<SearchResult> results = ldapContext.search("OU=Sopragroup,OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
            NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
-
+           String agency="";
+           String displayname= "";
            if(results.hasMore()) {
         	   SearchResult searchResult = (SearchResult) results.next();
                System.out.println(searchResult.getAttributes());
-               System.out.println((String)searchResult.getAttributes().get("department").get());
-               System.out.println((String)searchResult.getAttributes().get("displayname").get());
+               agency= (String)searchResult.getAttributes().get("department").get();
+               displayname=(String)searchResult.getAttributes().get("displayname").get();
+               System.out.println(agency);
+               System.out.println(displayname);
 //               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
 
 //               System.out.println((String)searchResult.getAttributes().get("C").get());
@@ -145,10 +148,12 @@ public class ServicesImp implements MissionServices {
 //               }
            }
            
-           System.out.println(ldapContext);
+         
            User user = userRepository.findUserByName(persona.getNombre());
            Role role = roleRepository.findOne(user.getRol().getId());
-           return role.getRol();
+           String respuesta = role.getRol()+"/"+agency+"/"+displayname;
+           System.out.println(respuesta);
+           return respuesta;
   
        } catch (NamingException nex) {
     	   System.out.println("ERROR " + nex);
