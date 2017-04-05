@@ -12,7 +12,10 @@ taskManagerModule
 			$scope.status = "Abierta";
 
 			//$scope.prueba = 1;
-			//$scope.pruebados = localStorage.getItem('incre');
+			$scope.testNewAccess = localStorage.getItem('incre');  // Compruebo que no haya una sesión activa para mostrar la nueva orden, en caso de que ya la haya, se mostrará la vista que estuviese.
+			if ($scope.testNewAccess == null){
+			$scope.pruebados = localStorage.setItem('incre', 1);
+			}
 
 			$scope.date = new Date();
 			$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
@@ -469,6 +472,8 @@ taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $loc
 			$cookieStore.remove("username");
 			$cookieStore.remove("role");
 			$window.location.href = "http://localhost:8080/login";
+			localStorage.removeItem('incre');
+			
 		},
 		checkStatus : function() {
 			var privateRoutes = [ "http://localhost:8080/home"];
