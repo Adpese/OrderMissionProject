@@ -184,33 +184,54 @@ taskManagerModule
 
 			}
 			
-			
-			
-			
-		//console.log($scope.prueba);
+
 		});
+
+
+
+
+								// CONTROLADOR DE LISTA
+								// CONTROLADOR DE LISTA
+								// CONTROLADOR DE LISTA                  
+								// CONTROLADOR DE LISTA	
+								// CONTROLADOR DE LISTA	
+								// CONTROLADOR DE LISTA	
+								// CONTROLADOR DE LISTA	
+
+
 
 
 taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
 	localStorage.removeItem('showTables');
+
+
+	//	$http.get('/misiones').success(function(data) {
+	//
+	//		$scope.colla = data;
+	//
+	//	});
+
+
+	if ($cookies.role == 'Jefe') {
+		$http.get('/jefe/' + $cookies.username).success(function(data) {
+
+			$scope.colla = data;
+			console.log($scope.colla);
+
+		});
+		console.log('Ha entrado en la parte de jefe');
+	} else {
+		$http.get('/misiones').success(function(data) {
+
+			$scope.colla = data;
+		});
+		console.log('Ha entrado en la partde de NO jefe');
+	}
 	
 	
-//	if($cookies.role == "Assistant"){
-//		$scope.statusdos = "ValidadoDirector";
-//		console.log("iieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee "+$scope.statusdos);
-//	}
-	
-	
 
-	$http.get('/misiones').success(function(data) {
-
-		$scope.colla = data;
-
-	});
-
-
-	$scope.SendData = function(x) {
+	$scope.SendData = function(x) {   // Función para actualizar los status de las misiones
 		
 		
 		swal({
@@ -274,6 +295,60 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 
 	};
 	
+	
+$scope.desvalidar = function(x) {   // Función para actualizar los status de las misiones
+		
+		
+		swal({
+			  title: "Atención!",
+			  text: "Está a punto de revertir la validación de esta orden, ¿Está seguro?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Sí, revertir la validación!",
+			  closeOnConfirm: false
+			},
+			function(){
+			  swal("Éxito!", "La validación de la orden se ha realizado correctamente", "success");
+			
+
+			  x.status = "Abierta";
+			
+				
+				$http.put('/missions/' + x.id, x).success(
+					function(data, status, headers, config) {
+	//					x.status = "Cerrada";
+	//					$scope.buttonState = "Abrir";
+					}).error(
+					function(data, status, header, config) {
+						$scope.ResponseDetails = "Data: " + data
+							+ "<hr />status: " + status + "<hr />headers: "
+							+ header + "<hr />config: " + config;
+					});
+			
+		
+			});
+//			if (x.status === "Cerrada") {
+//
+//			console.log("Entra Abierrta");
+//			x.status="Abierta";
+//		
+//			$http.put('/missions/' + x.id, x).success(
+//				function(data, status, headers, config) {
+//					
+//					//$scope.buttonState = "Cerrar";
+//				}).error(
+//				function(data, status, header, config) {
+//					$scope.ResponseDetails = "Data: " + data
+//						+ "<hr />status: " + status + "<hr />headers: "
+//						+ header + "<hr />config: " + config;
+//				});
+//
+//		}
+
+	};
+	
+	
 	$scope.callCOllaBD = function(x){  // Funcion para cargar los datos para la mision x (es el id de la mision en concreto) que pasamos por parametro
 		
 		var showTable = localStorage.getItem('showTables');
@@ -314,7 +389,7 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 	    	var seeStatus = "!Cerrada";
 	        break;
 	    default:
-	    	var seeStatus = "Abierta";
+	    	var seeStatus = "!Cerrada";
 	        break;
 	} 
 		return seeStatus;
@@ -324,28 +399,40 @@ taskManagerModule.controller('collaCtrl', function($scope, $http, $cookies) {
 		
 		switch(x) {
 	    case "Abierta":
-	    	if($cookies.role == "Jefe" || $cookies.role == "Director"){
-	    		var seeStatusbutton = 1;
+	    	if($cookies.role == "Jefe" || $cookies.role == "Director"){ // A 1 muestro el botón de validar/cerrar, a 0 muestro el botón de desvalidar, 2 no muestro nada y 3 muestro ambos botones.
+	    		var seeStatusbutton = 'validar';
 	    		}else{
-	    			var seeStatusbutton = 0;
+	    			var seeStatusbutton = null;
 	    		}
 	    	break;
 	    case "ValidadoDirector":
 	    	if($cookies.role == "Assistant"){
-	    		var seeStatusbutton = 1;
-	    		}else{
-	    			var seeStatusbutton = 0;
+	    		var seeStatusbutton = 'validar';
+	    		}else if($cookies.role == "Director") {
+	    			var seeStatusbutton = 'desvalidar';
+	    		}else {
+	    			var seeStatusbutton = null;
 	    		}
 	        break;
 	    case "ValidadoJefe":
 	    	if($cookies.role == "Director"){
-	    		var seeStatusbutton = 1;
+	    		var seeStatusbutton = 'validarAndDesvalidar';
+	    		}else if($cookies.role == "Jefe") {
+	    			var seeStatusbutton = 'desvalidar';
 	    		}else{
-	    			var seeStatusbutton = 0;
+	    			var seeStatusbutton = null;
 	    		}
 	        break;
 	} 
 		return seeStatusbutton;
+	}
+	
+	
+	if ($cookies.role == 'Assistant') {
+		
+		$scope.cosauno = 'Cerrar';
+	} else {
+		$scope.cosauno = 'Validar';
 	}
 	
 	
@@ -373,6 +460,20 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 		//			})
 
 	} ]);
+
+
+
+					
+					// CONTROLADOR DE VALIDACION
+					// CONTROLADOR DE VALIDACION
+					// CONTROLADOR DE VALIDACION                  
+					// CONTROLADOR DE VALIDACION	
+					// CONTROLADOR DE VALIDACION	
+					// CONTROLADOR DE VALIDACION	
+					// CONTROLADOR DE VALIDACION	
+
+
+
 
 taskManagerModule.factory("auth", function($cookies, $cookieStore, $window, $location) {
 	return {
