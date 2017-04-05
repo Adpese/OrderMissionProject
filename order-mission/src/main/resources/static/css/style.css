@@ -1,3 +1,6 @@
+
+
+
 .contenedor{
 	padding-top: 50px;
 	padding-right: 30px;
@@ -142,6 +145,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	border-radius: 4px;
 	color:white;
 	margin-top: 5;
+	margin-right: 8;
 	
 }
 
@@ -348,13 +352,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 /* -------------------------------ESTILO BARRA DE NAVEGACION-------------------------------- */ 
  
  .topnav {
-  overflow: hidden;
+
   background-color: #cf022b;
   height:49;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 1000;
+  active: blue;
  
 }
 
@@ -367,24 +372,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   text-decoration: none;
   font-size: 15px;
   font-family: SoprafontB;
-   cursor: pointer;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-width: 1px;
+  
+  cursor: pointer;
 }
 
-.topnav a:hover {
-  background-color:#f07d00;
-  color: black;
-  
+
+.topnav a.default {
+    background-color: #cf022b;
+    color: white;
 }
 
 .topnav a.active {
-    background-color: #f07d00;
+    color: #000000;
+    background-color:#f07d00;
+    border-color: #ffffff;
 
 }
+.topnav a:hover {
+   color: #000000;
+    background-color:#f07d00;
+}
 
-/* .topnav a.default { */
-/*     background-color: #cf022b; */
-/*     color: white; */
-/* } */
+
  /* -------------------------------ESTILO LOGO SOPRA-------------------------------- */
  
  .logo {
@@ -392,6 +404,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
  	width: 150px;
     height: 35px;
 	margin-top:7; 
+	border-color: #cf022b;
 
    
 }
@@ -422,7 +435,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .form-search{
 	
-	width:200px;
+	width:50%;
+	margin: auto;
 }
 
 .text-over-input{

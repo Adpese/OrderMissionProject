@@ -103,7 +103,8 @@ taskManagerModule
 						status : $scope.status,
 						itineraries : $scope.trajects,
 						rents : $scope.rents,
-						accommodations : $scope.accommodations
+						accommodations : $scope.accommodations,
+						createdBy: $cookies.username
 					}
 
 				)
@@ -125,8 +126,26 @@ taskManagerModule
 					});
 
 			};
-
-
+			$scope.activebuton1=function(){
+				document.getElementById("botonact1").className= "active";
+				document.getElementById("botonact2").className= "inactive";
+				document.getElementById("botonact3").className= "inactive";
+				
+			}
+			$scope.activebuton2=function(){
+				document.getElementById("botonact1").className= "inactive";
+				document.getElementById("botonact2").className= "active";
+				document.getElementById("botonact3").className= "inactive";
+				
+			}
+			$scope.activebuton3=function(){
+				document.getElementById("botonact1").className= "inactive";
+				document.getElementById("botonact2").className= "inactive";
+				document.getElementById("botonact3").className= "active";
+				
+			}
+			
+			
 			$scope.changeCar = function(x) {
 
 				var updateDateCar = x.toLocaleString('en-GB').slice(0,

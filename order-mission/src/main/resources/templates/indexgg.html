@@ -363,8 +363,8 @@
 					<td class="text-over-input">Nombre del hotel</td>
 					<td class="text-over-input">Fecha de entrada</td>
 					<td class="text-over-input">Fecha de salida</td>
-					<td class="text-over-input">Nº de noches</td>
 					<td class="text-over-input">Precio</td>
+					<td class="text-over-input">Nº de noches</td>
 				</tr>
 				</thead>
 
@@ -406,19 +406,6 @@
 								</div>
 							</div>
 						</td>
-
-						<td class="tableInfo">
-							<div class="input-area-time">
-
-								<div>
-									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-readonly="readonly" ng-value="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}"
-										placeholder="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}" class="form-control trip"/>
-<!-- 									<p ng-model="accommodation.numberOfNights" ng-value="diffefechas(accommodation.entryDate, accommodation.departureDate)" ng-show="diffefechas(accommodation.entryDate, accommodation.departureDate) > 0">{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}</p> -->
-								</div>
-
-							</div>
-						</td>
-						
 						<td class="tableInfo">
 							<div class="input-area-time">
 
@@ -429,6 +416,24 @@
 
 							</div>
 						</td>
+
+
+
+
+						<td class="tableInfo">
+							<div class="input-area-time">
+
+								<div ng-if="diffefechas(accommodation.entryDate, accommodation.departureDate) > 0 ">
+<!-- 									<input name="numberOfNights" ng-model="accommodation.numberOfNights" ng-readonly="readonly" ng-value="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}" -->
+<!-- 										placeholder="{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}" class="form-control trip" ng-disabled="true"/> -->
+<!-- 									<p ng-model="accommodation.numberOfNights" ng-value="diffefechas(accommodation.entryDate, accommodation.departureDate)" ng-show="diffefechas(accommodation.entryDate, accommodation.departureDate) > 0">{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}</p> -->
+									<p>{{diffefechas(accommodation.entryDate, accommodation.departureDate)}}</p>
+								</div>
+
+							</div>
+						</td>
+						
+						
 
 						<td class="tableInfo">
 							<div class="form-group">

@@ -77,23 +77,23 @@ Latest compiled and minified JavaScript
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
 			<thead class="thead-inverse">
 				<tr>
-					<th>Fecha</th>
-					<th>Nombre</th>
-					<th>Status</th>
-					<th>Proyecto</th>
-					<th>Agencia</th>
-					<th>Creador</th>
+					<th><h5>Fecha</h5></th>
+					<th ><h5>Nombre</h5></th>
+					<th ><h5>Status</h5></th>
+					<th ><h5>Proyecto</h5></th>
+					<th ><h5>Agencia</h5></th>
+					<th ><h5>Creador</h5></th>
 				</tr>
 			</thead>
 			<tbody ng-model="scope" ng-repeat="x in colla | orderBy:['status','date'] | filter: { status: filtStatus() } | filter: filtro">
 			<tr>
-				<td>{{ x.date | date:'dd-MM-yyyy'}}</td>
-				<td>{{ x.collabFirstName }}</td>
-				<td>{{ x.status }}</td>
-				<td>{{ x.project.nameProj}}</td>
-				<td>{{ x.project.agency }}</td>
-				<td>{{ x.createdBy }}</td>
-				<td><button style='width:70px; color: red' ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 1">Validar</button><button class= "glyphicon glyphicon-eye-open" style='width:70px; color: green' ng-click="callCOllaBD(x.id)" ></button></td>
+				<td class="text-over-input">{{ x.date | date:'dd-MM-yyyy'}}</td>
+				<td class="text-over-input">{{ x.collabFirstName }}</td>
+				<td class="text-over-input">{{ x.status }}</td>
+				<td class="text-over-input">{{ x.project.nameProj}}</td>
+				<td class="text-over-input">{{ x.project.agency }}</td>
+				<td class="text-over-input">{{ x.createdBy }}</td>
+				<td><button class="btn" title="Validar" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 1" ><i style="color:green" class= "glyphicon glyphicon-check"></i></button><button class="btn" title="Ver Detalle" ng-click="callCOllaBD(x.id)"> <i style="color:black" class= "glyphicon glyphicon-eye-open"></i></button></td>
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
 			</tr>
@@ -107,26 +107,26 @@ Latest compiled and minified JavaScript
                 	<thead class="thead-inverse">
                 	<caption>Itinerario</caption>
 					<tr>
-						<th>Fecha</th>
-						<th>Origen</th>
-						<th>Destino</th>
-						<th>Hora de salida</th>
-						<th>Hora de llegada</th>
-						<th>Transporte</th>
-						<th>Compañía</th>
-						<th>Importe</th>
+						<th><h5>Fecha</h5></th>
+						<th><h5>Origen</h5></th>
+						<th><h5>Destino</h5></th>
+						<th><h5>Hora de salida</h5></th>
+						<th><h5>Hora de llegada</h5></th>
+						<th><h5>Transporte</h5></th>
+						<th><h5>Compañía</h5></th>
+						<th><h5>Importe</h5></th>
 					</tr>
 					</thead>
 					
 					<tr ng-repeat="y in collaitin">
-						<td>{{ y.date | date:'dd-MM-yyyy'}}</td>
-						<td>{{ y.origin }}</td>
-						<td>{{ y.destination }}</td>
-						<td>{{ y.departureHour | date: 'HH:mm'}}</td>
-						<td>{{ y.arrivalHour | date: 'HH:mm'}}</td>
-						<td>{{ y.transport }}</td>
-						<td>{{ y.company }}</td>
-						<td>{{ y.price }}</td>
+						<td class="text-over-input">{{ y.date | date:'dd-MM-yyyy'}}</td>
+						<td class="text-over-input">{{ y.origin }}</td>
+						<td class="text-over-input">{{ y.destination }}</td>
+						<td class="text-over-input">{{ y.departureHour | date: 'HH:mm'}}</td>
+						<td class="text-over-input">{{ y.arrivalHour | date: 'HH:mm'}}</td>
+						<td class="text-over-input">{{ y.transport }}</td>
+						<td class="text-over-input">{{ y.company }}</td>
+						<td class="text-over-input">{{ y.price }}</td>
 						
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
@@ -142,26 +142,26 @@ Latest compiled and minified JavaScript
                 	<thead class="thead-inverse">
                 	<caption>Alquiler de coches</caption>
 					<tr>
-						<th>Nombre del Conductor</th>
-						<th>Fecha de recogida</th>
-						<th>Hora de recogida</th>
-						<th>Lugar de recogida</th>
-						<th>Fecha de entrega</th>
-						<th>Hora de entrega</th>
-						<th>Lugar de entrega</th>
-						<th>Importe</th>
+						<th><h5>Nombre del Conductor</h5></th>
+						<th><h5>Fecha de recogida</h5></th>
+						<th><h5>Hora de recogida</h5></th>
+						<th><h5>Lugar de recogida</h5></th>
+						<th><h5>Fecha de entrega</h5></th>
+						<th><h5>Hora de entrega</h5></th>
+						<th><h5>Lugar de entrega</h5></th>
+						<th><h5>Importe</h5></th>
 					</tr>
 					</thead>
 					
 					<tr ng-repeat="z in collarents">
-						<td>{{ z.driverName}}</td>
-						<td>{{ z.pickupDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{ z.pickupHour | date: 'HH:mm'}}</td>
-						<td>{{ z.pickupPlace }}</td>
-						<td>{{ z.deliveryDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{ z.deliveryHour | date: 'HH:mm'}}</td>
-						<td>{{ z.deliveryPlace }}</td>
-						<td>{{ z.price }}</td>
+						<td class="text-over-input">{{ z.driverName}}</td>
+						<td class="text-over-input">{{ z.pickupDate | date:'dd-MM-yyyy'}}</td>
+						<td class="text-over-input">{{ z.pickupHour | date: 'HH:mm'}}</td>
+						<td class="text-over-input">{{ z.pickupPlace }}</td>
+						<td class="text-over-input">{{ z.deliveryDate | date:'dd-MM-yyyy'}}</td>
+						<td class="text-over-input">{{ z.deliveryHour | date: 'HH:mm'}}</td>
+						<td class="text-over-input">{{ z.deliveryPlace }}</td>
+						<td class="text-over-input">{{ z.price }}</td>
 						
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
@@ -177,20 +177,20 @@ Latest compiled and minified JavaScript
                 	<thead class="thead-inverse">
                 	<caption>Alojamiento</caption>
 					<tr>
-						<th>Nombre del Hotel</th>
-						<th>Fecha de entrada</th>
-						<th>Fecha de salida</th>
-						<th>Numero de noches</th>
-						<th>Precio</th>
+						<th><h5>Nombre del Hotel</h5></th>
+						<th><h5>Fecha de entrada</h5></th>
+						<th><h5>Fecha de salida</h5></th>
+						<th><h5>Numero de noches</h5></th>
+						<th><h5>Precio</h5></th>
 					</tr>
 					</thead>
 					
 					<tr ng-repeat="w in collaccom">
-						<td>{{ w.hotelName}}</td>
-						<td>{{ w.entryDate | date:'dd-MM-yyyy'}}</td>
-						<td>{{ w.departureDate | date:'dd-MM-yyyy' }}</td>
-						<td>{{ w.numberOfNights}}</td>
-						<td>{{ w.price }}</td>
+						<td class="text-over-input">{{ w.hotelName}}</td>
+						<td class="text-over-input">{{ w.entryDate | date:'dd-MM-yyyy'}}</td>
+						<td class="text-over-input">{{ w.departureDate | date:'dd-MM-yyyy' }}</td>
+						<td class="text-over-input">{{ w.numberOfNights}}</td>
+						<td class="text-over-input">{{ w.price }}</td>
 						
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
