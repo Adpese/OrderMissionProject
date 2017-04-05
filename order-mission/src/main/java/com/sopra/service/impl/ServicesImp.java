@@ -1,9 +1,18 @@
 package com.sopra.service.impl;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.SearchControls;
+import javax.naming.directory.SearchResult;
+import javax.naming.ldap.InitialLdapContext;
+import javax.naming.ldap.LdapContext;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,46 +104,67 @@ public class ServicesImp implements MissionServices {
 	public String login(String credentialsJSON){
 		
 	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
-//	   System.out.println(persona.getPassword());
-//	   
-//	   
-//	   Hashtable<String, String> env = new Hashtable<String, String>();
-//	   
-//	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-//       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
-//       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
-//       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
-//       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389/OU=users");
-//       env.put(Context.REFERRAL, "follow");
-//	   
-//       LdapContext ldapContext;
-//       try {
-    	   
-//           ldapContext = new InitialLdapContext(env, null);        
-//           User user = userRepository.findUserByName(persona.getNombre());
-//           Role role = roleRepository.findOne(user.getRol().getId());
-//           return role.getRol();
+	   
+	   
+	   Hashtable<String, String> env = new Hashtable<String, String>();
+	   
+	   env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+       env.put(Context.SECURITY_AUTHENTICATION, "Simple");
+       env.put(Context.SECURITY_PRINCIPAL, "EMEAAD\\" + persona.getNombre());
+       env.put(Context.SECURITY_CREDENTIALS, persona.getPassword());
+       env.put(Context.PROVIDER_URL,  "ldap://wptxdc01.ptx.fr.sopra:389");
+       env.put(Context.REFERRAL, "follow");
+	   
+       LdapContext ldapContext;
+       try {
+    	   System.out.println("ASdfasdgf");
     	   
     	   
-    	   
-//    	   
-//       } catch (NamingException nex) {
-//    	   System.out.println("ERROR " + nex);
-//           return "Error";
-//       }
+           ldapContext = new InitialLdapContext(env, null);
+//           String searchFilter = "(&(sAMAccountName=" + persona.getNombre() + "))";
+           String searchFilter = "(&(department=341 cs espagne))";
+           SearchControls searchControls = new SearchControls();
+           searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+//           NamingEnumeration<SearchResult> results = ldapContext.search("OU=Sopragroup,OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
+           NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
+
+           if(results.hasMore()) {
+        	   SearchResult searchResult = (SearchResult) results.next();
+               System.out.println(searchResult.getAttributes());
+               System.out.println((String)searchResult.getAttributes().get("department").get());
+               System.out.println((String)searchResult.getAttributes().get("displayname").get());
+//               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
+
+//               System.out.println((String)searchResult.getAttributes().get("C").get());
+               
+//               NamingEnumeration<? extends Attribute> resultss = searchResult.getAttributes().getAll();
+//               if(resultss.hasMoreElements()){
+//            	   System.out.println(resultss.);
+//               }
+           }
+           
+           System.out.println(ldapContext);
+           User user = userRepository.findUserByName(persona.getNombre());
+           Role role = roleRepository.findOne(user.getRol().getId());
+           return role.getRol();
+  
+       } catch (NamingException nex) {
+    	   System.out.println("ERROR " + nex);
+           return "Error";
+       }
 		
-		 User user = userRepository.findUserByName(persona.getNombre());
-         if(user == null)
-        	 return "Colaborador";
-
-         Role role = roleRepository.findOne(user.getRol().getId());
-         
-
-         
-         if(role != null)
-        	 return role.getRol();
-         else
-        	 return "Colaborador";
+//		 User user = userRepository.findUserByName(persona.getNombre());
+//         if(user == null)
+//        	 return "Colaborador";
+//
+//         Role role = roleRepository.findOne(user.getRol().getId());
+//         
+//
+//         
+//         if(role != null)
+//        	 return role.getRol();
+//         else
+//        	 return "Colaborador";
 		
 		
 		
