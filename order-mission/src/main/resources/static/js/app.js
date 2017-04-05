@@ -100,6 +100,7 @@ taskManagerModule
 						project : $scope.selectedProject,
 						//									agency : $scope.agency.model,
 						//									division : $scope.division.model,
+						createdBy: $cookies.username, 
 						status : $scope.status,
 						itineraries : $scope.trajects,
 						rents : $scope.rents,

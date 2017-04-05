@@ -76,8 +76,7 @@ public class ServicesImp implements MissionServices {
 	   	}
 //			String s = Secur32Util.getUserNameEx(Secur32.EXTENDED_NAME_FORMAT.NameDisplay);
 //			System.out.println(s);
-			missions.setCreatedBy(System.getProperty("user.name") 
-);
+//			missions.setCreatedBy(System.getProperty("user.name") 
 		   missionRepository.save(missions);
 	
 	   }
@@ -163,6 +162,21 @@ public class ServicesImp implements MissionServices {
 	{
 		
 		return missionRepository.find(uName);
+	}
+	
+//	@ResponseBody
+//	@RequestMapping(method=RequestMethod.GET, value="/jefe/{agency}")
+//	public List<Mission> MisionesDirector(@PathVariable("agency") String uName)
+//	{
+//		
+//		return missionRepository.find(uName);
+//	}
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.GET, value="/colaborador/{userName}")
+	public List<Mission> MisionesByCreatedby(@PathVariable("userName") String uName)
+	{
+		
+		return missionRepository.findBycreatedBy(uName);
 	}
 	
 	
