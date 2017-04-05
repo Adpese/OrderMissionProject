@@ -11,8 +11,13 @@ import com.sopra.entity.Mission;
 public interface MissionRepository  extends CrudRepository<Mission, Integer> {
 
 	
-		@Query(value="SELECT p.`id_mission`, p.`collab_first_name`, p.`created_by`, p.`date`, p.`status`, p.`id_project` FROM Mission p LEFT JOIN user_project up ON p.id_project= up.project_id_project LEFT JOIN user u ON up.user_id_user = u.id_user WHERE u.name = :name", nativeQuery=true)
+		@Query(value="(SELECT p.`id_mission`, p.`collab_first_name`, p.`created_by`, p.`date`, p.`status`, p.`id_project` FROM Mission p LEFT JOIN user_project up ON p.id_project= up.project_id_project LEFT JOIN user u ON up.user_id_user = u.id_user WHERE u.name = :name) UNION (select m2.`id_mission`, m2.`collab_first_name`, m2.`created_by`, m2.`date`, m2.`status`, m2.`id_project`  from Mission m2 where m2.created_By = :name)", nativeQuery=true)
 	    public List<Mission> find(@Param("name") String uName);
+		
+
+		@Query(value="SELECT m.`id_mission`, m.`collab_first_name`, m.`created_by`, m.`date`, m.`status`, m.`id_project` FROM Mission m LEFT JOIN user_project up ON m.id_project= up.project_id_project LEFT JOIN project pr ON up.project_id_project = pr.id_project WHERE pr.agency = :agency", nativeQuery=true)
+	    public List<Mission> findDirector(@Param("agency") String agency);
 		 
+		List<Mission> findBycreatedBy(String lastname);
 
 }

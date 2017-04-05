@@ -1,41 +1,15 @@
-<!--  <html ng-app="collayApp">
-<head>
-
-<title>AngularJS orden de mission Manager</title>
-
-<meta charset="UTF-8" />
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous" />
-
-Optional theme
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous" />
-
-Latest compiled and minified JavaScript
-
-
-
-
-
-
-<link href='./css/style.css' rel="stylesheet" type="text/css" />
-<link href='./css/css/font-awesome.css' rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans'
-	rel='stylesheet' type='text/css' />
-<script data-require="angular.js@*" data-semver="1.3.0-beta.14"
-	src="http://code.angularjs.org/1.3.0-beta.14/angular.js"></script>
-<script type="text/javascript" src="./js/app.js"></script>
-<script type="text/javascript" src="./js/collayApp.js"></script>
-</head>
-<body>  -->
 <div id="navegador"></div>
 
 <div class="contenedor">
+
+	<div class="form-search">
+		<div class="input-group">
+			<span class="input-group-addon"><i
+				class="glyphicon glyphicon-search"></i></span> <input name="filtro"
+				ng-model="filtro" placeholder="Buscador" class="form-control"
+				type="text" />
+		</div>
+	</div>
 
 	<form class="well form-horizontal" method="post " id="contact_form"
 		name="userform">
@@ -43,35 +17,10 @@ Latest compiled and minified JavaScript
 
 			<!-- Form Name -->
 			<legend class="main-legend">Ordenes abiertas</legend>
-			<!-- 					<p class="date-legend" ng-bind="date | date:'dd-MM-yyyy'" ng-model="date"></p> -->
 
-			<!-- Text input-->
-<!-- 			<div class="filter"> -->
-<!-- 				<br></br> <br></br> -->
-<!-- 				<table> -->
-<!-- 					<thead> -->
-<!-- 						<tr > -->
-<!-- 							<th class="glyphicon glyphicon-search" -->
-<!-- 								style='padding-right: 10px'></th> -->
-<!-- 							<th><input ng-model="filtro" /></th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 				</table> -->
-<!-- 			</div> -->
-			
-			<div class="form-search">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-search"></i></span> <input name="collabFirstName"
-								ng-model="filtro" placeholder="Buscador"
-								class="form-control" type="text" />
-						</div>
-					</div>
-			
-			
-			
-			
-			
+
+
+
 			<div ng-controller="collaCtrl">
 
 		<table class="table table-striped" style='width: 90%; margin: 0 auto'>
@@ -93,7 +42,9 @@ Latest compiled and minified JavaScript
 				<td>{{ x.project.nameProj}}</td>
 				<td>{{ x.project.agency }}</td>
 				<td>{{ x.createdBy }}</td>
-				<td><button style='width:70px; color: red' ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 1">Validar</button><button class= "glyphicon glyphicon-eye-open" style='width:70px; color: green' ng-click="callCOllaBD(x.id)" ></button></td>
+				<td><button style='width:80px; color: red' ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'validar' || showValidate(x.status) == 'validarAndDesvalidar'">{{cosauno}}</button>
+					<button style='width:100px; color: red' ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'">Desvalidar</button>
+					<button class= "glyphicon glyphicon-eye-open" style='width:70px; color: green' ng-click="callCOllaBD(x.id)" ></button></td>
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
 			</tr>
@@ -113,7 +64,7 @@ Latest compiled and minified JavaScript
 						<th>Hora de salida</th>
 						<th>Hora de llegada</th>
 						<th>Transporte</th>
-						<th>CompaÃ±Ã­a</th>
+						<th>Compañía</th>
 						<th>Importe</th>
 					</tr>
 					</thead>
