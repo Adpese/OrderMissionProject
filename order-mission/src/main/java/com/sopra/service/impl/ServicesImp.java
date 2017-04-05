@@ -76,8 +76,8 @@ public class ServicesImp implements MissionServices {
 	   	}
 //			String s = Secur32Util.getUserNameEx(Secur32.EXTENDED_NAME_FORMAT.NameDisplay);
 //			System.out.println(s);
-			missions.setCreatedBy(System.getProperty("user.name") 
-);
+//			missions.setCreatedBy(System.getProperty("user.name") 
+//);
 		   missionRepository.save(missions);
 	
 	   }
