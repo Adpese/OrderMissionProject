@@ -2,7 +2,7 @@
 app.controller(
 		'orderMisionManagerController',
 		function($scope, $http, $sessionStorage, auth, $cookies) {
-			$scope.usuario = $cookies.username
+			$scope.usuario = $cookies.completeName;
 			console.log();
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";

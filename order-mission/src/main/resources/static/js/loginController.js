@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $http, auth) {
+app.controller('loginController', function($scope, $http, auth, $cookies) {
 
 	var urlBase = "";
 
@@ -9,11 +9,17 @@ app.controller('loginController', function($scope, $http, auth) {
 			password : $scope.userPassword
 		}).success(
 			function(data, status, headers) {
-				console.log(data);
+				
+				var dat = data.split("/");
+				$cookies.role=dat[0];
+				console.log(dat[2]);
+				$cookies.agency= dat[1];
+				$cookies.completeName= dat[2];
+				
+			
 
-
-				if (data === "Assistant" || data === "Director" || data === "Jefe" || data === "Colaborador") {
-					auth.login($scope.userCollab, data);
+				if ($cookies.role === "Assistant" || $cookies.role === "Director" ||$cookies.role  === "Jefe" || $cookies.role === "Colaborador") {
+					auth.login($scope.userCollab, dat[0]);
 				} else {
 					swal(
 						"Error",
