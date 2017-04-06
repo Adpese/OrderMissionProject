@@ -158,7 +158,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .btnicon{
 	display: inline-block;
-	height: 40;
+	height: 30;
 	margin-right: 5;
 	padding: 0 5 0 7;
 	font-size: 12px;
@@ -170,10 +170,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	vertical-align: middle;
 	horizontal-align: middle;
 	cursor: pointer;
-	background-color: #F7A823;
+	background-color: #cf022b;
 	border: 1px #f07d00;
 	border-radius: 4px;
-	color:red;
+	color:white;
 	-webkit-transition: height 2s;
     transition: height 2s;
 	

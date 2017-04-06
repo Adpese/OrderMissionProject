@@ -37,8 +37,8 @@
 				<td class="text-over-input">{{ x.project.agency }}</td>
 				<td class="text-over-input">{{ x.createdBy }}</td>
 				<td class="text-over-input"><button class="btnicon" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'validar' || showValidate(x.status) == 'validarAndDesvalidar'" ><i class= "glyphicon glyphicon-remove-circle"></i>{{cosauno}}</button>
-					<button class="btnicon" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-ok"></i>Desvalidar</button>
-					<button class= "btnicon" style="color:grey" ng-click="callCOllaBD(x.id)" ><i class= "glyphicon glyphicon-list"></i> Detalles</button></td>
+					<button class="btnicon" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-share-alt"></i>Desvalidar</button>
+					<button class= "btnicon" style="background-color: #8C2350" ng-click="callCOllaBD(x.id)" ><i class= "glyphicon glyphicon-list"></i> Detalles</button></td>
 				
 				
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
