@@ -36,22 +36,22 @@
 				<td class="text-over-input">{{ x.project.nameProj}}</td>
 				<td class="text-over-input">{{ x.project.agency }}</td>
 				<td class="text-over-input">{{ x.createdBy }}</td>
-				<td class="text-over-input"><button class="btnicon" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'validar' || showValidate(x.status) == 'validarAndDesvalidar'" ><i class= "glyphicon glyphicon-remove-circle"></i>{{cosauno}}</button>
-					<button class="btnicon" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-share-alt"></i>Desvalidar</button>
-					<button class= "btnicon" style="background-color: #8C2350" ng-click="callCOllaBD(x.id)" ><i class= "glyphicon glyphicon-list"></i> Detalles</button></td>
+				<td class="text-over-input"><button class="btnval" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'validar' || showValidate(x.status) == 'validarAndDesvalidar'" ><i class= "glyphicon glyphicon-save"></i>{{cosauno}}</button>
+					<button class="btndesv" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-share-alt"></i>Desvalidar</button>
+					<button  class= "btndet" ng-click="callCOllaBD(x.id)" ><i class= "glyphicon glyphicon-list"></i> Detalles</button></td>
 				
 				
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 				
 			</tr>
-			<tr ng-show= "callShowTables() == x.id">
+			<tr id="activar" class="tabletrans" ng-show= "callShowTables() == x.id">
 				
-              <td colspan="6">
+              <td class="desplegable" colspan="7">
                 
     <!--     *************************************************  TABLA ITINERARIO *************************************************************    -->
                 
-                <table class="table table-striped" style='width: 90%; margin: 0 auto' ng-show="collaitin.length">
-                	<thead class="thead-inverse">
+                <table  class="table table-striped" ng-show="collaitin.length">
+                	<thead  class="thead-inverse">
                 	<caption>Itinerario</caption>
 					<tr>
 						<th><h5>Fecha</h5></th>

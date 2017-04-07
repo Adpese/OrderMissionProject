@@ -156,7 +156,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	
 }
 
-.btnicon{
+.btnval{
 	display: inline-block;
 	height: 30;
 	margin-right: 5;
@@ -170,20 +170,69 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	vertical-align: middle;
 	horizontal-align: middle;
 	cursor: pointer;
-	background-color: #cf022b;
+	background-color: #2DAA64;
 	border: 1px #f07d00;
 	border-radius: 4px;
 	color:white;
 	-webkit-transition: height 2s;
     transition: height 2s;
-	
-	
-	
+}
+.btndesv{
+	display: inline-block;
+	height: 30;
+	margin-right: 5;
+	padding: 0 5 0 7;
+	font-size: 12px;
+	font-family: SoprafontB;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+/* 	white-space: nowrap; */
+	vertical-align: middle;
+	horizontal-align: middle;
+	cursor: pointer;
+	background-color:#E14B0F;
+	border: 1px #f07d00;
+	border-radius: 4px;
+	color:white;
+	-webkit-transition: height 2s;
+    transition: height 2s;
+}
+.btndet{
+	display: inline-block;
+	height: 30;
+	margin-right: 5;
+	padding: 0 5 0 7;
+	font-size: 12px;
+	font-family: SoprafontB;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+/* 	white-space: nowrap; */
+	vertical-align: middle;
+	horizontal-align: middle;
+	cursor: pointer;
+	background-color: #A8A8A7;
+	border: 1px #f07d00;
+	border-radius: 4px;
+	color:white;
+	-webkit-transition: height 2s;
+    transition: height 2s;
 }
 
-.btnicon>i{
+.btnval>i{
 	
-	margin-right:5;
+	margin-right:7;
+	padding:auto;
+}
+.btndesv>i{
+	
+	margin-right:7;
+	padding:auto;
+}
+.btndet>i{
+	
+	margin-right:7;
 	padding:auto;
 }
 
@@ -524,10 +573,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	margin-left: 15.6%;
 }
 
-.table-striped>td{
-	-webkit-transition: height 2s;
-    transition: height 2s;
+.tabletrans{
+	-webkit-transition: 3s;
+    transition: 3s;
 	
+}
+
+#activar ~ .desplegable {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 30px;
+  overflow: hidden;
+  text-align: center;
+  transition: max-height 3s linear;
+  -webkit-transition: 3s;
+  z-index: 1;
 }
 
 /* -------------------------------ESTILO FILTRO-------------------------------- */

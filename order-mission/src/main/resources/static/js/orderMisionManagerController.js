@@ -115,7 +115,7 @@ app.controller(
 				console.log($scope.projectData);
 				$http
 					.post(urlBase + '/missionSave', {
-						collabFirstName : $scope.collabFirstName,
+						collabFirstName : $scope.usuario,
 						date : $scope.date,
 						project : $scope.selectedProject,
 						//									agency : $scope.agency.model,
