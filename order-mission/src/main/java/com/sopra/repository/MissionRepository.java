@@ -17,8 +17,7 @@ public interface MissionRepository  extends CrudRepository<Mission, Integer> {
 
 		@Query(value="SELECT m.`id_mission`, m.`collab_first_name`, m.`created_by`, m.`date`, m.`status`, m.`id_project` FROM Mission m LEFT JOIN project p ON m.id_project= p.id_project WHERE p.agency = :agency", nativeQuery=true)
 	    public List<Mission> findDirector(@Param("agency") String agency);
-		
-		@Query(value="SELECT m.`id_mission`, m.`collab_first_name`, m.`created_by`, m.`date`, m.`status`, m.`id_project` FROM Mission m LEFT JOIN user_project up ON m.id_project= up.project_id_project LEFT JOIN project pr ON up.project_id_project = pr.id_project WHERE pr.agency = :agency", nativeQuery=true)
+		@Query(value="SELECT m.`id_mission`, m.`collab_first_name`, m.`created_by`, m.`date`, m.`status`, m.`id_project` FROM Mission m LEFT JOIN project p ON m.id_project= p.id_project WHERE p.agency = :agency", nativeQuery=true)		
 	    public List<Mission> findAssistant(@Param("agency") String agency);
 		 
 		List<Mission> findBycreatedBy(String lastname);
