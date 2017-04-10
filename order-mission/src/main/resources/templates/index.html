@@ -52,12 +52,13 @@
 
 	<div class="topnav">
 	  <a class = "logo" style="cursor:default"> </a>
-	  <a ng-click="UpdateIncr(1)"  >Nueva orden de misión</a>
-	  <a ng-click="UpdateIncr(2)" >Ordenes abiertas</a>
-	  <a ng-click="UpdateIncr(3)" >Ordenes cerradas</a>
-	  <div class="log-btn"  ng-model="scope">{{usuario}}</div>
+	  <a id="botonact1" class="active"  ng-click="UpdateIncr(1); activebuton1()"  >Nueva orden de misión</a>
+	  <a id="botonact2" ng-click="UpdateIncr(2); activebuton2()" >Ordenes abiertas</a>
+	  <a id="botonact3" ng-click="UpdateIncr(3);activebuton3()" >Ordenes cerradas</a>
+	  <div class="log-btn"  ng-model="scope"> Hola, {{usuario}}</div>
 	  <button class="btnlogout" ng-click="logout()"></button>
 	</div>
+	
 		<ng-include src="'addcolb'" ng-show="UpdateIncrdos() == 1"></ng-include>
 
 

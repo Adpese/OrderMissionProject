@@ -31,7 +31,7 @@ app.controller('loginController', function($scope, $http, auth, $cookies) {
 			function(data, status, header, config) {
 				swal(
 					"Error",
-					"Error al intentar conectarse al servicio, porfavor, vuelva a intentarlo",
+					"Error al intentar conectarse al servicio, por favor, vuelva a intentarlo",
 					"error");
 			});
 		;

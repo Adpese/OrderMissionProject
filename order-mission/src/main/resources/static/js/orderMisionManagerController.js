@@ -70,7 +70,27 @@ app.controller(
 				//console.log("NAMEPROJ: "+$scope.nameProj);
 
 			});
-
+			
+			//Hace que cambie el estado del boton del navegador de activo a inactivo dependiendo si está pulsado
+			$scope.activebuton1=function activebuton1(){
+				
+				document.getElementById("botonact1").className = "active";
+				document.getElementById("botonact2").className = "inactive";
+				document.getElementById("botonact3").className = "inactive";
+			}
+			
+			$scope.activebuton2=function activebuton2(){
+				
+				document.getElementById("botonact1").className = "inactive";
+				document.getElementById("botonact2").className = "active";
+				document.getElementById("botonact3").className = "inactive";
+			}
+			$scope.activebuton3=function activebuton3(){
+				
+				document.getElementById("botonact1").className = "inactive";
+				document.getElementById("botonact2").className = "inactive";
+				document.getElementById("botonact3").className = "active";
+			}
 
 			$scope.transport = {
 				model : null,
@@ -95,7 +115,7 @@ app.controller(
 				console.log($scope.projectData);
 				$http
 					.post(urlBase + '/missionSave', {
-						collabFirstName : $scope.collabFirstName,
+						collabFirstName : $scope.usuario,
 						date : $scope.date,
 						project : $scope.selectedProject,
 						//									agency : $scope.agency.model,
