@@ -1,4 +1,4 @@
-app.factory("auth", function($cookies, $cookieStore, $window, $location) {
+app.factory("auth", function($cookies, $cookieStore, $sessionStorage, $window, $location) {
 	return {
 		login : function(username, role) {
 			
@@ -10,7 +10,7 @@ app.factory("auth", function($cookies, $cookieStore, $window, $location) {
 			$cookieStore.remove("username");
 			$cookieStore.remove("role");
 			$window.location.href = "http://localhost:8080/login";
-			localStorage.removeItem('incre');
+			sessionStorage.removeItem('incre');
 			
 		},
 		checkStatus : function() {
@@ -35,6 +35,19 @@ app.factory("auth", function($cookies, $cookieStore, $window, $location) {
 		},
 		getRole : function() {
 			return $cookies.role;
+		},
+		
+		getMissionDetails : function (id){
+			
+			
+
+			$http.get('/busquedaMission/'+ x).success(function(data) {
+				
+				return data;
+
+			});
+			
+			
 		}
 	}
 

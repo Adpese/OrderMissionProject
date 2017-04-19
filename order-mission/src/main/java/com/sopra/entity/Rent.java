@@ -27,7 +27,7 @@ public class Rent {
 	 private String driverName;
 	 
 	 @Column(name="pickup_date")
-	 private Date pickupDate;
+	 private String pickupDate;
 	 
 	 @Column(name="pickup_hour")
 	 private String pickupHour;
@@ -36,7 +36,7 @@ public class Rent {
 	 private String pickupPlace;
 	 
 	 @Column(name="delivery_date")
-	 private Date deliveryDate;
+	 private String deliveryDate;
 	 
 	 @Column(name="delivery_hour")
 	 private String deliveryHour;
@@ -63,10 +63,10 @@ public class Rent {
 		public void setDriverName(String driverName) {
 			this.driverName = driverName;
 		}
-		public Date getPickupDate() {
+		public String getPickupDate() {
 			return pickupDate;
 		}
-		public void setPickupDate(Date pickupDate) {
+		public void setPickupDate(String pickupDate) {
 			this.pickupDate = pickupDate;
 		}
 		public String getPickupHour() {
@@ -81,10 +81,10 @@ public class Rent {
 		public void setPickupPlace(String pickupPlace) {
 			this.pickupPlace = pickupPlace;
 		}
-		public Date getDeliveryDate() {
+		public String getDeliveryDate() {
 			return deliveryDate;
 		}
-		public void setDeliveryDate(Date deliveryDate) {
+		public void setDeliveryDate(String deliveryDate) {
 			this.deliveryDate = deliveryDate;
 		}
 		public String getDeliveryHour() {

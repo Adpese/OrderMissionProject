@@ -7,14 +7,15 @@ app.controller(
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			$scope.status = "Abierta";
-
+			
 			//$scope.prueba = 1;
-			$scope.testNewAccess = localStorage.getItem('incre');  // Compruebo que no haya una sesión activa para mostrar la nueva orden, en caso de que ya la haya, se mostrará la vista que estuviese.
+			$scope.testNewAccess = sessionStorage.getItem('incre');  // Compruebo que no haya una sesión activa para mostrar la nueva orden, en caso de que ya la haya, se mostrará la vista que estuviese.
 			if ($scope.testNewAccess == null){
-			$scope.pruebados = localStorage.setItem('incre', 1);
+			$scope.pruebados = sessionStorage.setItem('incre', 1);
 			}
 
 			$scope.date = new Date();
+			console.log($scope.date);
 			$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
 			$scope.patternWNumbers = /^([a-zA-ZÁÉÍÓÚñáéíóú0-9&-][\s]*)+$/;
 			
@@ -22,13 +23,8 @@ app.controller(
 				auth.logout();
 				
 			}
-
-
-
-			var todayDate = (new Date()).toLocaleString('en-GB').slice(
-				0, 10).split("\/").reverse().join("-");
-			$scope.minDate = todayDate;
-
+			
+			
 			$scope.trajects = [];
 			$scope.addNewTraject = function() {
 				$scope.trajects.push({ });
@@ -62,6 +58,62 @@ app.controller(
 				var lastAccommodation = $scope.accommodations.length - 1;
 				$scope.accommodations.splice(lastAccommodation);
 			};
+			
+			
+			$scope.missionUpdate = JSON.parse(sessionStorage.getItem('updateMissionTrue'));
+			console.log($scope.missionUpdate);
+			
+			if(($scope.missionUpdate != null) && ($scope.testNewAccess == 2)){
+				
+				$scope.updateId = $scope.missionUpdate.id;
+				$scope.accommodations = $scope.missionUpdate.accommodations;
+				$scope.rents = $scope.missionUpdate.rents;
+				$scope.trajects = $scope.missionUpdate.itineraries;
+				$scope.usuario = $scope.missionUpdate.collabFirstName;
+				$scope.selectedProject = $scope.missionUpdate.project.nameProj;
+				
+				$scope.pruebacero = $scope.missionUpdate.project.nameProj;
+				
+				
+				// Este bucle rellena los campos de fecha y horas para la lista de itinerarios
+				for(i=0; i<$scope.missionUpdate.itineraries.length; i++){
+				$scope.missionUpdate.itineraries[i].date = new Date($scope.missionUpdate.itineraries[i].date.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+				
+				$scope.missionUpdate.itineraries[i].departureHour = new Date($scope.missionUpdate.itineraries[i].departureHour.toLocaleString());
+				
+				$scope.missionUpdate.itineraries[i].arrivalHour = new Date($scope.missionUpdate.itineraries[i].arrivalHour.toLocaleString());
+				}
+
+				// Este bucle rellena los campos de fecha y horas para la lista de RENTCAR
+				for(i=0; i<$scope.missionUpdate.rents.length; i++){
+				
+					$scope.missionUpdate.rents[i].pickupDate = new Date($scope.missionUpdate.rents[i].pickupDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					
+					$scope.missionUpdate.rents[i].deliveryDate = new Date($scope.missionUpdate.rents[i].deliveryDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					
+					$scope.missionUpdate.rents[i].pickupHour = new Date($scope.missionUpdate.rents[i].pickupHour.toLocaleString());
+					
+					$scope.missionUpdate.rents[i].deliveryHour = new Date($scope.missionUpdate.rents[i].deliveryHour.toLocaleString());
+					
+				}
+				
+				// Este bucle rellena los campos de fecha y horas para la lista de HOTELES
+				for(i=0; i<$scope.missionUpdate.rents.length; i++){
+					
+					$scope.missionUpdate.accommodations[i].entryDate = new Date($scope.missionUpdate.accommodations[i].entryDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					
+					$scope.missionUpdate.accommodations[i].departureDate = new Date($scope.missionUpdate.accommodations[i].departureDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));	
+					
+					
+				}
+			}
+			
+
+			var todayDate = (new Date()).toLocaleString('en-GB').slice(
+				0, 10).split("\/").reverse().join("-");
+			$scope.minDate = todayDate;
+
+			
 
 			$http.get('/projects').success(function(data) {
 
@@ -107,6 +159,8 @@ app.controller(
 				]
 			};
 
+			
+			// Función para añadir a la BD una nueva misión tras pular el botón de "enviar"
 
 			$scope.addCollab = function addCollab() {
 
@@ -146,6 +200,49 @@ app.controller(
 					});
 
 			};
+			
+			
+			// Función para modificar una misión ya creada desde el modal de modificar
+			
+			$scope.modiCollab = function modiCollab() {
+
+				
+				var x = {
+						collabFirstName : $scope.usuario,
+						date : $scope.date,
+						status : $scope.status,
+						createdBy: $cookies.username,
+						id : $scope.updateId,
+						project : $scope.selectedProject,
+						itineraries : $scope.trajects,
+						rents : $scope.rents,
+						accommodations : $scope.accommodations
+						
+						
+					}
+				console.log(x);
+				
+				
+				
+				$http.put('/missions/'+ $scope.updateId, x)
+					.success(
+						function(data, status, headers, config) {
+							swal(
+								"Nueva misión creada",
+								"Se ha generado una nueva misión con los datos introducidos",
+								"success");
+
+							var newColabUri = headers()["location"];
+
+						}).error(
+					function(data, status, header, config) {
+						swal(
+							"Error",
+							"No ha sido posible realizar la orden, por favor, vuelva a intentarlo",
+							"error");
+					});
+
+			};
 
 
 			$scope.changeCar = function(x) {
@@ -162,12 +259,12 @@ app.controller(
 			}
 
 			$scope.UpdateIncr = function(x) {
-				localStorage.setItem('incre', x);
+				sessionStorage.setItem('incre', x);
 			}
 
 			$scope.UpdateIncrdos = function() {
 
-				var getincre = localStorage.getItem('incre');
+				var getincre = sessionStorage.getItem('incre');
 				return getincre;
 
 			}

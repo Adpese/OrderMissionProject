@@ -226,12 +226,18 @@ public class ServicesImp implements MissionServices {
 	}
 	
 	@ResponseBody
-	@RequestMapping(method=RequestMethod.GET, value="/assistant/{agency}")
-	public List<Mission> findAssistant(@PathVariable("agency") String agency)
+	@RequestMapping(method=RequestMethod.GET, value="/assistant/{agency}/{userName}")
+	public List<Mission> findAssistant(@PathVariable("agency") String agency, @PathVariable("userName") String userName)
 	{
 		
-		return missionRepository.findAssistant(agency);
+		return missionRepository.findAssistant(agency, userName);
 	}
 	
+
+	public void updateMission(Mission m, int id)
+	{
+		System.out.println(m.getCollabFirstName());
+		//missionRepository.updateMission(id, m);
+	}
 	
 }

@@ -31,4 +31,9 @@ public class HomeController {
 		return "list_close";
 	}
 	
+	@RequestMapping("/modalUpdate")
+	public String modalUpdate() {
+		return "modalUpdate";
+	}
+	
 }

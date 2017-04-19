@@ -1,37 +1,91 @@
-app.controller('collaCtrl', function($scope, $http, $cookies) {
+app.controller('collaCtrl', function($scope, $http, $cookies, $modal) {
 
-	localStorage.removeItem('showTables');
-
+	sessionStorage.removeItem('showTables');
+	
 
 	//	$http.get('/misiones').success(function(data) {
 	//
 	//		$scope.colla = data;
 	//
 	//	});
+	
+	
+	// Generamos el modal que lanza el teamplate en cuestión
+	
+    $scope.showModal = function(x){
+    	sessionStorage.setItem('updateMissionTrue', JSON.stringify(x));
+        $modal.open({
+              templateUrl: 'modalUpdate.html',
+              controller: 'ModalDialogController', 
+         })
+        .result.then(
+        );
+    }
 
 
-	if ($cookies.role == 'Jefe') {
-		$http.get('/jefe/' + $cookies.username).success(function(data) {
-
+    // A continuación cargamos las misiones scorrespondientes para el usuario en cuestión, en base a las consultas hechas en el ServicesImp.java
+    
+    switch($cookies.role) {
+    case "Assistant":
+    	$http.get('/assistant/' + $cookies.agency+ '/'+$cookies.username).success(function(data){
 			$scope.colla = data;
-			console.log($scope.colla);
-
 		});
-		console.log('Ha entrado en la parte de jefe');
-	} else if ($cookies.role != 'Director' && $cookies.role != 'Assistant'){
-		$http.get('/colaborador/' + $cookies.username).success(function(data) {
-
-			$scope.colla = data;
-			console.log($scope.colla);
-		});
-	}
-	else {
-		$http.get('/misiones').success(function(data) {
-
+        break;
+    case "Director":
+    	$http.get('/director/' + $cookies.agency).success(function(data){
 			$scope.colla = data;
 		});
-		console.log('Ha entrado en la parte de NO jefe');
-	}
+        break;
+    case "Jefe":
+    	$http.get('/jefe/' + $cookies.username).success(function(data){
+			$scope.colla = data;
+		});
+        break;
+    default:
+    	$http.get('/colaborador/' + $cookies.username).success(function(data){
+			$scope.colla = data;
+		});
+	    break;
+}
+    
+    
+    
+//	if ($cookies.role == 'Jefe') {
+//		$http.get('/jefe/' + $cookies.username).success(function(data) {
+//
+//			$scope.colla = data;
+//			console.log($scope.colla);
+//
+//		});
+//	} else if ($cookies.role == 'Director') {
+//		$http.get('/director/' + $cookies.agency).success(function(data) {
+//
+//			$scope.colla = data;
+//			console.log($scope.colla);
+//
+//		});
+//	} else if ($cookies.role == 'Assistant') {
+//		$http.get('/director/' + $cookies.agency).success(function(data) {
+//
+//			$scope.colla = data;
+//			console.log($scope.colla);
+//
+//		});
+//	} 
+//	else if ($cookies.role != 'Director' && $cookies.role != 'Assistant'){
+//		$http.get('/colaborador/' + $cookies.username).success(function(data) {
+//
+//			$scope.colla = data;
+//			console.log($scope.colla);
+//		});
+//	}
+//	else {
+//		$http.get('/misiones').success(function(data) {
+//
+//			$scope.colla = data;
+//		});
+//		console.log('Ha entrado en la parte de NO jefe');
+//	}
 	
 	
 
@@ -113,7 +167,7 @@ app.controller('collaCtrl', function($scope, $http, $cookies) {
 			  closeOnConfirm: false
 			},
 			function(){
-			  swal("Éxito!", "La validación de la orden se ha realizado correctamente", "success");
+			  swal("Éxito!", "Se ha revertido la orden correctamente", "success");
 			
 
 			  x.status = "Abierta";
@@ -155,11 +209,11 @@ app.controller('collaCtrl', function($scope, $http, $cookies) {
 	
 	$scope.callCOllaBD = function(x){  // Funcion para cargar los datos para la mision x (es el id de la mision en concreto) que pasamos por parametro
 		
-		var showTable = localStorage.getItem('showTables');
+		var showTable = sessionStorage.getItem('showTables');
 		
 		
 		if (showTable != x){
-		localStorage.setItem('showTables', x);
+		sessionStorage.setItem('showTables', x);
 		
 
 		$http.get('/busquedaMission/'+ x).success(function(data) {
@@ -169,13 +223,13 @@ app.controller('collaCtrl', function($scope, $http, $cookies) {
 			$scope.collaccom= data.accommodations;
 
 		});
-		}else {localStorage.setItem('showTables', -1);}
+		}else {sessionStorage.setItem('showTables', -1);}
 		
 	}
 	
 	$scope.callShowTables = function(){  // Funcion para cargar la id, que en la lista me permite comprobar qué mision se desplega
 		
-		var showTable = localStorage.getItem('showTables');
+		var showTable = sessionStorage.getItem('showTables');
 		return showTable;
 		
 	}
@@ -234,9 +288,9 @@ app.controller('collaCtrl', function($scope, $http, $cookies) {
 	
 	if ($cookies.role == 'Assistant') {
 		
-		$scope.cosauno = 'Cerrar';
+		$scope.buttonselect = 'Cerrar';
 	} else {
-		$scope.cosauno = 'Validar';
+		$scope.buttonselect = 'Validar';
 	}
 	
 	

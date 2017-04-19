@@ -34,7 +34,7 @@ public class Itinerary {
 
 
         @Column(name="date")
-        private Date date;
+        private String date;
         
         @Column(name="origin")
         private String origin;
@@ -55,7 +55,7 @@ public class Itinerary {
         private String company;
 
         @Column(name="price")
-        private String price;
+        private long price;
 
         @ManyToOne
        
@@ -69,11 +69,11 @@ public class Itinerary {
         public void setId(int id) {
             Id = id;
         }
-        public Date getDate() {
+        public String getDate() {
             return date;
         }
 
-        public void setDate(Date date) {
+        public void setDate(String date) {
             this.date = date;
         }
 
@@ -125,11 +125,11 @@ public class Itinerary {
             this.company = company;
         }
 
-        public String getPrice() {
+        public long getPrice() {
             return price;
         }
 
-        public void setPrice(String price) {
+        public void setPrice(long price) {
             this.price = price;
         }
         @JsonIgnore

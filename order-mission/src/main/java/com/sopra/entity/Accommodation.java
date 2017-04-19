@@ -27,10 +27,10 @@ public class Accommodation {
 	 private String hotelName;
 	 
 	 @Column(name="entry_date")
-	 private Date entryDate;
+	 private String entryDate;
 	 
 	 @Column(name="departure_date")
-	 private Date departureDate;
+	 private String departureDate;
 	 
 	 @Column(name="number_of_nights")
 	 private int numberOfNights;
@@ -55,16 +55,16 @@ public class Accommodation {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return entryDate;
 	}
-	public void setEntryDate(Date entryDate) {
+	public void setEntryDate(String entryDate) {
 		this.entryDate = entryDate;
 	}
-	public Date getDepartureDate() {
+	public String getDepartureDate() {
 		return departureDate;
 	}
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
 	}
 	public int getNumberOfNights() {

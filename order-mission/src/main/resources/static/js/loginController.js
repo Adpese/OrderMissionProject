@@ -14,6 +14,7 @@ app.controller('loginController', function($scope, $http, auth, $cookies) {
 				$cookies.role=dat[0];
 				console.log(dat[2]);
 				$cookies.agency= dat[1];
+				
 				$cookies.completeName= dat[2];
 				
 			
