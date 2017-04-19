@@ -24,6 +24,11 @@ public class MissionController {
 	   missionServices.saveMissionItinerary(mission);
    }
 	
+	@RequestMapping(value = "missionUpdate", method = RequestMethod.PUT)
+	public void missionUpdate(@RequestBody Mission mission){
+		
+	   missionServices.updateMission(mission);   }
+	
    @RequestMapping(value="getPerson/{id}", method= RequestMethod.GET)
    public Persona getPerson( @PathVariable int id){
 	 

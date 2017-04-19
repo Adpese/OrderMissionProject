@@ -93,6 +93,29 @@ public class ServicesImp implements MissionServices {
 	
 	   }
 	
+	public void updateMission(Mission m){
+	
+		for(Itinerary it : m.getItineraries()) {
+			if(it != null){
+			   it.setMission(m);
+			}
+	   	}
+//	ALQUILER COCHE
+		for(Rent rent : m.getRents()) {
+			if(rent != null){
+				rent.setMission(m);
+			}
+	   	}
+//	ALQUILER ALOJAMIENTO
+		for(Accommodation acc : m.getAccommodations()) {
+			if(acc != null){
+				acc.setMission(m);
+			}
+	   	}
+		
+		missionRepository.save(m);
+	}
+	
 	
 	
 	

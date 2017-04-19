@@ -70,7 +70,8 @@ app.controller(
 				$scope.rents = $scope.missionUpdate.rents;
 				$scope.trajects = $scope.missionUpdate.itineraries;
 				$scope.usuario = $scope.missionUpdate.collabFirstName;
-				$scope.selectedProject = $scope.missionUpdate.project.nameProj;
+				$scope.selectedProject = $scope.missionUpdate.project;
+				
 				
 				$scope.pruebacero = $scope.missionUpdate.project.nameProj;
 				
@@ -166,7 +167,7 @@ app.controller(
 
 
 
-				console.log($scope.projectData);
+				console.log($scope.selectedProject);
 				$http
 					.post(urlBase + '/missionSave', {
 						collabFirstName : $scope.usuario,
@@ -220,11 +221,11 @@ app.controller(
 						
 						
 					}
-				console.log(x);
 				
 				
 				
-				$http.put('/missions/'+ $scope.updateId, x)
+				
+				$http.put('/missionUpdate/', x)
 					.success(
 						function(data, status, headers, config) {
 							swal(

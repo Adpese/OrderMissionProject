@@ -422,8 +422,8 @@ var app =  angular.module('orderMisionManagerApp', [ 'ui.router', 'ngStorage', '
 //	
 //});
 
-taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+//taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
+//	function($stateProvider, $urlRouterProvider) {
 
 		//$urlRouterProvider.otherwise("/login");
 
@@ -443,7 +443,7 @@ taskManagerModule.config([ '$stateProvider', '$urlRouterProvider',
 		//				//templateUrl : "listar_close",
 		//			})
 
-	} ]);
+//	} ]);
 
 
 
