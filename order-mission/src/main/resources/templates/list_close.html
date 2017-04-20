@@ -55,7 +55,7 @@
 				<td class="text-over-input">{{ x.project.nameProj }}</td>
 				<td class="text-over-input">{{ x.project.agency }}</td>
 				<td class="text-over-input">{{ x.createdBy }}</td>
-				<td><button style='width:70px; color: red' ng-click="desvalidar(x)" ng-show="(x.status=='Cerrada')">Abrir</button></td>
+				<td><button class= "btnval" ng-click="desvalidar(x)" ng-show="(x.status=='Cerrada')"><i class= "glyphicon glyphicon-open-file"></i>Abrir</button></td>
 				<!-- <td><button style='width:70px; color: red' ng-click="SendData(x)">{{buttonState}}</button></td> -->
 			</tr>
 

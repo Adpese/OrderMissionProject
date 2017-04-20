@@ -15,7 +15,7 @@
 //    }
 //})
 
-app.controller("ModalDialogController", function ($scope, $modalInstance) {
+app.controller("ModalDialogController", function ($scope, $http, $sessionStorage, auth, $cookies, $modalInstance) {
   $scope.ok = function () {
     $modalInstance.close();
   };
@@ -23,4 +23,5 @@ app.controller("ModalDialogController", function ($scope, $modalInstance) {
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+  
 });

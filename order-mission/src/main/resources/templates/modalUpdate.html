@@ -41,7 +41,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-list"></i></span>
-								<select name="repeatSelect" id="repeatSelect" ng-model="selectedProject" selected="selectedProject.nameProj" ng-options=" option.nameProj for option in projects" class="form-control selectpicker"  ng-required="true">
+								<select ng-model="selectedProject" ng-options="option.nameProj as option.nameProj for option in projects" class="form-control selectpicker"  ng-required="true">
 <!-- 						      	<option value="" selected="false">{{pruebacero}}</option> -->
 						    </select>
 						</div>
@@ -79,7 +79,7 @@
 
 								<div >
 									<input name="dateTraject" ng-model="traject.date"  ng-required="true" 
-										   placeholder="Fecha" class="form-control trip" type="date" />
+										   placeholder="Fecha" class="form-control trip" type="date" max="{{maxDate}}" min="{{minDateModal}}" />
 								
 								</div>
 
@@ -401,7 +401,7 @@
 
 								<div>
 									<input name="entryDate" ng-model="accommodation.entryDate" ng-required="true" ng-change="accommodation.departureDate=null; changeAcc(accommodation.entryDate)"
-										   placeholder="Fecha de entrada" class="form-control trip" type="date" min="{{minDate}}"/>
+										   placeholder="Fecha de entrada" class="form-control trip" type="date"/>
 								</div>
 
 							</div>

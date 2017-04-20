@@ -112,7 +112,7 @@ public class ServicesImp implements MissionServices {
 				acc.setMission(m);
 			}
 	   	}
-		
+		missionRepository.delete(m.getId());
 		missionRepository.save(m);
 	}
 	

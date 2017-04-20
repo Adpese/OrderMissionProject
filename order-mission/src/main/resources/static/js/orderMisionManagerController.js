@@ -1,8 +1,9 @@
 
 app.controller(
 		'orderMisionManagerController',
-		function($scope, $http, $sessionStorage, auth, $cookies) {
+		function($scope, $http, $sessionStorage, auth, $cookies, $modal) {
 			$scope.usuario = $cookies.completeName;
+			$scope.usuarioTopPlace = $cookies.completeName;
 			console.log();
 			var urlBase = "";
 			$http.defaults.headers.post["Content-Type"] = "application/json";
@@ -15,7 +16,7 @@ app.controller(
 			}
 
 			$scope.date = new Date();
-			console.log($scope.date);
+			//console.log($scope.date);
 			$scope.patternNombre = /^([a-zA-ZÁÉÍÓÚñáéíóú-][\s]*)+$/;
 			$scope.patternWNumbers = /^([a-zA-ZÁÉÍÓÚñáéíóú0-9&-][\s]*)+$/;
 			
@@ -61,7 +62,7 @@ app.controller(
 			
 			
 			$scope.missionUpdate = JSON.parse(sessionStorage.getItem('updateMissionTrue'));
-			console.log($scope.missionUpdate);
+			//console.log($scope.missionUpdate);
 			
 			if(($scope.missionUpdate != null) && ($scope.testNewAccess == 2)){
 				
@@ -70,15 +71,16 @@ app.controller(
 				$scope.rents = $scope.missionUpdate.rents;
 				$scope.trajects = $scope.missionUpdate.itineraries;
 				$scope.usuario = $scope.missionUpdate.collabFirstName;
-				$scope.selectedProject = $scope.missionUpdate.project;
+				$scope.selectedProject = $scope.missionUpdate.project.nameProj;
 				
+				//console.log($scope.selectedProject);
 				
 				$scope.pruebacero = $scope.missionUpdate.project.nameProj;
 				
 				
 				// Este bucle rellena los campos de fecha y horas para la lista de itinerarios
 				for(i=0; i<$scope.missionUpdate.itineraries.length; i++){
-				$scope.missionUpdate.itineraries[i].date = new Date($scope.missionUpdate.itineraries[i].date.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+				$scope.missionUpdate.itineraries[i].date = new Date($scope.missionUpdate.itineraries[i].date.toLocaleString());
 				
 				$scope.missionUpdate.itineraries[i].departureHour = new Date($scope.missionUpdate.itineraries[i].departureHour.toLocaleString());
 				
@@ -88,9 +90,9 @@ app.controller(
 				// Este bucle rellena los campos de fecha y horas para la lista de RENTCAR
 				for(i=0; i<$scope.missionUpdate.rents.length; i++){
 				
-					$scope.missionUpdate.rents[i].pickupDate = new Date($scope.missionUpdate.rents[i].pickupDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					$scope.missionUpdate.rents[i].pickupDate = new Date($scope.missionUpdate.rents[i].pickupDate.toLocaleString());
 					
-					$scope.missionUpdate.rents[i].deliveryDate = new Date($scope.missionUpdate.rents[i].deliveryDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					$scope.missionUpdate.rents[i].deliveryDate = new Date($scope.missionUpdate.rents[i].deliveryDate.toLocaleString());
 					
 					$scope.missionUpdate.rents[i].pickupHour = new Date($scope.missionUpdate.rents[i].pickupHour.toLocaleString());
 					
@@ -101,10 +103,10 @@ app.controller(
 				// Este bucle rellena los campos de fecha y horas para la lista de HOTELES
 				for(i=0; i<$scope.missionUpdate.rents.length; i++){
 					
-					$scope.missionUpdate.accommodations[i].entryDate = new Date($scope.missionUpdate.accommodations[i].entryDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));
+					$scope.missionUpdate.accommodations[i].entryDate = new Date($scope.missionUpdate.accommodations[i].entryDate.toLocaleString());
 					
-					$scope.missionUpdate.accommodations[i].departureDate = new Date($scope.missionUpdate.accommodations[i].departureDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));	
-					
+					$scope.missionUpdate.accommodations[i].departureDate = new Date($scope.missionUpdate.accommodations[i].departureDate.toLocaleString());	
+					//$scope.missionUpdate.accommodations[i].departureDate = new Date($scope.missionUpdate.accommodations[i].departureDate.toLocaleString('en-GB').slice(0, 10).split("\/").reverse().join("-"));	
 					
 				}
 			}
@@ -112,7 +114,15 @@ app.controller(
 
 			var todayDate = (new Date()).toLocaleString('en-GB').slice(
 				0, 10).split("\/").reverse().join("-");
+			//console.log(todayDate);
 			$scope.minDate = todayDate;
+			
+			
+			// Declaración de los mínimos y máximos de rangos para las fechas.
+			
+			$scope.maxDate = "2020-12-31";
+			
+			$scope.minDateModal = "2016-01-01";
 
 			
 
@@ -123,7 +133,7 @@ app.controller(
 				//console.log("NAMEPROJ: "+$scope.nameProj);
 
 			});
-			
+			//console.log($scope.projects);
 			//Hace que cambie el estado del boton del navegador de activo a inactivo dependiendo si está pulsado
 			$scope.activebuton1=function activebuton1(){
 				
@@ -167,7 +177,7 @@ app.controller(
 
 
 
-				console.log($scope.selectedProject);
+				//console.log($scope.selectedProject);
 				$http
 					.post(urlBase + '/missionSave', {
 						collabFirstName : $scope.usuario,
@@ -189,7 +199,7 @@ app.controller(
 								"Nueva misión creada",
 								"Se ha generado una nueva misión con los datos introducidos",
 								"success");
-
+							
 							var newColabUri = headers()["location"];
 
 						}).error(
@@ -206,7 +216,15 @@ app.controller(
 			// Función para modificar una misión ya creada desde el modal de modificar
 			
 			$scope.modiCollab = function modiCollab() {
-
+				
+				
+			for(i=0; i<$scope.projects.length; i++){
+				if($scope.projects[i].nameProj == $scope.selectedProject){
+					$scope.selectedProject = $scope.projects[i];
+				}
+			}
+				
+				
 				
 				var x = {
 						collabFirstName : $scope.usuario,
@@ -229,17 +247,18 @@ app.controller(
 					.success(
 						function(data, status, headers, config) {
 							swal(
-								"Nueva misión creada",
-								"Se ha generado una nueva misión con los datos introducidos",
+								"La misión se ha modificado con éxito.",
+								"Se ha modificado la misión con los nuevos datos",
 								"success");
-
+							
 							var newColabUri = headers()["location"];
-
+							$modalInstance.close();
+							
 						}).error(
 					function(data, status, header, config) {
 						swal(
 							"Error",
-							"No ha sido posible realizar la orden, por favor, vuelva a intentarlo",
+							"No ha sido posible modificar la orden, por favor, vuelva a intentarlo",
 							"error");
 					});
 
