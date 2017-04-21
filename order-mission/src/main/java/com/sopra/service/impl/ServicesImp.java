@@ -243,11 +243,11 @@ public class ServicesImp implements MissionServices {
 	}
 	
 	@ResponseBody
-	@RequestMapping(method=RequestMethod.GET, value="/director/{agency}")
-	public List<Mission> findDirector(@PathVariable("agency") String agency)
+	@RequestMapping(method=RequestMethod.GET, value="/director/{agency}/{userName}")
+	public List<Mission> findDirector(@PathVariable("agency") String agency, @PathVariable("userName") String userName)
 	{
 		
-		return missionRepository.findDirector(agency);
+		return missionRepository.findDirector(agency, userName);
 	}
 	
 	@ResponseBody

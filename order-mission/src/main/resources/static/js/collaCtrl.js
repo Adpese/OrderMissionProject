@@ -32,7 +32,7 @@ app.controller('collaCtrl', function($scope, $http, $cookies, $modal) {
 		});
         break;
     case "Director":
-    	$http.get('/director/' + $cookies.agency).success(function(data){
+    	$http.get('/director/' + $cookies.agency+ '/'+$cookies.username).success(function(data){
 			$scope.colla = data;
 		});
         break;
