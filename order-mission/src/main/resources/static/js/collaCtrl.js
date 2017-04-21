@@ -255,27 +255,27 @@ app.controller('collaCtrl', function($scope, $http, $cookies, $modal) {
 	
 	$scope.showValidate = function(x){    // Funcion para asignar lo valores del filtro pr status en las listas
 		
-		switch(x) {
+		switch(x.status) {
 	    case "Abierta":
-	    	if($cookies.role == "Jefe" || $cookies.role == "Director"){ // A 1 muestro el botón de validar/cerrar, a 0 muestro el botón de desvalidar, 2 no muestro nada y 3 muestro ambos botones.
+	    	if(($cookies.role == "Jefe" && $cookies.agency == x.project.agency) || ($cookies.role == "Director" && $cookies.agency == x.project.agency)){ // A 1 muestro el botón de validar/cerrar, a 0 muestro el botón de desvalidar, 2 no muestro nada y 3 muestro ambos botones.
 	    		var seeStatusbutton = 'validar';
 	    		}else{
 	    			var seeStatusbutton = null;
 	    		}
 	    	break;
 	    case "ValidadoDirector":
-	    	if($cookies.role == "Assistant"){
+	    	if($cookies.role == "Assistant" && $cookies.agency == x.project.agency){
 	    		var seeStatusbutton = 'validar';
-	    		}else if($cookies.role == "Director") {
+	    		}else if($cookies.role == "Director" && $cookies.agency == x.project.agency) {
 	    			var seeStatusbutton = 'desvalidar';
 	    		}else {
 	    			var seeStatusbutton = null;
 	    		}
 	        break;
 	    case "ValidadoJefe":
-	    	if($cookies.role == "Director"){
+	    	if(($cookies.role == "Director") && ($cookies.agency == x.project.agency)){
 	    		var seeStatusbutton = 'validarAndDesvalidar';
-	    		}else if($cookies.role == "Jefe") {
+	    		}else if($cookies.role == "Jefe" && $cookies.agency == x.project.agency) {
 	    			var seeStatusbutton = 'desvalidar';
 	    		}else{
 	    			var seeStatusbutton = null;

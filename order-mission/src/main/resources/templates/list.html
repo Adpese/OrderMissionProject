@@ -36,8 +36,8 @@
 				<td class="text-over-input">{{ x.project.nameProj}}</td>
 				<td class="text-over-input">{{ x.project.agency }}</td>
 				<td class="text-over-input">{{ x.createdBy }}</td>
-				<td class="text-over-input"><button class="btnval" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'validar' || showValidate(x.status) == 'validarAndDesvalidar'" ><i class= "glyphicon glyphicon-save"></i>{{buttonselect}}</button>
-					<button class="btndesv" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x.status) == 'desvalidar' || showValidate(x.status) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-share-alt"></i>Desvalidar</button>
+				<td class="text-over-input"><button class="btnval" ng-click="SendData(x)" confirm="Are you sure?" ng-show="showValidate(x) == 'validar' || showValidate(x) == 'validarAndDesvalidar'" ><i class= "glyphicon glyphicon-save"></i>{{buttonselect}}</button>
+					<button class="btndesv" ng-click="desvalidar(x)" confirm="Are you sure?" ng-show="showValidate(x) == 'desvalidar' || showValidate(x) == 'validarAndDesvalidar'"><i class= "glyphicon glyphicon-share-alt"></i>Desvalidar</button>
 					<button  class= "btndet" ng-click="callCOllaBD(x.id)" ><i class= "glyphicon glyphicon-list"></i> Detalles</button>
 					<button  class= "btnmod" ng-click="showModal(x)" ><i class= "glyphicon glyphicon-pencil"></i> Modificar</button></td>
 				
