@@ -253,11 +253,29 @@ app.controller('collaCtrl', function($scope, $http, $cookies, $modal) {
 		return seeStatus;
 	}
 	
+	
+	
+	// Voy a cargar los proyectos de los que es jefe en cuestión el usuario (en caso de que sea Jefe").
+	
+	$http.get('/proyects/' + $cookies.username).success(function(data){
+		$scope.proyectsJefe = data;
+	});
+	
+	
+	
+	
 	$scope.showValidate = function(x){    // Funcion para asignar lo valores del filtro pr status en las listas
+
+		for(i=0; i<$scope.proyectsJefe.length; i++){
+			if($scope.proyectsJefe[i] == x.project.nameProj){
+				var flag = true;
+			}
+		}//He comprobado si realmente el proyecto de la mision que estoy evaluando se encuentra en la lista de proyectos de los que es jefe el usuario en cuestión.
+		//console.log(flag)
 		
 		switch(x.status) {
 	    case "Abierta":
-	    	if(($cookies.role == "Jefe" && $cookies.agency == x.project.agency) || ($cookies.role == "Director" && $cookies.agency == x.project.agency)){ // A 1 muestro el botón de validar/cerrar, a 0 muestro el botón de desvalidar, 2 no muestro nada y 3 muestro ambos botones.
+	    	if((($cookies.role == "Jefe" && $cookies.agency == x.project.agency) && flag == true) || ($cookies.role == "Director" && $cookies.agency == x.project.agency)){ // A 1 muestro el botón de validar/cerrar, a 0 muestro el botón de desvalidar, 2 no muestro nada y 3 muestro ambos botones.
 	    		var seeStatusbutton = 'validar';
 	    		}else{
 	    			var seeStatusbutton = null;
