@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.sopra.doa.LDAPResponse;
 import com.sopra.doa.Persona;
 import com.sopra.entity.Accommodation;
 import com.sopra.entity.Itinerary;
@@ -126,7 +127,7 @@ public class ServicesImp implements MissionServices {
 	}
 		
 	
-	public String login(String credentialsJSON){
+	public LDAPResponse login(String credentialsJSON){
 		
 	   Persona persona = new Gson().fromJson(credentialsJSON, Persona.class);
 	   
@@ -146,21 +147,20 @@ public class ServicesImp implements MissionServices {
     	   
     	   
            ldapContext = new InitialLdapContext(env, null);
-           String searchFilter = "(&(sAMAccountName=" + persona.getNombre() + "))";
-//           String searchFilter = "(&(department=341 cs espagne))";
+           String searchFilterByName = "(&(sAMAccountName=" + persona.getNombre() + "))";
            SearchControls searchControls = new SearchControls();
            searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
 //           NamingEnumeration<SearchResult> results = ldapContext.search("OU=Sopragroup,OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
-           NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
-           String agency="";
-           String displayname= "";
-           if(results.hasMore()) {
-        	   SearchResult searchResult = (SearchResult) results.next();
+           NamingEnumeration<SearchResult> userResults = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilterByName, searchControls);
+           String userAgency="";
+           String userDisplayName= "";
+           if(userResults.hasMore()) {
+        	   SearchResult searchResult = (SearchResult) userResults.next();
                System.out.println(searchResult.getAttributes());
-               agency= (String)searchResult.getAttributes().get("department").get();
-               displayname=(String)searchResult.getAttributes().get("displayname").get();
-               System.out.println(agency);
-               System.out.println(displayname);
+               userAgency= (String)searchResult.getAttributes().get("department").get();
+               userDisplayName=(String)searchResult.getAttributes().get("displayname").get();
+               System.out.println(userAgency);
+               System.out.println(userDisplayName);
 //               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
 
 //               System.out.println((String)searchResult.getAttributes().get("C").get());
@@ -170,20 +170,43 @@ public class ServicesImp implements MissionServices {
 //            	   System.out.println(resultss.);
 //               }
            }
-           
+           String searchFilter = "(&(department=341 cs espagne))";
+           NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
+//           ArrayList<String> agencyList = new ArrayList<String>();
+           ArrayList<String> displayNameList = new ArrayList<String>();
+           while(results.hasMore()) {
+        	   SearchResult searchResult = (SearchResult) results.next();
+//               System.out.println(searchResult.getAttributes());
+//               agencyList.add((String)searchResult.getAttributes().get("department").get());
+               displayNameList.add((String)searchResult.getAttributes().get("displayname").get());
+//               System.out.println(userAgency);
+//               System.out.println((String)searchResult.getAttributes().get("displayname").get());
+//               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
+
+//               System.out.println((String)searchResult.getAttributes().get("C").get());
+               
+//               NamingEnumeration<? extends Attribute> resultss = searchResult.getAttributes().getAll();
+//               if(resultss.hasMoreElements()){
+//            	   System.out.println(resultss.);
+//               }
+           }
          
+           
            User user = userRepository.findUserByName(persona.getNombre());
            if(user == null)
-          	 return "Colaborador"+"/"+agency+"/"+displayname;
-           Role role = roleRepository.findOne(user.getRol().getId());
-           String respuesta = role.getRol()+"/"+agency+"/"+displayname;
-           System.out.println(respuesta);
-           return respuesta;
+        	   return new LDAPResponse("Colaborador", userAgency, userDisplayName, displayNameList);
+//          	 return "Colaborador"+"/"+userAgency+"/"+userDisplayname;
+           Role userRole = roleRepository.findOne(user.getRol().getId());
+//           String respuesta = role.getRol()+"/"+userAgency+"/"+userDisplayname;
+//           System.out.println(respuesta);
+//           return respuesta;
+           return new LDAPResponse(userRole.getRol(), userAgency, userDisplayName, displayNameList);
   
        } catch (NamingException nex) {
     	   System.out.println("ERROR " + nex);
-           return "Error";
+    		return null;
        }
+
 		
 //		 User user = userRepository.findUserByName(persona.getNombre());
 //         if(user == null)

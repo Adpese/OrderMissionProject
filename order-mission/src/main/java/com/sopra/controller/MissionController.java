@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sopra.doa.LDAPResponse;
 import com.sopra.doa.Persona;
 import com.sopra.entity.Mission;
 import com.sopra.service.MissionServices;
@@ -42,7 +43,7 @@ public class MissionController {
    }
    
    @RequestMapping(value = "loginLDAP", method = RequestMethod.POST)
-	public String login(@RequestBody String credentialsJSON){
+	public LDAPResponse login(@RequestBody String credentialsJSON){
 	   
 	   return missionServices.login(credentialsJSON);
 	

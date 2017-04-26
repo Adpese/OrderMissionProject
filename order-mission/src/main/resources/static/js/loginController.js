@@ -10,17 +10,24 @@ app.controller('loginController', function($scope, $http, auth, $cookies) {
 		}).success(
 			function(data, status, headers) {
 				
-				var dat = data.split("/");
-				$cookies.role=dat[0];
-				console.log(dat[2]);
-				$cookies.agency= dat[1];
+				console.log(data.userRole);
 				
-				$cookies.completeName= dat[2];
+//				var dat = data.split("/");
+//				$cookies.role=dat[0];
+//				console.log(dat[2]);
+//				$cookies.agency= dat[1];
+//				
+//				$cookies.completeName= dat[2];
+//				
 				
+				$cookies.role = data.userRole;
+				$cookies.agency = data.userAgency;
+				$cookies.completeName = data.userDisplayName;
+				userList = data.displayNameList;
 			
 
 				if ($cookies.role === "Assistant" || $cookies.role === "Director" ||$cookies.role  === "Jefe" || $cookies.role === "Colaborador") {
-					auth.login($scope.userCollab, dat[0]);
+					auth.login($scope.userCollab, data.userRole);
 				} else {
 					swal(
 						"Error",

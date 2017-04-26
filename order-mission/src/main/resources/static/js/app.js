@@ -1,5 +1,7 @@
 var app =  angular.module('orderMisionManagerApp', [ 'ui.router', 'ngStorage', 'ngCookies', 'ui.bootstrap' ]);
 
+var userList=null;
+
 //taskManagerModule
 //	.controller(
 //		'orderMisionManagerController',
