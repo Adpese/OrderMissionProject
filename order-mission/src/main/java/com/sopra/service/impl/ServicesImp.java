@@ -170,59 +170,31 @@ public class ServicesImp implements MissionServices {
 //            	   System.out.println(resultss.);
 //               }
            }
-           String searchFilter = "(&(department=341 cs espagne))";
-           NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
-    	   System.out.println(results);
-//           ArrayList<String> agencyList = new ArrayList<String>();
-           ArrayList<String> displayNameList = new ArrayList<String>();
-           while(results.hasMore()) {
-        	   SearchResult searchResult = (SearchResult) results.next();
-//               System.out.println(searchResult.getAttributes());
-//               agencyList.add((String)searchResult.getAttributes().get("department").get());
-               displayNameList.add((String)searchResult.getAttributes().get("displayname").get());
-//               System.out.println(userAgency);
-//               System.out.println((String)searchResult.getAttributes().get("displayname").get());
-//               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
-
-//               System.out.println((String)searchResult.getAttributes().get("C").get());
-               
-//               NamingEnumeration<? extends Attribute> resultss = searchResult.getAttributes().getAll();
-//               if(resultss.hasMoreElements()){
-//            	   System.out.println(resultss.);
-//               }
-           }
+//           String searchFilter = "(&(department=341 cs espagne))";
+//           NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
+//    	   System.out.println(results);
+//           ArrayList<String> displayNameList = new ArrayList<String>();
+//           while(results.hasMore()) {
+//        	   SearchResult searchResult = (SearchResult) results.next();
+//               displayNameList.add((String)searchResult.getAttributes().get("displayname").get());
+//           }
          
            
            User user = userRepository.findUserByName(persona.getNombre());
            if(user == null)
-        	   return new LDAPResponse("Colaborador", userAgency, userDisplayName, displayNameList);
+        	   return new LDAPResponse("Colaborador", userAgency, userDisplayName);
 //          	 return "Colaborador"+"/"+userAgency+"/"+userDisplayname;
            Role userRole = roleRepository.findOne(user.getRol().getId());
 //           String respuesta = role.getRol()+"/"+userAgency+"/"+userDisplayname;
 //           System.out.println(respuesta);
 //           return respuesta;
-           return new LDAPResponse(userRole.getRol(), userAgency, userDisplayName, displayNameList);
+           return new LDAPResponse(userRole.getRol(), userAgency, userDisplayName);
   
        } catch (NamingException nex) {
     	   System.out.println("ERROR " + nex);
     		return null;
        }
 
-		
-//		 User user = userRepository.findUserByName(persona.getNombre());
-//         if(user == null)
-//        	 return "Colaborador";
-//
-//         Role role = roleRepository.findOne(user.getRol().getId());
-//         
-//
-//         
-//         if(role != null)
-//        	 return role.getRol();
-//         else
-//        	 return "Colaborador";
-		
-		
 		
 	}
 	

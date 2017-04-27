@@ -11,7 +11,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.sopra.entity.Mission;
+import com.sopra.entity.Project;
 import com.sopra.entity.Role;
+import com.sopra.repository.MissionRepository;
+import com.sopra.repository.ProjectRepository;
 import com.sopra.repository.RoleRepository;
 import com.sopra.service.impl.ServicesImp;
 
@@ -21,6 +25,12 @@ public class MissionServicesTest {
 	@Mock
 	private RoleRepository roleRepository;
 
+	@Mock
+	private MissionRepository missionRepository;
+	
+	@Mock
+	private ProjectRepository projectRepository;
+	
 	@InjectMocks
 	private ServicesImp servicesImp;
 	
@@ -28,6 +38,8 @@ public class MissionServicesTest {
 	public void setup(){
 		MockitoAnnotations.initMocks(this);
 	}
+	
+	
 	
 	@Test
 	public void TestGetRoleById ()
@@ -37,6 +49,25 @@ public class MissionServicesTest {
 		Role result = servicesImp.getRole(70);
 		assertEquals(70, result.getId());
 		assertEquals("Director", result.getRol());
+	}
+	
+	@Test
+	public void TestSaveMission()
+	{
+		Project proj = new Project();
+		proj.setNameProj("Mercadoona");
+		proj.setId(1);
+		proj.setAgency("Valencia");
+		proj.setDivision("Valencia");
+		
+		Mission mission = new Mission();
+		
+		when(missionRepository.save(mission)).thenReturn(mission);
+		
+		
+		
+		
+
 	}
 
 }

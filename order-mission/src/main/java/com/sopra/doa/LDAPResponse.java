@@ -19,6 +19,13 @@ public class LDAPResponse {
 		this.displayNameList = displayNameList;
 	}
 	
+	public LDAPResponse(String userRole, String userAgency, String userDisplayName) {
+		super();
+		this.userRole = userRole;
+		this.userAgency = userAgency;
+		this.userDisplayName = userDisplayName;
+	}
+	
 	public String getUserRole() {
 		return userRole;
 	}
