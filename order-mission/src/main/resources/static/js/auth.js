@@ -1,4 +1,5 @@
 app.factory("auth", function($cookies, $cookieStore, $sessionStorage, $window, $location) {
+	
 	return {
 		login : function(username, role) {
 			
@@ -38,16 +39,17 @@ app.factory("auth", function($cookies, $cookieStore, $sessionStorage, $window, $
 		},
 		
 		getMissionDetails : function (id){
-			
-			
-
 			$http.get('/busquedaMission/'+ x).success(function(data) {
-				
 				return data;
-
-			});
-			
-			
+			});			
+		},
+		
+		getUsersList : function (){
+			return sessionStorage.usersList;
+		},
+		
+		setUsersList : function (userList){
+			sessionStorage.usersList = userList;
 		}
 	}
 

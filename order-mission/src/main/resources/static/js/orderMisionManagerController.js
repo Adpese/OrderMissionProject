@@ -303,5 +303,28 @@ app.controller(
 
 			}
 			
+			
+//			var users = this;
+//			
+//
+//					users.countryOptions = [{
+//			            label: 'China',
+//			            value: 'cn',
+//			            icon: 'cn flag'
+//			        }, {
+//			            label: 'Russia',
+//			            value: 'ru',
+//			            icon: 'ru flag'
+//			        }, {
+//			            label: 'United Kingdom',
+//			            value: 'uk',
+//			            icon: 'uk flag'
+//			        }, {
+//			            label: 'Philippines',
+//			            value: 'ph',
+//			            icon: 'ph flag'
+//			        }];
+		      
+			
 
 		});

@@ -155,10 +155,10 @@ public class ServicesImp implements MissionServices {
            String userAgency="";
            String userDisplayName= "";
            if(userResults.hasMore()) {
-        	   SearchResult searchResult = (SearchResult) userResults.next();
-               System.out.println(searchResult.getAttributes());
-               userAgency= (String)searchResult.getAttributes().get("department").get();
-               userDisplayName=(String)searchResult.getAttributes().get("displayname").get();
+        	   SearchResult userResult = (SearchResult) userResults.next();
+//               System.out.println(userResult.getAttributes());
+               userAgency= (String)userResult.getAttributes().get("department").get();
+               userDisplayName=(String)userResult.getAttributes().get("displayname").get();
                System.out.println(userAgency);
                System.out.println(userDisplayName);
 //               System.out.println((String)searchResult.getAttributes().get("managedObjects").get());
@@ -172,6 +172,7 @@ public class ServicesImp implements MissionServices {
            }
            String searchFilter = "(&(department=341 cs espagne))";
            NamingEnumeration<SearchResult> results = ldapContext.search("OU=UsersEmea,DC=emea,DC=msad,DC=sopra", searchFilter, searchControls);
+    	   System.out.println(results);
 //           ArrayList<String> agencyList = new ArrayList<String>();
            ArrayList<String> displayNameList = new ArrayList<String>();
            while(results.hasMore()) {
@@ -248,14 +249,6 @@ public class ServicesImp implements MissionServices {
 	{
 		
 		return missionRepository.find(uName);
-	}
-	
-	@ResponseBody
-	@RequestMapping(method=RequestMethod.GET, value="/proyects/{userName}")
-	public List<String> findProyectsJefe(@PathVariable("userName") String uName)
-	{
-		
-		return missionRepository.findProyectsJefe(uName);
 	}
 	
 //	@ResponseBody

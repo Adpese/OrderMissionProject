@@ -10,7 +10,7 @@ app.controller('loginController', function($scope, $http, auth, $cookies) {
 		}).success(
 			function(data, status, headers) {
 				
-				console.log(data.userRole);
+				console.log(data.displayNameList);
 				
 //				var dat = data.split("/");
 //				$cookies.role=dat[0];
@@ -23,9 +23,8 @@ app.controller('loginController', function($scope, $http, auth, $cookies) {
 				$cookies.role = data.userRole;
 				$cookies.agency = data.userAgency;
 				$cookies.completeName = data.userDisplayName;
-				userList = data.displayNameList;
-			
-
+				auth.setUsersList(data.results);
+				
 				if ($cookies.role === "Assistant" || $cookies.role === "Director" ||$cookies.role  === "Jefe" || $cookies.role === "Colaborador") {
 					auth.login($scope.userCollab, data.userRole);
 				} else {
