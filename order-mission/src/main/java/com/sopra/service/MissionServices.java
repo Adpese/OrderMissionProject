@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sopra.doa.LDAPResponse;
 import com.sopra.entity.Mission;
+import com.sopra.entity.Role;
 
 public interface MissionServices {
 	
@@ -22,4 +23,6 @@ public interface MissionServices {
 	 
 	 
 	 LDAPResponse login(String credentialsJSON);
+	 
+	 Role getRole(int id);
 }

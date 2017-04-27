@@ -22,6 +22,29 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name="Mission")
 public class Mission {
 
+	public Mission() {
+	}
+	
+	
+	
+	
+	public Mission(int id, String collabFirstName, Date date, String status, String createdBy, Project project,
+			List<Itinerary> itineraries, List<Accommodation> accommodations, List<Rent> rents) {
+		super();
+		Id = id;
+		this.collabFirstName = collabFirstName;
+		this.date = date;
+		this.status = status;
+		this.createdBy = createdBy;
+		this.project = project;
+		this.itineraries = itineraries;
+		this.accommodations = accommodations;
+		this.rents = rents;
+	}
+
+
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_mission")

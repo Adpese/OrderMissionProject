@@ -288,5 +288,10 @@ public class ServicesImp implements MissionServices {
 		System.out.println(m.getCollabFirstName());
 		//missionRepository.updateMission(id, m);
 	}
+
+	@Override
+	public Role getRole(int id) {
+		return roleRepository.findOne(id);
+	}
 	
 }

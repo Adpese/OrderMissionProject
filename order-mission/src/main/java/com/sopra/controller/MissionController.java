@@ -1,7 +1,11 @@
 package com.sopra.controller;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +16,7 @@ import com.sopra.doa.LDAPResponse;
 import com.sopra.doa.Persona;
 import com.sopra.entity.Mission;
 import com.sopra.service.MissionServices;
+import com.sopra.validator.MissionValidator;
 
 @RestController
 public class MissionController {
@@ -19,8 +24,17 @@ public class MissionController {
 	@Resource 
 	MissionServices missionServices;
 	
+	@Autowired
+    MissionValidator missionValidator;
+    
+    @InitBinder("mission")
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(new MissionValidator());
+    }
+
+	
 	@RequestMapping(value = "missionSave", method = RequestMethod.POST)
-	public void save(@RequestBody Mission mission){
+	public void save(@Valid @RequestBody Mission mission){
 		
 	   missionServices.saveMissionItinerary(mission);
    }
