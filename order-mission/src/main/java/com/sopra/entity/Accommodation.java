@@ -44,6 +44,13 @@ public class Accommodation {
 	
 	
 
+	public Accommodation(int id, String hotelName, String entryDate, String departureDate) {
+		super();
+		Id = id;
+		this.hotelName = hotelName;
+		this.entryDate = entryDate;
+		this.departureDate = departureDate;
+	}
 	public int getId() {
 		return Id;
 	}

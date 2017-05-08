@@ -50,8 +50,23 @@ public class Rent {
 	 @ManyToOne
      @JoinColumn(name="id_mission")
      private Mission mission;
+	 
+	 
 
-	 public int getId() {
+	 public Rent(int id, String driverName, String pickupDate, String pickupHour, String pickupPlace,
+			String deliveryDate, String deliveryHour, String deliveryPlace, long price) {
+		super();
+		Id = id;
+		this.driverName = driverName;
+		this.pickupDate = pickupDate;
+		this.pickupHour = pickupHour;
+		this.pickupPlace = pickupPlace;
+		this.deliveryDate = deliveryDate;
+		this.deliveryHour = deliveryHour;
+		this.deliveryPlace = deliveryPlace;
+		this.price = price;
+	}
+	public int getId() {
 			return Id;
 		}
 		public void setId(int id) {

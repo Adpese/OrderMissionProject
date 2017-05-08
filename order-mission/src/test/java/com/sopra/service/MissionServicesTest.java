@@ -3,6 +3,9 @@ package com.sopra.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +14,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.sopra.entity.Accommodation;
+import com.sopra.entity.Itinerary;
 import com.sopra.entity.Mission;
 import com.sopra.entity.Project;
+import com.sopra.entity.Rent;
 import com.sopra.entity.Role;
 import com.sopra.repository.MissionRepository;
 import com.sopra.repository.ProjectRepository;
@@ -60,13 +66,13 @@ public class MissionServicesTest {
 		proj.setAgency("Valencia");
 		proj.setDivision("Valencia");
 		
-		Mission mission = new Mission();
+		Mission mission = new Mission(1, "Adrian", null, "Abierta", "apelaez", proj, null, null, null);
 		
 		when(missionRepository.save(mission)).thenReturn(mission);
 		
+		Mission result = servicesImp.saveMissionForTest(mission);
 		
-		
-		
+	
 
 	}
 

@@ -61,8 +61,24 @@ public class Itinerary {
        
         @JoinColumn(name = "id_mission") 
         private Mission mission;
+        
+        
 
-        public int getId() {
+        public Itinerary(int id, String date, String origin, String destination, String departureHour,
+				String arrivalHour, String transport, String company, long price) {
+			super();
+			Id = id;
+			this.date = date;
+			this.origin = origin;
+			this.destination = destination;
+			this.departureHour = departureHour;
+			this.arrivalHour = arrivalHour;
+			this.transport = transport;
+			this.company = company;
+			this.price = price;
+		}
+
+		public int getId() {
             return Id; 
         }
 

@@ -94,6 +94,43 @@ public class ServicesImp implements MissionServices {
 	
 	   }
 	
+	@Override
+	public Mission saveMissionForTest(Mission missions) {
+		
+	//	PROYECTO
+	Project proj= missions.getProject();
+	List<Mission> misiones = new ArrayList<Mission>();
+	misiones.add(missions);
+	proj.setMission(misiones);
+	
+//	ITINERARIO
+		for(Itinerary it : missions.getItineraries()) {
+			if(it != null){
+			   it.setMission(missions);
+			}
+	   	}
+//	ALQUILER COCHE
+		for(Rent rent : missions.getRents()) {
+			if(rent != null){
+				rent.setMission(missions);
+			}
+	   	}
+//	ALQUILER ALOJAMIENTO
+		for(Accommodation acc : missions.getAccommodations()) {
+			if(acc != null){
+				acc.setMission(missions);
+			}
+	   	}
+//			String s = Secur32Util.getUserNameEx(Secur32.EXTENDED_NAME_FORMAT.NameDisplay);
+//			System.out.println(s);
+//			missions.setCreatedBy(System.getProperty("user.name") 
+
+//);
+
+		  return missionRepository.save(missions);
+	
+	   }
+	
 	public void updateMission(Mission m){
 	
 		for(Itinerary it : m.getItineraries()) {

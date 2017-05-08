@@ -25,4 +25,5 @@ public interface MissionServices {
 	 LDAPResponse login(String credentialsJSON);
 	 
 	 Role getRole(int id);
+	Mission saveMissionForTest(Mission missions);
 }
