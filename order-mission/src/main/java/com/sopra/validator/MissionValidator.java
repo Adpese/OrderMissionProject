@@ -67,7 +67,7 @@ public class MissionValidator implements Validator {
 		}
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "collabFirstName", "NotEmpty");
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "project", "NotEmpty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "project", "NotEmpty");
 		// if (mission.getCollabFirstName().length() > 2) {
 		// errors.rejectValue("collabFirstName", "Size.missionForm.colab");
 		// }

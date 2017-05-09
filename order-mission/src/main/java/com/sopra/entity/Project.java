@@ -37,6 +37,20 @@ public class Project {
     private List<Mission> missions;
 	
 
+	public Project(int id, String nameProj, String agency, String division) {
+		super();
+		Id = id;
+		this.nameProj = nameProj;
+		this.agency = agency;
+		this.division = division;
+	}
+	
+	
+	public Project() {
+		super();
+	}
+
+
 	public int getId() {
 		return Id;
 	}
