@@ -66,6 +66,29 @@ public class Rent {
 		this.deliveryPlace = deliveryPlace;
 		this.price = price;
 	}
+	 
+	 
+	public Rent(int id, String driverName, String pickupDate, String pickupHour, String pickupPlace,
+			String deliveryDate, String deliveryHour, String deliveryPlace, long price, Mission mission) {
+		super();
+		Id = id;
+		this.driverName = driverName;
+		this.pickupDate = pickupDate;
+		this.pickupHour = pickupHour;
+		this.pickupPlace = pickupPlace;
+		this.deliveryDate = deliveryDate;
+		this.deliveryHour = deliveryHour;
+		this.deliveryPlace = deliveryPlace;
+		this.price = price;
+		this.mission = mission;
+	}
+
+
+	public Rent() {
+		super();
+	}
+
+
 	public int getId() {
 			return Id;
 		}

@@ -77,6 +77,31 @@ public class Itinerary {
 			this.company = company;
 			this.price = price;
 		}
+        
+        
+
+		public Itinerary(int id, String date, String origin, String destination, String departureHour,
+				String arrivalHour, String transport, String company, long price, Mission mission) {
+			super();
+			Id = id;
+			this.date = date;
+			this.origin = origin;
+			this.destination = destination;
+			this.departureHour = departureHour;
+			this.arrivalHour = arrivalHour;
+			this.transport = transport;
+			this.company = company;
+			this.price = price;
+			this.mission = mission;
+		}
+
+		
+
+		public Itinerary() {
+			super();
+		}
+
+
 
 		public int getId() {
             return Id; 

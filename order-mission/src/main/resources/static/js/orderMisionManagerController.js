@@ -175,7 +175,7 @@ app.controller(
 
 			$scope.addCollab = function addCollab() {
 
-
+				console.log($scope.trajects);
 
 				//console.log($scope.selectedProject);
 				$http

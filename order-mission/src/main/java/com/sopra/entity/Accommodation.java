@@ -51,6 +51,25 @@ public class Accommodation {
 		this.entryDate = entryDate;
 		this.departureDate = departureDate;
 	}
+	
+	public Accommodation() {
+		super();
+	}
+	
+	
+	
+	public Accommodation(int id, String hotelName, String entryDate, String departureDate, int numberOfNights,
+			long price, Mission mission) {
+		super();
+		Id = id;
+		this.hotelName = hotelName;
+		this.entryDate = entryDate;
+		this.departureDate = departureDate;
+		this.numberOfNights = numberOfNights;
+		this.price = price;
+		this.mission = mission;
+	}
+
 	public int getId() {
 		return Id;
 	}

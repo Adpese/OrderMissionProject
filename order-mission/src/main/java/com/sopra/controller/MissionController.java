@@ -36,6 +36,8 @@ public class MissionController {
 	@RequestMapping(value = "missionSave", method = RequestMethod.POST)
 	public void save(@Valid @RequestBody Mission mission){
 		
+		System.out.println(mission);
+		
 	   missionServices.saveMissionItinerary(mission);
    }
 	
